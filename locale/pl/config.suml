@@ -71,11 +71,11 @@ nouns:
     templates: true
     hashNamespace: 'neutratywy'
     inclusive:
-        enabled: false
+        enabled: true
         categories: ['interpłciowość', 'lgbtq+', 'niepełnosprawność', 'rasa', 'trans']
         hashNamespace: 'inkluzywny'
     terms:
-        enabled: false
+        enabled: true
         hashNamespace: 'terminologia'
 
 names:
