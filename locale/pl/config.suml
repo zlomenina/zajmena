@@ -427,7 +427,7 @@ profile:
         defaultPronoun: 'on_'
 
 census:
-    enabled: false
+    enabled: true
     route: 'cenzus'
     open: true
     edition: '2021'
