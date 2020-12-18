@@ -229,7 +229,6 @@
             </div>
         </details>
 
-        <!--
         <Separator icon="atom-alt"/>
 
         <h3 :id="$t('nouns.inclusive.id')">
@@ -250,7 +249,6 @@
                 <InclusiveDictionary ref="inclusivedictionary"/>
             </div>
         </details>
-        -->
     </div>
 </template>
 
