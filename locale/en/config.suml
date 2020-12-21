@@ -40,9 +40,11 @@ pronouns:
 
 pronunciation:
     enabled: true
-    language: 'en-GB'
-    voice: 'Emma'
-    engine: 'neural'
+    voices:
+        GB:
+            language: 'en-GB'
+            voice: 'Emma'
+            engine: 'neural'
 
 sources:
     enabled: true
@@ -256,6 +258,9 @@ profile:
         - ['friend', 'partner', 'boyfriend', 'girlfriend', 'joyfriend', 'husband', 'wife', 'kissmate', 'darling', 'beloved', 'boo']
     flags:
         defaultPronoun: 'they'
+
+census:
+    enabled: false
 
 redirects: []
 
