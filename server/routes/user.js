@@ -65,14 +65,14 @@ const defaultUsername = async (db, email) => {
     }
 }
 
-const fetchOrCreateUser = async (db, user, avatarSource = null) => {
+const fetchOrCreateUser = async (db, user, avatarSource = 'gravatar') => {
     let dbUser = await db.get(SQL`SELECT * FROM users WHERE email = ${normalise(user.email)}`);
     if (!dbUser) {
         dbUser = {
             id: ulid(),
             username: await defaultUsername(db, user.name || user.email),
             email: normalise(user.email),
-            roles: 'user',
+            roles: '',
             avatarSource: avatarSource,
         }
         await db.get(SQL`INSERT INTO users(id, username, email, roles, avatarSource)
@@ -276,7 +276,7 @@ router.post('/user/delete', async (req, res) => {
 });
 
 router.post('/user/:id/set-roles', async (req, res) => {
-    if (!req.admin) {
+    if (!req.isGranted('*')) {
         return res.status(401).json({error: 'Unauthorised'});
     }
 

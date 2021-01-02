@@ -1,20 +1,35 @@
 <template>
-    <NotFound v-if="!$admin()"/>
+    <NotFound v-if="!$isGranted('panel') && !$isGranted('users')"/>
     <div v-else>
         <h2>
             <Icon v="user-cog"/>
             <T>admin.header</T>
         </h2>
 
-        <section>
+        <section v-if="$isGranted('users')">
             <details class="border mb-3">
                 <summary class="bg-light p-3">
                     <Icon v="users"/>
                     Users
-                    ({{stats.users.overall}}, {{stats.users.admins}} admins)
+                    ({{stats.users.overall}} overall, {{stats.users.admins}} admins, {{visibleUsers.length}} visible)
                 </summary>
                 <div class="border-top">
-                    <Table :data="Object.values(users)" :columns="4">
+                    <div class="input-group mt-4">
+                        <input class="form-control" v-model="userFilter" :placeholder="$t('crud.filterLong')"/>
+                        <span class="input-group-append">
+                            <button :class="['btn', adminsFilter ? 'btn-secondary' : 'btn-outline-secondary']"
+                                    @click="adminsFilter = !adminsFilter"
+                            >
+                                Only admins
+                            </button>
+                            <button :class="['btn', localeFilter ? 'btn-secondary' : 'btn-outline-secondary']"
+                                    @click="localeFilter = !localeFilter"
+                            >
+                                Only this version
+                            </button>
+                        </span>
+                    </div>
+                    <Table :data="visibleUsers" :columns="4">
                         <template v-slot:header>
                             <th class="text-nowrap">
                                 <T>admin.user.user</T>
@@ -48,10 +63,7 @@
                                 </ul>
                             </td>
                             <td>
-                                <a href="#" :class="['badge', s.el.roles === 'admin' ? 'badge-primary' : 'badge-light']"
-                                   @click.prevent="setRole(s.el.id, s.el.roles === 'admin' ? 'user' : 'admin')">
-                                    {{s.el.roles}}
-                                </a>
+                                <Roles :user="s.el"/>
                             </td>
                             <td>
                                 <ul class="list-unstyled">
@@ -116,37 +128,43 @@
 </template>
 
 <script>
-    import {head} from "../src/helpers";
+    import {head, isGranted} from "../src/helpers";
     import {socialProviders} from "../src/data";
 
     export default {
         data() {
             return {
                 socialProviders,
+                userFilter: '',
+                localeFilter: true,
+                adminsFilter: false,
             }
         },
         async asyncData({ app, store }) {
-            if (!store.state.user || store.state.user.roles !== 'admin') {
-                return {};
-            }
+            let stats = { users: {}};
+            let users = {};
 
-            const stats = await app.$axios.$get(`/admin/stats`);
+            try {
+                stats = await app.$axios.$get(`/admin/stats`);
+            } catch {}
 
-            const users = await app.$axios.$get(`/admin/users`);
+            try {
+                users = await app.$axios.$get(`/admin/users`);
+            } catch {}
 
             return {
                 stats,
                 users,
             };
         },
-        methods: {
-            async setRole(userId, role) {
-                await this.$confirm(this.$t('admin.user.confirmRole', {username: this.users[userId].username, role}));
-
-                const response = await this.$axios.$post(`/user/${userId}/set-roles`, { roles: role });
-
-                this.users[userId].roles = role;
-            }
+        computed: {
+            visibleUsers() {
+                return Object.values(this.users).filter(u =>
+                    u.username.toLowerCase().includes(this.userFilter.toLowerCase())
+                        && (!this.adminsFilter || u.roles !== '')
+                        && (!this.localeFilter || u.profiles.includes(this.config.locale))
+                );
+            },
         },
         head() {
             return head({

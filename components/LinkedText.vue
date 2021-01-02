@@ -1,5 +1,7 @@
 <script>
     import Icon from './Icon';
+    import {mapState} from "vuex";
+    import zhConverter from 'zh_cn_zh_tw';
 
     export default {
         props: {
@@ -12,15 +14,16 @@
 
             let isLink = false;
             let isIcon = false;
+            let isEscape = false;
             let buffer = '';
             let linkBuffer = '';
             const children = [];
             const buildLink = _ => {
                 if (isIcon) {
-                    return h(Icon, {props: { v: buffer}});
+                    return h(Icon, {props: { v: buffer }});
                 }
 
-                const bufferNode = [ h('span', {domProps: { innerHTML: buffer }}) ];
+                const bufferNode = [ h('span', {domProps: { innerHTML: this.handleSpelling(buffer) }}) ];
 
                 if (!isLink) {
                     return bufferNode;
@@ -45,7 +48,7 @@
                     );
                 }
 
-                return h('nuxt-link', {props: { to: linkBuffer || '/' + this.config.nouns.route + '#' + buffer }}, bufferNode);
+                return h('nuxt-link', {props: { to: linkBuffer || '/' + this.config.nouns.route + '#' + this.handleSpelling(buffer) }}, bufferNode);
             }
             const addChild = _ => {
                 if (!buffer) {
@@ -73,18 +76,44 @@
                     continue;
                 } else if (c === '[') {
                     addChild();
-                    isIcon = true;
-                    continue;
+                    if (isEscape) {
+                        isEscape = false;
+                    } else {
+                        isIcon = true;
+                        continue;
+                    }
                 } else if (c === ']') {
                     addChild();
-                    isIcon = false;
+                    if (isIcon) {
+                        isIcon = false;
+                        continue;
+                    }
+                } else if (c === '\\') {
+                    isEscape = true;
                     continue;
+                } else if (isEscape) {
+                    buffer += '\\';
+                    isEscape = false;
                 }
                 buffer += c;
             }
             addChild();
 
             return h('span', children);
+        },
+        computed: {
+            ...mapState([
+                'spelling',
+            ]),
+        },
+        methods: {
+            handleSpelling(str) {
+                if (this.config.locale !== 'zh' || this.spelling === 'traditional') {
+                    return str;
+                }
+
+                return zhConverter.convertToSimplifiedChinese(str);
+            }
         },
     }
 </script>

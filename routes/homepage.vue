@@ -177,6 +177,10 @@
                                 <T>home.generator.pronunciation</T>
                             </p>
                             -->
+                            <div v-if="!usedBaseEquals" class="alert alert-warning">
+                                <Icon v="exclamation-triangle"/>
+                                <T>pronouns.generated</T>
+                            </div>
                         </div>
                         <div class="card-footer" v-if="link">
                             <LinkInput :link="link"/>
@@ -229,7 +233,7 @@
                 selectedMorpheme: '',
 
                 customiseMultiple: false,
-                multiple: ['on', 'ona'],
+                multiple: this.config.pronouns.multiple.examples[0].split('&'),
 
                 customise: false,
 
@@ -284,14 +288,14 @@
         methods: {
             toggleMultiple(name) {
                 const index = this.multiple.indexOf(name);
-                if (homepage > -1) {
-                    this.multiple.splice(homepage, 1);
+                if (index > -1) {
+                    this.multiple.splice(index, 1);
                 } else {
                     this.multiple.push(name);
                 }
             },
             addSlash(link) {
-                return link + (link.substr(link.length - 1) === '*' ? '/' : '');
+                return link + (['*', `'`].includes(link.substr(link.length - 1)) ? '/' : '');
             },
             clearExampleParts(parts) {
                 return parts.map(p => new ExamplePart(p.variable, p.str.replace(/^'/, '')));

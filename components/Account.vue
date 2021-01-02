@@ -6,19 +6,27 @@
                     <p class="mb-0">
                         <Avatar :user="$user()"/>
                     </p>
-                    <p v-if="$user().avatarSource" class="mt-3">
-                        Gravatar:
-                        <a href="#" @click.prevent="setAvatar(null)">
-                            <Avatar :user="$user()" grav dsize="2rem"/>
-                        </a>
-                    </p>
-                    <p v-else>
-                        <a href="https://gravatar.com" target="_blank" rel="noopener" class="small">
-                            <Icon v="external-link"/>
-                            <T>user.avatar.change</T>
-                        </a>
-                    </p>
-                    <p v-if="$admin()">
+                    <div class="mb-2">
+                        <div v-if="$user().avatarSource !== 'gravatar'" class="mt-3">
+                            Gravatar:
+                            <a href="#" @click.prevent="setAvatar('gravatar')">
+                                <Avatar :user="$user()" :src="gravatar($user())" dsize="2rem"/>
+                            </a>
+                        </div>
+                        <div v-else>
+                            <a href="https://gravatar.com" target="_blank" rel="noopener" class="small">
+                                <Icon v="external-link"/>
+                                <T>user.avatar.change</T>
+                            </a>
+                        </div>
+                        <div v-if="$user().avatarSource">
+                            <a href="#" @click.prevent="setAvatar(null)" class="small">
+                                <Icon v="trash"/>
+                                <T>crud.remove</T>
+                            </a>
+                        </div>
+                    </div>
+                    <p v-if="$isGranted('panel') || $isGranted('users')">
                         <nuxt-link to="/admin" class="badge badge-primary"><T>user.account.admin</T></nuxt-link>
                     </p>
                 </div>
@@ -112,6 +120,7 @@
 
 <script>
     import {socialProviders} from "../src/data";
+    import {gravatar} from "../src/helpers";
 
     export default {
         data() {
@@ -127,6 +136,8 @@
 
                 socialProviders,
                 socialConnections: undefined,
+
+                gravatar,
             }
         },
         async mounted() {

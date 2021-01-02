@@ -47,14 +47,20 @@
             </ul>
         </section>
 
-        <GrammarTables :selectedPronoun="selectedPronoun" :counter="counter"/>
-
         <section v-if="selectedPronoun.history">
-            <div class="alert alert-info" v-for="part in selectedPronoun.history.split('@')">
-                <Icon v="info-circle"/>
-                <LinkedText :text="part"/>
-            </div>
+            <template v-for="part in selectedPronoun.history.split('@')">
+                <div v-if="part === '__generator__'" class="alert alert-warning">
+                    <Icon v="exclamation-triangle"/>
+                    <T>pronouns.generated</T>
+                </div>
+                <div v-else class="alert alert-info">
+                    <Icon v="info-circle"/>
+                    <LinkedText :text="part"/>
+                </div>
+            </template>
         </section>
+
+        <GrammarTables :selectedPronoun="selectedPronoun" :counter="counter"/>
 
         <section v-if="pronounGroup && pronounGroup.group.description">
             <ul class="list-group mt-4">
@@ -151,7 +157,7 @@
         },
         methods: {
             addSlash(link) {
-                return link + (link.substr(link.length - 1) === '*' ? '/' : '');
+                return link + (['*', `'`].includes(link.substr(link.length - 1)) ? '/' : '');
             },
         },
         computed: {

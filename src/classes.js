@@ -21,7 +21,7 @@ export class Example {
         const parts = [];
         let lastPosition = 0;
 
-        for (let m of str.matchAll(/{('?[a-z_]+)}/g)) {
+        for (let m of str.matchAll(/{('?[a-z0-9_]+)}/g)) {
             const textBefore = str.substr(lastPosition, m.index - lastPosition);
             if (textBefore.length) {
                 parts.push(new ExamplePart(false, textBefore));
@@ -59,7 +59,10 @@ export class Example {
             const morpheme = pronoun.getMorpheme(m);
 
             return pronunciation
-                ? `<phoneme alphabet="ipa" ph="${pronunciation}">${morpheme}</phoneme>`
+                ? (pronunciation.startsWith('=')
+                    ? pronunciation.substring(1)
+                    : `<phoneme alphabet="ipa" ph="${pronunciation}">${morpheme}</phoneme>`
+                )
                 : morpheme;
         }
 
@@ -284,7 +287,7 @@ export class Pronoun {
     nameOptions() {
         const options = new Set();
         const optionsN = this.morphemes[MORPHEMES[0]].split('&');
-        const optionsG = this.morphemes[MORPHEMES[1]] === this.morphemes[MORPHEMES[0]]
+        const optionsG = this.morphemes[MORPHEMES[1]] === this.morphemes[MORPHEMES[0]] && MORPHEMES.length > 2
             ? this.morphemes[MORPHEMES[2]].split('&')
             : this.morphemes[MORPHEMES[1]].split('&');
         for (let i in optionsN) {
@@ -448,10 +451,10 @@ export class Pronoun {
             data[data.length - 1],
             false,
             m,
-            data[MORPHEMES.length].split('').map(p => parseInt(p) === 1),
-            data[MORPHEMES.length + 1].split('').map(p => parseInt(p) === 1),
+            config.pronouns.plurals ? data[MORPHEMES.length].split('').map(p => parseInt(p) === 1) : [false],
+            config.pronouns.honorifics ? data[MORPHEMES.length + 1].split('').map(p => parseInt(p) === 1) : [false],
             [],
-            null,
+            '__generator__',
             false,
         )
     }

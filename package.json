@@ -27,6 +27,7 @@
     "js-md5": "^0.7.3",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
+    "luxon": "^1.25.0",
     "mailer": "^0.6.7",
     "markdown-loader": "^6.0.0",
     "nuxt": "^2.14.7",
@@ -37,7 +38,8 @@
     "suml-loader": "^0.1.1",
     "ulid": "^2.3.0",
     "vue-matomo": "^3.13.5-0",
-    "vuedraggable": "^2.24.3"
+    "vuedraggable": "^2.24.3",
+    "zh_cn_zh_tw": "^1.0.7"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-pro": "git+ssh://git@gitlab.com:Avris/FontAwesomePro.git",

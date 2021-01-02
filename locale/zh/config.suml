@@ -1,0 +1,183 @@
+locale: 'zh'
+
+header: true
+
+pronouns:
+    enabled: true
+    default: '他'
+    any: 'any'
+    plurals: true
+    honorifics: false
+    multiple:
+        name: 'Interchangeable forms'
+        description: 'Many nonbinary people use more than one form interchangeably and are fine with being called either of them.'
+        examples: ['他&她', '她&伊', '他&佢']
+    null: false
+    emoji:
+        description: 'Emojiself pronouns'
+        history: '{https://lgbta.wikia.org/wiki/Emojiself_Pronouns=Emojiself} pronouns are intended for online communication and not supposed to be pronounced.'
+        morphemes:
+            3rd_person: '#'
+            2nd_person: '#'
+        examples: ['💫', '💙']
+        template: 'Open one of the examples and simply replace the emoji in the URL with your own.'
+    slashes: false
+    avoiding: false
+    others: 'Other pronouns'
+
+pronunciation:
+    enabled: true
+    voices:
+        CN:
+            language: 'cmn-CN'
+            voice: 'Zhiyu'
+            engine: 'standard'
+
+sources:
+    enabled: true
+    route: 'sources'
+    submit: true
+    mergePronouns: {}
+
+nouns:
+    enabled: true
+    route: 'dictionary'
+    collapsable: false
+    plurals: true
+    pluralsRequired: false
+    declension: false
+    submit: true
+    templates: true
+    inclusive:
+        enabled: false
+    terms:
+        enabled: false
+
+names:
+    enabled: false
+
+people:
+    enabled: false
+
+english:
+    enabled: false
+
+faq:
+    enabled: false
+    route: 'faq'
+
+links:
+    enabled: false
+    route: 'links'
+    blogRoute: 'blog'
+    links: []
+    media: []
+    socials:
+        -
+            icon: 'twitter'
+            iconSet: 'b'
+            url: 'https://twitter.com/PronounsPage'
+            headline: '@PronounsPage'
+    recommended: []
+
+contact:
+    enabled: true
+    route: 'contact'
+    contacts:
+        -
+            icon: 'envelope'
+            url: 'mailto:contact@pronouns.page'
+            headline: 'contact@pronouns.page'
+    authors:
+        -
+            name: '台灣非二元酷兒浪子'
+            link: 'https://www.facebook.com/TaiwanNonbinary/'
+            group: true
+        -
+            name: 'Andrea'
+            profile: 'andrea'
+            website: 'https://avris.it'
+            twitter: 'AvrisIT'
+            mail: 'andrea@avris.it'
+            areas:
+                編碼: 'https://gitlab.com/Avris/Zaimki'
+
+        -
+            name: 'Paweł Dembowski'
+            profile: 'ausir'
+            pronouns: '他'
+            pronounsLink: '/他'
+            twitter: 'VaultAusir'
+            mail: 'pawel.dembowski@gmail.com'
+            areas:
+                翻譯監管: ~
+
+        -
+            name: '曹冠霖'
+            profile: 'zoruaniac'
+            pronouns: '佢'
+            pronounsLink: '佢'
+            twitter: 'zoruaniac'
+            mail: 'mimakatta.00@gmail.com'
+            facebook: 'zoruaniac'
+            instagram: 'zoruaniac'
+            areas:
+                術語學: ~
+                翻譯: ~
+        -
+            name: '曹昌倫'
+            profile: 'TWFoodLover'
+            pronouns: '他'
+            pronounsLink: '他'
+            twitter: 'TWFoodLover'
+            mail: 'atsaotw@gmail.com'
+            areas:
+                翻譯: ~
+
+
+support:
+    enabled: true
+    links:
+        -
+            icon: 'coffee'
+            url: 'https://ko-fi.com/radajezykaneutralnego'
+            headline: 'Ko-Fi'
+        -
+            icon: 'paypal'
+            iconSet: 'b'
+            url: 'https://paypal.me/RJNeutralnego'
+            headline: 'PayPal'
+
+user:
+    enabled: true
+    route: 'account'
+    termsRoute: 'terms'
+
+profile:
+    enabled: true
+    editorEnabled: true
+    defaultWords:
+        - ['沒有尊稱', '君', '先生', '小姐', '夫人', '同志', '太太']
+        - ['男', '女', '哥哥/弟弟', '姐姐/妹妹', '朋友']
+        - ['可愛', '美麗', '性感', '好看', '帥哥']
+        - ['男朋友', '女朋友', '知音', '丈夫', '妻子']
+    flags:
+        defaultPronoun: '他'
+
+census:
+    enabled: false
+
+redirects: []
+
+api:
+    examples:
+        pronouns_all: ['/api/pronouns']
+        pronouns_one:
+            - '/api/pronouns/she/her'
+            - '/api/pronouns/she/her?examples[]=Did%20you%20ask%20%7Bpronoun_object%7D%20to%20join%20us%3F'
+
+        sources_all: ['/api/sources']
+        sources_one: ['/api/sources/01ERQRCV0XGVJ3T07MV9F6XQ83']
+
+        nouns_all: ['/api/nouns']
+        nouns_search: ['/api/nouns/search/person']

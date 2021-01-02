@@ -1,4 +1,4 @@
-title: 'Pronouns.page'
+title: 'en.pronouns.page'
 description: 'Usage examples of personal pronouns and gender neutral language.'
 
 home:
@@ -50,6 +50,7 @@ pronouns:
         button: 'Generate a link to interchangeable forms'
         header: 'Interchangeable forms'
         raw: 'interchangeable'
+    generated: 'Those pronouns have been created using a generator. The team of pronouns.page is not responsible for it.'
     any:
         header: 'Any pronouns'
         short: 'any'
@@ -329,6 +330,7 @@ user:
                 If you didn't order this code, simply ignore this message.
         why: >
             Registering lets you manage your cards ({/@andrea=like this one}).
+        passwordless: 'The website doesn''t store any passwords. {https://avris.it/blog/passwords-are-passé=More info.}'
     code:
         action: 'Validate'
         invalid: 'Invalid code.'
@@ -361,7 +363,7 @@ profile:
     description: 'Description'
     names: 'Names'
     pronouns: 'Pronouns'
-    pronounsInfo: 'You can enter a pronoun (eg. “they” or “she/sher”) or a link (“http://en.pronouns.page/e”).'
+    pronounsInfo: 'You can enter a pronoun (eg. “they” or “she/sher”) or a link (eg. “http://en.pronouns.page/e”) or the custom five forms (eg. “ze/zem/zir/zirs/zirself”).'
     pronounsNotFound: 'We can''t find a link to this pronoun!'
     words: 'Words'
     birthday: 'Age'
@@ -420,14 +422,14 @@ confirm:
 terms:
     header: 'Terms of Service'
     lastUpdate: 'Last Updated'
-    consent: 'By registering you''re accepting the'
+    consent: 'By registering you''re accepting the {/terms=Terms of Service}.'
 
 admin:
     header: 'Admin panel'
     user:
         user: 'User'
         email: 'Email'
-        roles: 'Role'
+        roles: 'Permissions'
         profiles: 'Profiles'
         confirmRole: 'Are you sure you want to switch @%username%''s role to "%role%"?'
 
@@ -448,6 +450,7 @@ quotation:
     end: '”'
 
 localise:
+    shorter: 'Add more'
     short: 'Adding language versions'
     long: 'Want to create a new language version? Check out'
     longLink: 'this manual!'

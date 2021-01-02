@@ -78,10 +78,12 @@ export const makeId = (length, characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghi
     return result;
 }
 
-export const gravatar = (user, size = 128) => {
-    const fallback = `https://avi.avris.it/${size}/${Base64.encode(user.username).replace(/\+/g, '-').replace(/\//g, '_')}.png`;
+export const fallbackAvatar = (user, size = 240) => {
+    return `https://avi.avris.it/${size}/${Base64.encode(user.username).replace(/\+/g, '-').replace(/\//g, '_')}.png`;
+}
 
-    return `https://www.gravatar.com/avatar/${user.emailHash || md5(user.email)}?d=${encodeURIComponent(fallback)}&s=${size}`;
+export const gravatar = (user, size = 240) => {
+    return `https://www.gravatar.com/avatar/${user.emailHash || md5(user.email)}?d=${encodeURIComponent(fallbackAvatar(user, size))}&s=${size}`;
 }
 
 export const dictToList = dict => {
@@ -142,7 +144,7 @@ export const buildLocaleList = (current) => {
     return buildDict(function* () {
         for (let [code, name, url, published] of locales) {
             if (published || current === code) {
-                yield [code, {name, url}];
+                yield [code, {name, url, published}];
             }
         }
     })
@@ -172,4 +174,22 @@ export const shuffle = a => {
         [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
+}
+
+export const isGranted = (user, locale, area) => {
+    if (area === '*') {
+        return user.roles.split('|').includes('*');
+    }
+
+    for (let permission of user.roles.split('|')) {
+        if (permission === '*') {
+            return true;
+        }
+        const [ permissionLocale, permissionArea ] = permission.split('-');
+        if ((permissionLocale === '*' || permissionLocale === locale) && (permissionArea === '*' || permissionArea === area)) {
+            return true;
+        }
+    }
+
+    return false;
 }

@@ -4,9 +4,19 @@
             <h1 class="text-nowrap">
                 <nuxt-link to="/">
                     <Icon v="tags"/>
-                    <T>title</T>
+                    <span class="higher"><T>title</T></span>
                 </nuxt-link>
             </h1>
+            <div v-if="config.locale === 'zh'" class="btn-group m-2">
+                <button v-for="(display, code) in {traditional: '繁體', simplified: '简体'}"
+                        :class="'btn btn-sm ' + (spelling === code ? 'btn-secondary disabled' : 'btn-outline-secondary')"
+                        :disabled="spelling === code"
+                        @click="setSpelling(code)"
+                >
+                    {{display}}
+                </button>
+            </div>
+            <!--
             <Dropdown v-if="Object.keys(locales).length > 1" btnClass="btn-outline-secondary btn-sm">
                 <template v-slot:toggle>
                     <Icon v="language"/>
@@ -19,8 +29,28 @@
                             {{options.name}}
                         </a>
                     </li>
+                    <li class="dropdown-divider"></li>
+                    <li>
+                        <LocaleLink locale="en" link="/blog/creating-new-language-version" class="dropdown-item small">
+                            <Icon v="plus"/>
+                            <T>localise.shorter</T>
+                        </LocaleLink>
+                    </li>
                 </template>
             </Dropdown>
+            -->
+            <div class="btn-group">
+                <a v-for="(options, locale) in locales" :key="locale"
+                   :href="options.url"
+                   :class="'btn btn-sm ' + (locale === config.locale ? 'btn-secondary disabled' : 'btn-outline-secondary')"
+                   :disabled="locale === config.locale"
+                >
+                    {{options.name}}
+                </a>
+                <LocaleLink locale="en" link="/blog/creating-new-language-version" class="btn btn-sm btn-outline-secondary">
+                    <Icon v="plus"/>
+                </LocaleLink>
+            </div>
         </div>
         <div class="d-block d-md-none">
             <div class="btn-group-vertical btn-block nav-custom mb-2">
@@ -38,6 +68,10 @@
                     <span class="text-nowrap">{{ link.text }}</span>
                 </nuxt-link>
             </div>
+        </div>
+        <div v-if="locales[config.locale].published === false" class="alert alert-warning">
+            <Icon v="exclamation-triangle"/>
+            This language version is still under construction!
         </div>
     </header>
     <header v-else class="mb-4">
@@ -57,6 +91,7 @@
         computed: {
             ...mapState([
                 'user',
+                'spelling',
             ]),
             links() {
                 const links = [];
@@ -168,6 +203,10 @@
                     || (link.extra || []).includes(this.$route.name)
                     || (link.extra || []).includes(decodeURIComponent(this.$route.path));
             },
+            setSpelling(spelling) {
+                this.$store.commit('setSpelling', spelling);
+                this.$cookies.set('spelling', this.$store.state.spelling);
+            },
         },
     }
 </script>
@@ -176,6 +215,10 @@
     @import "assets/variables";
 
     @include media-breakpoint-down('sm', $grid-breakpoints) {
+        h1 {
+            font-size: 2rem;
+        }
+
         .nav-custom {
             .btn {
                 border-left: 1px solid $gray-500;
@@ -206,4 +249,17 @@
             }
         }
     };
+
+    h1 {
+        a {
+            text-decoration: none;
+            .higher {
+                position: relative;
+                top: -0.1em;
+            }
+            &:hover .higher {
+                text-decoration: underline;
+            }
+        }
+    }
 </style>
