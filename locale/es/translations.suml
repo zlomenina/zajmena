@@ -94,6 +94,11 @@ sources:
         thanks: '¡Gracias por contribuir!'
         another: 'Enviar otro'
         moderation: 'Los envíos deben ser aprobados antes de ser publicados.'
+        key: 'Clave'
+        keyInfo: 'Identificador para vincular fuentes entre versiones en varios idiomas y vincularlas con el diccionario'
+        images: 'Imágenes'
+    otherVersions: 'En otros idiomas'
+    referenced: 'Ejemplos del uso'
 
 nouns:
     header: 'Diccionario'
@@ -314,6 +319,16 @@ english: ~
 contact:
     header: 'Contacto'
     authors: 'Autores/as/xs del sitio web'
+    team:
+        name: 'Cooperativa “Revolucionaria Academia Española”'
+        description:  # TODO
+            - >
+                {https://pronouns.page=Pronouns.page} and related initiatives
+                are created by the “Neutral Language Council” collective.
+        logo: 'Logo of the collective is a combination of the transgender symbol and a speech bubble that symbolises language.'  # TODO
+        members: 'Current members'  # TODO
+        blog: 'Blog'  # TODO
+        upcoming: 'Upcoming language versions'  # TODO
 
 support:
     header: 'Apóyanos'
@@ -338,7 +353,7 @@ user:
                 Si no solicitaste este código, simplemente ignora este mensaje.
         why: >
             Registrarte te permite manejar tus tarjetas ({/@andrea=como esta}).
-        passwordless: 'The website doesn''t store any passwords. {https://avris.it/blog/passwords-are-passé=More info.}'  # TODO
+        passwordless: 'Este sitio web no guarda las contraseñas. {https://avris.it/blog/passwords-are-passé=More info.}'
     code:
         action: 'Validar'
         invalid: 'Código inválido.'
@@ -463,9 +478,19 @@ localise:
     long: '¿Quieres añadir una versión en otra lengua? ¡Consulta'
     longLink: 'este manual!'
 
+images:
+    upload:
+        instruction: 'Haz clic aquí o arrastra tus imágenes aquí'
+        instructionShort: 'Subir'
+
+error:
+    generic: 'Algo salió mal. Por favor, vuelve a intentarlo…'
+
 flags:
+    Abroromantic: 'Abrorrománti{inflection_c}'
     Abrosexual: 'Abrosexual'
     Achillean: 'Aquilean{inflection}'
+    Alloromantic_Asexual: 'Allorrománti{inflection_c} asexual'
     Agender: 'Agénero'
     Anarcha-Queer: 'Anarco-queer'
     Androgyne: 'Andrógin{inflection}'
@@ -474,12 +499,16 @@ flags:
     Archaeopronouns: 'Arqueopronombres'
     Aroace: 'Arro-ase'
     Aromantic: 'Arrománti{inflection_c}'
+    Aromantic_Allosexual: 'Arrománti{inflection_c} allosexual'
     Asexual: 'Asexual'
     Autigender: 'Autisgénero'
     Bear: 'Oso'
+    Bicurious: 'Bicurios{inflection}'
     Bigender: 'Bigénero'
+    Biromantic: 'Birrománti{inflection_c}'
     Bisexual: 'Bisexual'
     Butch: 'Butch'
+    Ceteroromantic: 'Ceterorrománti{inflection_c}'
     Ceterosexual: 'Ceterosexual'
     Cis_Ally: 'Aliad{inflection} cis'
     Demiboy: 'Demichico'
@@ -501,12 +530,16 @@ flags:
     Greyaromantic: 'Grisrrománti{inflection_c}'
     Gynesexual: 'Ginosexual'
     Heteroflexible: 'Heteroflexible'
+    Heteroromantic: 'Heterorrománti{inflection_c}'
+    Heterosexual: 'Heterosexual'
     Hijra: 'Hijra'
     Homoflexible: 'Homoflexible'
+    Homoromantic: 'Homorrománti{inflection_c}'
     Intersex: 'Intersexual'
     LGBTQ: 'LGBTQ'
     Leather_Pride: 'Orgullo de cuero'
     Lesbian: 'Lesbiana'
+    Lesbiromantic: 'Lesbirrománti{inflection_c}'
     Maverique: 'Maverique'
     Muxe: 'Muxe'
     Nebularomantic: 'Nebulosarrománti{inflection_c}'
@@ -514,11 +547,15 @@ flags:
     Neutrois: 'Neutr{inflection}'
     Nonbinary: 'No binari{inflection}'
     Omnisexual: 'Omnisexual'
+    Omniromantic: 'Omnirrománti{inflection_c}'
     Oriented_Aroace: 'Arro-ase orientad{inflection}'
     Pangender: 'Pangénero'
+    Panromantic: 'Panrrománti{inflection_c}'
     Pansexual: 'Pansexual'
     Polyamorous: 'Poliamoros{inflection}'
+    Polyromantic: 'Panrrománti{inflection_c}'
     Polysexual: 'Polisexual'
+    Pomoromantic: 'Pomorrománti{inflection_c}'
     Pomosexual: 'Pomosexual'
     Progress_Pride: 'Orgullo progresivo'
     Queer: 'Queer (cuir)'

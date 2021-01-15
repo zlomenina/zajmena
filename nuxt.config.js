@@ -135,6 +135,7 @@ export default {
         LOCALE: config.locale,
         LOCALES: locales,
         FLAGS: buildFlags(),
+        BUCKET: `https://${process.env.AWS_S3_BUCKET}.s3-${process.env.AWS_REGION}.amazonaws.com`,
     },
     serverMiddleware: ['~/server/index.js'],
     axios: {
@@ -160,7 +161,7 @@ export default {
 
             if (config.links.enabled) {
                 routes.push({ path: '/' + config.links.route, component: resolve(__dirname, 'routes/links.vue') });
-                routes.push({ path: '/' + config.links.blogRoute + '/:slug', component: resolve(__dirname, 'routes/blog.vue') });
+                routes.push({ path: '/' + config.links.blogRoute + '/:slug', component: resolve(__dirname, 'routes/blog.vue'), name: 'blog' });
             }
 
             if (config.people.enabled) {
@@ -173,6 +174,9 @@ export default {
 
             if (config.contact.enabled) {
                 routes.push({ path: '/' + config.contact.route, component: resolve(__dirname, 'routes/contact.vue') });
+            }
+            if (config.contact.team.enabled) {
+                routes.push({ path: '/' + config.contact.team.route, component: resolve(__dirname, 'routes/team.vue') });
             }
 
             if (config.census.enabled) {

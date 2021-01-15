@@ -1,7 +1,9 @@
 <template>
     <div class="my-2" v-if="!deleted">
-        <Icon :v="source.icon()"/>
-        <strong><template v-if="source.author">{{source.author.replace('^', '')}}</template><span v-if="source.author"> – </span><em><a v-if="source.link" :href="source.link" target="_blank" rel="noopener">{{source.title}}</a><span v-else>{{source.title}}</span></em></strong><template v-if="source.extra"> ({{source.extra}})</template>, {{source.year}}<template v-if="source.comment">; {{source.comment}}</template>
+        <h3 class="h6">
+            <Icon :v="source.icon()"/>
+            <strong><template v-if="source.author">{{source.author.replace('^', '')}}</template><span v-if="source.author"> – </span><em><a v-if="source.link" :href="source.link" target="_blank" rel="noopener">{{source.title}}</a><span v-else>{{source.title}}</span></em></strong><template v-if="source.extra"> ({{source.extra}})</template>, {{source.year}}<template v-if="source.comment">; {{source.comment}}</template>
+        </h3>
         <ul class="list-inline" v-if="manage && $isGranted('sources')">
             <li v-if="!source.approved" class="list-inline-item">
                 <span class="badge badge-danger">
@@ -51,12 +53,39 @@
                     {{p}}
                 </span>
             </li>
+            <li class="list-inline-item" v-if="source.key">
+                <span class="badge badge-primary">
+                    <T>sources.submit.key</T>: {{source.key}}
+                </span>
+            </li>
         </ul>
+        <div v-if="source.images.length" class="source-images">
+            <ImageThumb v-for="image in source.images" :key="image" :id="image" class="m-2"/>
+        </div>
         <ul v-if="source.fragments.length">
             <li v-for="fragment in source.fragments">
                 <T>quotation.start</T><span v-html="fragment.replace(/\n/g, '<br/>')"></span><T>quotation.end</T>
             </li>
         </ul>
+        <div v-if="source.versions.length" class="my-3">
+            <p>
+                <button :class="['btn', versionsShown ? 'btn-primary' : 'btn-outline-primary', 'btn-sm']" @click="versionsShown = !versionsShown">
+                    <Icon v="language"/>
+                    <T>sources.otherVersions</T>
+                    <Icon :v="versionsShown ? 'caret-up' : 'caret-down'"/>
+                </button>
+            </p>
+            <ul v-if="versionsShown">
+                <li v-for="version in source.versions">
+                    <h4 class="h6 mb-2">
+                        <strong>
+                            <a :href="`${locales[version.locale].url}/${version.pronouns[0]}`" target="_blank" rel="noopener">{{locales[version.locale].name}}</a>:
+                        </strong>
+                    </h4>
+                    <Source :source="version"/>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -64,6 +93,7 @@
     import {pronounLibrary} from "../src/data";
 
     export default {
+        name: 'Source',
         props: {
             source: { required: true },
             manage: { type: Boolean },
@@ -72,6 +102,7 @@
             return {
                 pronounLibrary,
                 deleted: false,
+                versionsShown: false,
             }
         },
         methods: {
@@ -96,3 +127,20 @@
         },
     }
 </script>
+
+<style lang="scss" scoped>
+    @import "assets/variables";
+
+    @include media-breakpoint-down('sm', $grid-breakpoints) {
+        .source-images {
+            text-align: center;
+        }
+    }
+
+    @include media-breakpoint-up('md', $grid-breakpoints) {
+        .source-images {
+            float: right;
+            max-width: 18rem;
+        }
+    }
+</style>

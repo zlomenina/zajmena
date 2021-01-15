@@ -99,7 +99,13 @@ function clone(mainObject) {
 }
 
 export class Source {
-    constructor ({id, pronouns, type, author, title, extra, year, fragments = '', comment = null, link = null, submitter = null, approved, base_id = null,}) {
+    constructor ({
+             id, pronouns, type, author, title, extra, year, fragments = '',
+             comment = null, link = null,
+             submitter = null, approved, base_id = null,
+             key = null, versions = [], locale = config.locale,
+             images = null,
+    }) {
         this.id = id;
         this.pronouns = pronouns ? pronouns.split(';') : [];
         this.type = type;
@@ -113,6 +119,10 @@ export class Source {
         this.submitter = submitter;
         this.approved = approved;
         this.base_id = base_id;
+        this.key = key;
+        this.versions = versions.map(v => new Source(v));
+        this.locale = locale;
+        this.images = images ? images.split(',') : [];
     }
 
     static get TYPES() {
@@ -233,7 +243,7 @@ export class SourceLibrary {
             source.title,
             source.extra,
             source.year,
-            //...source.fragments,
+            ...source.fragments,
             source.comment,
             source.link,
             source.approved ? '' : '__awaiting__',
@@ -416,6 +426,19 @@ export class Pronoun {
     static from(data) {
         let extraFields = 1; // description
 
+        if (config.locale === 'pl') {
+            if (['0', '1'].includes(data[data.length - 1])) {
+                data.push(''); // description
+            }
+
+            if (data.length === 22) {
+                data.splice(8, 0, data[8]);
+                data.splice(8, 0, data[8]);
+            } else if (data.length === 23) {
+                data.splice(8, 0, data[8]);
+            }
+        }
+
         if (config.pronouns.plurals) {
             extraFields += 1;
             if (![0, 1].includes(parseInt(data[MORPHEMES.length]))) {
@@ -430,7 +453,7 @@ export class Pronoun {
         }
 
         if (data.length === MORPHEMES.length + extraFields - 1) {
-            data.push('');
+            data.push(''); // description
         }
 
         if (data.length !== MORPHEMES.length + extraFields
@@ -533,7 +556,7 @@ export class PronounLibrary {
 }
 
 export class Noun {
-    constructor({id, masc, fem, neutr, mascPl, femPl, neutrPl, approved = true, base_id = null, author = null}) {
+    constructor({id, masc, fem, neutr, mascPl, femPl, neutrPl, sources = null, sourcesData = [], approved = true, base_id = null, author = null}) {
         this.id = id;
         this.masc = masc.split('|');
         this.fem = fem.split('|');
@@ -541,6 +564,8 @@ export class Noun {
         this.mascPl = mascPl ? mascPl.split('|') : [];
         this.femPl = femPl ? femPl.split('|') : [];
         this.neutrPl = neutrPl ? neutrPl.split('|') : [];
+        this.sources = sources ? sources.split(',') : [];
+        this.sourcesData = sourcesData.map(s => new Source(s));
         this.approved = !!approved;
         this.base = base_id;
         this.author = author;

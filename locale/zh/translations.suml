@@ -92,6 +92,11 @@ sources:
         thanks: '感謝您的貢獻！'
         another: '提交另一個'
         moderation: '提交的內容必須先獲得批准才能發布。'
+        key: 'Key'  # TODO
+        keyInfo: 'Identifier for linking sources between language versions and linking with the dictionary'  # TODO
+        images: 'Images' # TODO
+    otherVersions: 'In other languages' # TODO
+    referenced: 'Examples of use' # TODO
 
 nouns:
     header: '字典'
@@ -293,6 +298,16 @@ english: ~
 contact:
     header: 'Contact'
     authors: 'Authors of the website'
+    team:
+        name: 'The “Neutral Language Council” collective'  # TODO
+        description:  # TODO
+            - >
+                {https://pronouns.page=Pronouns.page} and related initiatives
+                are created by the “Neutral Language Council” collective.
+        logo: 'Logo of the collective is a combination of the transgender symbol and a speech bubble that symbolises language.'  # TODO
+        members: 'Current members'  # TODO
+        blog: 'Blog'  # TODO
+        upcoming: 'Upcoming language versions'  # TODO
 
 support:
     header: 'Support'
@@ -441,6 +456,14 @@ localise:
     short: 'Adding language versions'
     long: 'Want to create a new language version? Check out'
     longLink: 'this manual!'
+
+images:
+    upload:
+        instruction: 'Click here or drag your pics here'  # TODO
+        instructionShort: 'Upload' # TODO
+
+error:
+    generic: 'Something went wrong, please try again…'  # TODO
 
 flags:
     Abrosexual: '嫩性戀'

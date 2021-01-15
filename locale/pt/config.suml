@@ -1,0 +1,138 @@
+locale: 'pt'
+
+header: true
+
+pronouns:
+    enabled: true
+    default: 'ele'
+    any: 'any'
+    plurals: false
+    honorifics: false
+    multiple:
+        name: 'Formas intercambiables'
+        description: 'Muchas personas no binarias usan más de una forma intercambiablemente y se sienten cómodas con cualquiera de las opciones.'
+        examples: ['ele&ela', 'ele&elu', 'ela&elu']
+    null: false
+    emoji: false
+    slashes: false
+    avoiding: false
+    others: 'Otros pronombres'
+
+pronunciation:
+    enabled: true
+    voices:
+        PT:
+            language: 'pt-PT'
+            voice: 'Cristiano'
+            engine: 'standard'
+        BR:
+            language: 'pt-BR'
+            voice: 'Vitoria'
+            engine: 'standard'
+
+sources:
+    enabled: true
+    route: 'fuentes'
+    submit: true
+    mergePronouns: {}
+
+nouns:
+    enabled: true
+    route: 'diccionario'
+    collapsable: false
+    plurals: false
+    pluralsRequired: false
+    declension: false
+    submit: true
+    templates: false
+    inclusive:
+        enabled: false
+    terms:
+        enabled: false
+
+names:
+    enabled: false
+
+people:
+    enabled: false
+
+english:
+    enabled: false
+
+faq:
+    enabled: true
+    route: 'preguntas'
+
+links:
+    enabled: false
+    route: 'enlaces'
+    blogRoute: 'blog'
+    links: []
+    media: []
+    socials:
+        -
+            icon: 'twitter'
+            iconSet: 'b'
+            url: 'https://twitter.com/PronounsPage'
+            headline: '@PronounsPage'
+    recommended: []
+
+contact:
+    enabled: true
+    route: 'contacto'
+    contacts:
+        -
+            icon: 'envelope'
+            url: 'mailto:contact@pronouns.page'
+            headline: 'contact@pronouns.page'
+    team:
+        enabled: true
+        route: 'team'  # TODO
+    blog: {}
+
+support:
+    enabled: true
+    links:
+        -
+            icon: 'coffee'
+            url: 'https://ko-fi.com/radajezykaneutralnego'
+            headline: 'Ko-Fi'
+        -
+            icon: 'paypal'
+            iconSet: 'b'
+            url: 'https://paypal.me/RJNeutralnego'
+            headline: 'PayPal'
+
+user:
+    enabled: true
+    route: 'cuenta'
+    termsRoute: 'terinos'
+
+profile:
+    enabled: true
+    editorEnabled: true
+    defaultWords:
+        - ['senhor', 'senhora', 'senhore', 'dom', 'dona', 'done', 'tu', 'você']
+        - ['persona', 'home', 'mulher', 'garoto', 'garota', 'garote', 'rapaz', 'rapariga', 'raparigue', 'cara']
+        - ['lind_', 'formos_', 'bonit_', 'bel_', 'sexy']
+        - ['parceir_', 'namorad_', 'marid_', 'espos_', 'outra metade']
+    flags:
+        defaultPronoun: 'el_'
+
+census:
+    enabled: false
+
+redirects: []
+
+api:
+    examples:
+        pronouns_all: ['/api/pronouns']
+        pronouns_one:
+            - '/api/pronouns/ella'
+            - '/api/pronouns/ella?examples[]=Creo%20que%20%7Bpronoun%7D%20es%20muy%20querid%7Binflection%7D.'
+
+        sources_all: ['/api/sources']
+        sources_one: ['/api/sources/01ET491ME8DPKNN1SV3NBK6KEA']
+
+        nouns_all: ['/api/nouns']
+        nouns_search: ['/api/nouns/search/esposa']

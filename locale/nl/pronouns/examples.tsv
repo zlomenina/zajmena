@@ -1,0 +1,5 @@
+singular	plural	isHonorific
+Ik denk dat {nominative} erg mooi is.		FALSE
+Ik vroeg {accusative} of ik {pronominal_poss} potlood mag lenen.		FALSE
+Dat huis is het {predicative_poss}.		FALSE
+{'nominative} ziet {reflexive} in de spiegel.		FALSE

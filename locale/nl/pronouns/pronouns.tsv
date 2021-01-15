@@ -1,0 +1,11 @@
+key	description	normative	nominative	accusative	pronominal_poss	predicative_poss	reflexive	plural	pluralHonorific	pronounceable	history	thirdForm	smallForm	sourcesInfo
+hij,hij/hem/zijn	Masculine	TRUE	hij	hem	zijn	zijne	zichzelf	FALSE	FALSE	TRUE
+zij,zij/haar/haar	Feminine	TRUE	zij	haar	haar	hare	haarzelf	FALSE	FALSE	TRUE
+hen,hen/hen/hun	Neutral	FALSE	hen	hen	hun	hunne	hunzelf	FALSE	FALSE	TRUE
+die/hen,die/hen/hun	Neutral	FALSE	die	hen	hun	hunne	hunzelf	FALSE	FALSE	TRUE
+die,die/die/diens	Neutral	FALSE	die	die	diens	diense	dienzelf	FALSE	FALSE	TRUE
+dee,dee/dem/dijr	Neutral	FALSE	dee	dem	dijr	dijre	dijrzelf	FALSE	FALSE	TRUE
+dij,dij/dem/dijr	Neutral	FALSE	dij	dem	dijr	dijre	dijrzelf	FALSE	FALSE	TRUE
+hen/hens,hen/hen/hens	Neutral	FALSE	hen	hen	hens	hense	henzelf	FALSE	FALSE	TRUE
+zhij,zhij/zhaar/zhaar	Neutral	FALSE	zhij	zhaar	zhaar	zhare	zhaarself	FALSE	FALSE	TRUE	Based on the English pronoun "zhe/zher".
+zem,zem/zeer/zeer	Neutral	FALSE	zem	zeer	zeer	zere	zeerself	FALSE	FALSE	TRUE	Based on the English pronoun "ze/zir".

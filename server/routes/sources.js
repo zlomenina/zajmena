@@ -18,38 +18,65 @@ const approve = async (db, id) => {
     `);
 }
 
+const linkOtherVersions = async (req, sources) => {
+    const keys = new Set(sources.filter(s => !!s && s.key).map(s => `'` + s.key + `'`));
+
+    const otherVersions = await req.db.all(SQL`
+        SELECT s.*, u.username AS submitter FROM sources s
+        LEFT JOIN users u ON s.submitter_id = u.id
+        WHERE s.locale != ${req.config.locale}
+        AND s.deleted = 0
+        AND s.approved >= ${req.isGranted('sources') ? 0 : 1}
+        AND s.key IN (`.append([...keys].join(',')).append(SQL`)
+    `));
+
+    const otherVersionsMap = {};
+    otherVersions.forEach(version => {
+        if (otherVersionsMap[version.key] === undefined) {
+            otherVersionsMap[version.key] = [];
+        }
+        otherVersionsMap[version.key].push(version);
+    });
+
+    return sources.map(s => {
+        s.versions = s.key ? otherVersionsMap[s.key] || [] : [];
+        return s;
+    });
+};
+
 const router = Router();
 
 router.get('/sources', async (req, res) => {
-    return res.json(await req.db.all(SQL`
+    return res.json(await linkOtherVersions(req, await req.db.all(SQL`
         SELECT s.*, u.username AS submitter FROM sources s
         LEFT JOIN users u ON s.submitter_id = u.id
         WHERE s.locale = ${req.config.locale}
         AND s.deleted = 0
         AND s.approved >= ${req.isGranted('sources') ? 0 : 1}
-    `));
+    `)));
 });
 
 router.get('/sources/:id', async (req, res) => {
-    return res.json(await req.db.all(SQL`
+    return res.json(await linkOtherVersions(req, await req.db.all(SQL`
         SELECT s.*, u.username AS submitter FROM sources s
         LEFT JOIN users u ON s.submitter_id = u.id
         WHERE s.locale = ${req.config.locale}
         AND s.deleted = 0
         AND s.approved >= ${req.isGranted('sources') ? 0 : 1}
         AND s.id = ${req.params.id}
-    `));
+    `)));
 });
 
 router.post('/sources/submit', async (req, res) => {
     const id = ulid();
     await req.db.get(SQL`
-        INSERT INTO sources (id, locale, pronouns, type, author, title, extra, year, fragments, comment, link, submitter_id, base_id)
+        INSERT INTO sources (id, locale, pronouns, type, author, title, extra, year, fragments, comment, link, key, images, submitter_id, base_id)
         VALUES (
             ${id}, ${req.config.locale}, ${req.body.pronouns.join(';')},
             ${req.body.type}, ${req.body.author}, ${req.body.title}, ${req.body.extra}, ${req.body.year},
             ${req.body.fragments.join('@').replace(/\n/g, '|')}, ${req.body.comment}, ${req.body.link},
-            ${req.user ? req.user.id : null}, ${req.body.base}  
+            ${req.body.key || null}, ${req.body.images || null},
+            ${req.user ? req.user.id : null}, ${req.body.base}
         )
     `);
 

@@ -193,6 +193,11 @@ sources:
         thanks: 'Dziękujemy za zgłoszenie!'
         another: 'Zgłoś kolejne źródło'
         moderation: 'Propozycje będą musiały zostać zatwierdzone przed opublikowaniem.'
+        key: 'Klucz'
+        keyInfo: 'Identyfikator do łączenia tekstów między wersjami językowymi i łączenia ze słownikiem'
+        images: 'Obrazki'
+    otherVersions: 'W innych językach'
+    referenced: 'Przykłady użycia'
 
 nouns:
     header: 'Słowniki'
@@ -848,6 +853,17 @@ english:
 contact:
     header: 'Kontakt'
     authors: '{/słowniki#autor=Autorza} strony'
+    team:
+        name: 'Kolektyw „Rada Języka Neutralnego”'
+        description:
+            - >
+                Inicjatywy zaimki.pl / {https://pronouns.page=pronouns.page}
+                oraz {https://facebook.com/neutratywy=Słownik Neutratywów Języka Polskiego}
+                są tworzone przez kolektyw „Rada Języka Neutralnego”.
+        logo: 'Logo kolektywu to połączenie symbolu transpłciowości z chmurką dialogową symbolizującą język.'
+        members: 'Obecny skład'
+        blog: 'Blog'
+        upcoming: 'Nadchodzące wersje językowe'
 
 support:
     header: 'Wsparcie'
@@ -1035,9 +1051,19 @@ localise:
     long: 'Chcesz dodać nową wersję językową? Informacje znajdziesz w'
     longLink: 'tej instrukcji.'
 
+images:
+    upload:
+        instruction: 'Kliknij tutaj lub upuść tu obrazek'
+        instructionShort: 'Wgraj'
+
+error:
+    generic: 'Coś poszło nie tak, spróbuj ponownie…'
+
 flags:
+    Abroromantic: 'Abroromantyczn{adjective_n}'
     Abrosexual: 'Abroseksualn{adjective_n}'
     Achillean: 'Achillejs{adjective_n_k}'
+    Alloromantic_Asexual: 'Alloromantyczn{adjective_n} aseksualn{adjective_n}'
     Agender: 'Apłciow{adjective_n}'
     Anarcha-Queer: 'Anarchoqueerow{adjective_n}'
     Androgyne: 'Androgyniczn{adjective_n}'
@@ -1046,12 +1072,16 @@ flags:
     Archaeopronouns: 'Archeozaimki'
     Aroace: 'Aro-as'
     Aromantic: 'Aromantyczn{adjective_n}'
+    Aromantic_Allosexual: 'Aromantyczn{adjective_n} alloseksualn{adjective_n}'
     Asexual: 'Aseksualn{adjective_n}'
     Autigender: 'Autypłciow{adjective_n}'  # Autigenderow{adjective_n}
     Bear: 'Misiek'
+    Bicurious: 'Bi-ciekaw{adjective_n}'
     Bigender: 'Bipłciow{adjective_n}'  # Dwupłciow{adjective_n}
+    Biromantic: 'Biromantyczn{adjective_n}'
     Bisexual: 'Biseksualn{adjective_n}'
     Butch: 'Butch'
+    Ceteroromantic: 'Ceteroromantyczn{adjective_n}'
     Ceterosexual: 'Ceteroseksualn{adjective_n}'
     Cis_Ally: 'Cis osoba sojusznicza'
     Demiboy: 'Demichłopię' # Demichłopak
@@ -1063,7 +1093,7 @@ flags:
     Enbian: 'Enbiańs{adjective_n_k}'  # Niebiańsk{adjective_n}
     Fa*afafine: 'Fa''afafine'
     Gay: 'Gej'
-    Gender_Questioning: 'Rozważając{adjective_n} swoją płeć'  # Zastanawiając{adjective_n} się nad swoją płcią
+    Gender_Questioning: 'Rozważając{adjective_n_c} swoją płeć'  # Zastanawiając{adjective_n_c} się nad swoją płcią
     Genderfae: 'Nimficzn{adjective_n}'
     Genderfaun: 'Fauniczn{adjective_n}'
     Genderfluid: 'Płynnopłciow{adjective_n}'
@@ -1073,24 +1103,32 @@ flags:
     Greyaromantic: 'Szaroaromantyczn{adjective_n}'
     Gynesexual: 'Gyneseksualn{adjective_n}'
     Heteroflexible: 'Heteroelastyczn{adjective_n}'
+    Heteroromantic: 'Heteroromantyczn{adjective_n}'
+    Heterosexual: 'Heteroseksualn{adjective_n}'
     Hijra: 'Hidźra'
     Homoflexible: 'Homoelastyczn{adjective_n}'
+    Homoromantic: 'Homoromantyczn{adjective_n}'
     Intersex: 'Interpłciow{adjective_n}'
     LGBTQ: 'LGBTQ'
     Leather_Pride: 'Skórzak'
     Lesbian: 'Lesbijka'
-    Maverique: 'Maweryczn{adjective_n}'
+    Lesbiromantic: 'Lesbiromantyczn{adjective_n}'
+    Maverique: 'Niezależnopłciow{adjective_n}'
     Muxe: 'Muxe'
     Nebularomantic: 'Mgławicoromantyczn{adjective_n}'
     Neopronouns: 'Neozaimki'
     Neutrois: 'Neutralnopłciow{adjective_n}'
     Nonbinary: 'Niebinarn{adjective_n}'
+    Omniromantic: 'Omniromantyczn{adjective_n}'
     Omnisexual: 'Omniseksualn{adjective_n}'
     Oriented_Aroace: 'Zorientowan{adjective_n} aro-as'
     Pangender: 'Panpłciow{adjective_n}'  # Pangenderow{adjective_n} Wszechpłciow{adjective_n}
+    Panromantic: 'Panromantyczn{adjective_n}'
     Pansexual: 'Panseksualn{adjective_n}'
     Polyamorous: 'Poliamoryczn{adjective_n}'
+    Polyromantic: 'Poliromantyczn{adjective_n}'
     Polysexual: 'Poliseksualn{adjective_n}'
+    Pomoromantic: 'Pomoromantyczn{adjective_n}'
     Pomosexual: 'Pomoseksualn{adjective_n}'
     Progress_Pride: 'Progresywn{adjective_n}'
     Queer: 'Queer (kłir)'
@@ -1098,10 +1136,10 @@ flags:
     Queerplatonic: 'Queerplatoniczn{adjective_n}'
     Quoiromantic: 'Quoiromantyczn{adjective_n}'  # Jakromantyczn{adjective_n}
     Sapphic: 'Safic{adjective_n_k}'  # Safik, Sapphic
-    Sexuality_Questioning: 'Rozważając{adjective_n} swoją orientację'
+    Sexuality_Questioning: 'Rozważając{adjective_n_c} swoją orientację'
     Straight_Ally: 'Hetero osoba sojusznicza'
     Toric: 'Toryczn{adjective_n}'
-    Transfeminine: 'Transkobiec{adjective_n}'
+    Transfeminine: 'Transkobiec{adjective_n_c}'
     Transgender: 'Transpłciow{adjective_n}'
     Transmasculine: 'Transmęs{adjective_n_k}'
     Transneutral: 'Transneutraln{adjective_n}'
