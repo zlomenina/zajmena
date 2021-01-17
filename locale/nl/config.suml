@@ -37,6 +37,7 @@ pronouns:
     slashes: true
     avoiding: false
     others: 'Other pronouns'
+    threeForms: true
 
 pronunciation:
     enabled: true
@@ -50,7 +51,8 @@ sources:
     enabled: true
     route: 'sources'
     submit: true
-    mergePronouns: {}
+    mergePronouns:
+        hen/hun/hun: 'hen/hun'
 
 nouns:
     enabled: true

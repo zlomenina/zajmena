@@ -297,12 +297,14 @@ export class Pronoun {
     nameOptions() {
         const options = new Set();
         const optionsN = this.morphemes[MORPHEMES[0]].split('&');
-        const optionsG = this.morphemes[MORPHEMES[1]] === this.morphemes[MORPHEMES[0]] && MORPHEMES.length > 2
+        const optionsG = this.morphemes[MORPHEMES[1]] === this.morphemes[MORPHEMES[0]] && MORPHEMES.length > 2 && !config.pronouns.threeForms
             ? this.morphemes[MORPHEMES[2]].split('&')
             : this.morphemes[MORPHEMES[1]].split('&');
         for (let i in optionsN) {
             let nameOption = optionsN[i] + '/' + optionsG[i < optionsG.length - 1 ? i : optionsG.length - 1];
-            if (this.thirdForm) {
+            if (config.pronouns.threeForms) {
+                nameOption += '/' + this.morphemes[MORPHEMES[2]].split('&')[i];
+            } else if (this.thirdForm) {
                 nameOption += '/' + this.morphemes[this.thirdForm].split('&')[i];
             }
 
@@ -704,12 +706,14 @@ export class InclusiveEntry {
 }
 
 export class TermsEntry {
-    constructor({id, term, original, definition, flags = '[]', approved = true, base_id = null}) {
+    constructor({id, term, original, definition, category = null, flags = '[]', images = '', approved = true, base_id = null}) {
         this.id = id;
         this.term = term.split('|');
         this.original = original ? original.split('|') : [];
         this.definition = definition;
+        this.category = category;
         this.flags = JSON.parse(flags);
+        this.images = images ? images.split(',') : [];
         this.approved = !!approved;
         this.base = base_id;
     }
