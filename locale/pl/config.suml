@@ -13,7 +13,11 @@ pronouns:
     honorifics: true
     multiple:
         name: 'Formy wymienne'
-        description: 'Wiele osób niebinarnych używa zamiennie więcej niż jednej formy (np. męskich i żeńskich albo żeńskich i neutralnych) i można się do nich zwracać w dowolnej z nich.'
+        description: >
+            Wiele osób niebinarnych używa zamiennie więcej niż jednej formy
+            (np. męskich i żeńskich albo żeńskich i neutralnych)
+            i albo można się do nich zwracać w dowolnej z nich.
+            Niektóre lubią gdy używa się wobec nich na zmianę różnych form.
         examples: ['on&ona', 'on&ono', 'ona&ono', 'on&onu', 'ona&onu', 'ono/jego&ono/jej']
     emoji:
         description: 'Emojiself'
@@ -260,6 +264,11 @@ links:
                 „rodzaj neutralny” zamiast „rodzaj nijaki”, ponieważ „nijaki” jest formą obelgi, obrazy,
                 jak coś jest nijakiego, to krytykujemy. A przecież rodzaju nijakiego jest np. słowo „dziecko”,
                 a nie chcemy obrażać dzieci.
+        -
+            lang: ['es']
+            icon: 'play-circle'
+            url: 'https://open.spotify.com/episode/286zTXBHA0ChWNaWSwgFa0'
+            headline: 'El lenguaje inclusivo de lxs polacxs – Ausir i Dante w hiszpańskojęzycznym podcaście <strong>Proyecto Polonia</strong>'
 
 
 

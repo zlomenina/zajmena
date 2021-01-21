@@ -16,10 +16,15 @@
                 shown: false,
             }
         },
-        mounted() {
+        created() {
             if (process.client) {
                 this.updateShown();
-                window.addEventListener('scroll', _ => { this.updateShown(); });
+                window.addEventListener('scroll', this.updateShown);
+            }
+        },
+        destroyed() {
+            if (process.client) {
+                document.removeEventListener('scroll', this.updateShown);
             }
         },
         methods: {
@@ -43,5 +48,6 @@
         bottom: $spacer;
         right: $spacer;
         transition: all .5s ease-in-out;
+        z-index: 1030;
     }
 </style>
