@@ -19,7 +19,7 @@ Czy twój newsletter tak bardzo ucierpi, jeśli zamiast „Szanowna Pani Kowalsk
 A jeśli chcesz znać płeć osób klienckich tylko po to, by wykorzystywać te dane do
 kampanii marketingowych utrwalających szkodliwe stereotypy na temat płci
 i wciskających ludziom [niepotrzebnie zgenderyzowane produkty](https://www.reddit.com/r/pointlesslygendered),
-to nawet nie czytaj dalej – skoro masz w dupie inkluzywność, to po co tracić czas?
+to nawet nie czytaj dalej – skoro masz gdzieś inkluzywność, to po co tracić czas?
 
 ## Informuj, dlaczego potrzebujesz znać płeć
 
@@ -58,7 +58,6 @@ Płeć „biologiczną”?
  - gonady (jądra, jajniki, gonady o utkaniu mieszanym, jeden jajnik i jedno jądro, dysgenezja gonad, …)
  - wewnętrzne narządy (jajowody, nasieniowody, macica, …)
  - zewnętrzne genitalia
- - chromosomy płci
  - trzeciorzędowe cechy płciowe (biust, zarost na twarzy, wysokość głosu, jabłko Adama, …)
 
 Fajne źródło [tutaj](http://avant.edu.pl/wp-content/uploads/R_Zieminska_Teoria_feministyczna_a_niebinarne_pojecie_plci.pdf).
@@ -166,5 +165,3 @@ może to pomóc osobom respondenckim zapoznać się z tematem.
         <img src="/img/forms-pl/pronouns.png" alt="Jak mamy się do Ciebie zwracać? (i) Więcej informacji znadziesz na stronie zaimki.pl; ono (np. zrobiłoś, poszłoś), on (np. zrobiłeś, poszedłeś), onu (np. zrobiłuś, poszłuś), ona (np. zrobiłaś, poszłaś), oni (np. zrobiliście, poszliście), Żadna z powyższych: [Pole wolnego tekstu]">
     </figure>
 </div>
-
-„”

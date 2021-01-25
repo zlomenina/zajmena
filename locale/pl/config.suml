@@ -95,6 +95,7 @@ nouns:
             - 'płeć'
             - 'ekspresja płciowa'
             - 'model relacji'
+            - 'język'
         route: 'terminologia'
 
 names:
@@ -153,6 +154,10 @@ links:
             url: '/blog/czas-się-obnosić'
             headline: 'Nadszedł czas się obnosić!'
             extra: '– przemówienie Sybila z Wrocławskiego Marszu Równości'
+        -
+            icon: 'comment-alt-edit'
+            url: '/blog/rekomendacja-formularze'
+            headline: 'Rekomendacja Rady w sprawie pytania o płeć w formularzach'
         -
             icon: 'comment-alt-edit'
             url: 'https://www.przemyslenia-maniaka.pl/2019/11/maniak-marudzi-27-niebinarne-tumaczenia.html'
