@@ -16,19 +16,18 @@
                         <template v-for="(nameOption, i) in nameOptions">
                             <nuxt-link :to="'/' + addSlash(nameOption)">
                                 <strong>
-                                    {{ nameOption }}
+                                    <Spelling :text="nameOption" escape/>
                                 </strong>
                             </nuxt-link>
-                            <span v-if="i < nameOptions.length - 1">{{ glue }}</span>
+                            <span v-if="i < nameOptions.length - 1"><Spelling :text="glue"/></span>
                         </template>
                     </template>
                 </h2>
                 <p class="h6 small text-center mb-0 mt-2" v-if="selectedPronoun.description">
                     <em>
-                        ({{Array.isArray(selectedPronoun.description)
+                        (<Spelling escape :text="Array.isArray(selectedPronoun.description)
                             ? ($t('pronouns.alt.header') + ': ' + selectedPronoun.description.join(glue))
-                            : selectedPronoun.description
-                        }})
+                            : selectedPronoun.description"/>)
                     </em>
                 </p>
             </div>
@@ -66,21 +65,21 @@
             <ul class="list-group mt-4">
                 <li class="list-group-item">
                     <p class="h5">
-                        {{ pronounGroup.group.name }}
+                        <Spelling :text="pronounGroup.group.name"/>
                     </p>
                     <div class="small my-1">
                         <Icon v="info-circle"/>
-                        <em v-html="pronounGroup.group.description"></em>
+                        <em><Spelling :text="pronounGroup.group.description"></Spelling></em>
                     </div>
                     <ul class="list-unstyled">
                         <li v-for="pronoun in pronounGroup.groupPronouns" :key="pronoun.canonicalName">
                             <nuxt-link v-if="typeof pronoun === 'string'" :to="'/' + pronoun">
-                                <strong>{{pronoun.replace(/&/g, ' ' + $t('pronouns.or') + ' ')}}</strong>
+                                <strong><Spelling :text="pronoun.replace(/&/g, ' ' + $t('pronouns.or') + ' ')"/></strong>
                             </nuxt-link>
                             <nuxt-link v-else :to="addSlash('/' + pronoun.canonicalName)">
-                                <strong>{{pronoun.name(glue)}}</strong><small v-if="pronoun.smallForm">/{{pronoun.morphemes[pronoun.smallForm]}}</small>
+                                <strong><Spelling :text="pronoun.name(glue)"/></strong><small v-if="pronoun.smallForm">/<Spelling :text="pronoun.morphemes[pronoun.smallForm]"/></small>
                                 –
-                                <small>{{pronoun.description}}</small>
+                                <small><Spelling :text="pronoun.description"/></small>
                             </nuxt-link>
                             <NormativeBadge v-if="pronoun.normative"/>
                         </li>

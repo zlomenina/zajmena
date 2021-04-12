@@ -30,11 +30,11 @@ home:
             {https://avris.it/blog/czemu-każdy-powinien-mieć-zaimki-w-bio=(więcej powodów tutaj).}
         - >
             Formy neutralne płciowo – jak np. „{/on/a=moi drodzy/drogie}”,
-            „drogie osoby”, „{/on*=wszys* chętn*}”, „{/onx=jesteś wspanialx}”, itp. –
+            „drogie osoby”, „{/on*=wszys* chętn*}”, „{/onx=jesteś wspaniałx}”, itp. –
             są też przydatne, gdy zwracasz się do grupy ludzi lub do osoby, której płci nie znasz.
         - >
             Już teraz w codziennej polszczyźnie używamy {/unikanie=wielu form neutralnych płciowo}:
-            „moje {kochanie} {/ono=zrobiło} mi niespodziankę”,
+            „moje {/slowniki/neutratywy#kochanie=kochanie} {/ono=zrobiło} mi niespodziankę”,
             „proszę przyjść do szkoły z {rodzic}em”,
             „w urzędzie powiedziano mi, że...”,
             „{/oni=dzwonili} z gazowni”,
@@ -188,6 +188,7 @@ sources:
         extra: 'Dodatkowe dane (tłumaczenie, czasopismo, …)'
         year: 'Rok wydania (polskiej wersji)'
         fragments: 'Fragmenty'
+        fragmentsInfo: 'Możesz zaznaczyć istotne słowa w następujący sposób: „Wtedy \[\[malarzu]] \[\[zauważyłu]], że wcale nie chce \[\[nu]] się pić.”'
         comment: 'Komentarz'
         link: 'Link do treści'
         thanks: 'Dziękujemy za zgłoszenie!'
@@ -221,16 +222,16 @@ nouns:
         - >
             Płeć człowieka wymyka się jednak prostemu podziałowi kobieta/mężczyzna.
             Jakimi rzeczownikami mogą się opisywać {/pytania#niebinarnosc=osoby niebinarne}?
-            Jeśli używają {/ono=rodzaju neutralnego}, {/onu=dukaizmów} czy {/=innych nienormatywnych form},
+            Jeśli używają {/ono=rodzaju neutralnego}, {/onu=postpłciowego} czy {/=innych nienormatywnych form},
             to które formy rzeczowników pasują do nich gramatycznie?
             Jak przetłumaczyć z angielskiego zawód osoby używającej zaimków <em>they/them</em>?
             Jak opisywać grupy mieszane?
 
         - >
             Dla rozwiązania tych problemów proponujemy trzy opcje, które {/ona/ich=nazwałośmy} analogicznie do feminatywów:
-            {/słowniki/neutratywy=<strong>neutratywami</strong>} (formy zgodne z rodzajem neutralnym),
-            {/słowniki/dukatywy=<strong>dukatywami</strong>} (formy zgodne z dukaizmami)
-            i {/słowniki/osobatywy=<strong>osobatywami</strong>} (formy neutralne, niewskazujące na płeć).
+            {/slowniki/neutratywy=<strong>neutratywami</strong>} (formy zgodne z rodzajem neutralnym),
+            {/slowniki/dukatywy=<strong>dukatywami</strong>} (formy zgodne z dukaizmami)
+            i {/slowniki/osobatywy=<strong>osobatywami</strong>} (formy neutralne, niewskazujące na płeć).
 
     personNouns:
         header: 'Osobatywy'
@@ -249,8 +250,8 @@ nouns:
             caption: 'Ze względu na końcówki „-łum”, „-łuś” i „-łu”, flaga dukazimów i dukatywów przedstawia duszka krzyczącego „łu!”.'
         info:
             - >
-                Analogicznie do tzw. {/onu=dukaizmów / rodzaju postpłciowego} („zrobiłum”, „poszłuś”)
-                można też tworzyć dukajowe rzeczowniki.
+                Analogicznie do {/onu=rodzaju postpłciowego (dukaizmów)} („zrobiłum”, „poszłuś”)
+                można też tworzyć postpłciowe rzeczowniki.
             - >
                 Sam Dukaj w {https://pl.wikipedia.org/wiki/Perfekcyjna_niedoskonałość=„Perfekcyjnej niedoskonałości”}
                 nie tworzył rzeczownikowych odpowiedników rodzaju postpłciowego,
@@ -393,15 +394,15 @@ faq:
                     W zależności od miejsca i czasu bycie „kobietą” i „mężczyzną” może oznaczać radykalnie różne
                     prawa, obowiązki, zasady… W Europie mężczyźni nosili buty na obcasie i rajtuzy,
                     rdzenni mieszkańcy Ameryki Północnej od wieków rozróżniają trzecią płeć
-                    {https://gender.wikia.org/wiki/Two-Spirit=(two-spirit)}, itd. itd.
+                    {/slowniki/terminologia#Two Spirit=(two-spirit)}, itd. itd.
                 - >
                     Niebinarność to zbiorczy termin („umbrella term”) opisujący doświaczenie osób,
                     które nie wpisują się w binarny podział kobieta/mężczyzna.
-                    Obejmuje na przykład osoby {https://gender.wikia.org/wiki/Agender=agender},
-                    {https://gender.wikia.org/wiki/Gender_Fluid=gender fluid},
-                    {https://gender.wikia.org/wiki/Demigirl=demidziewczęta},
-                    {https://gender.wikia.org/wiki/Demiboy=demichłopców},
-                    i {https://gender.wikia.org/wiki/Non-binary=wiele innych tożsamości}.
+                    Obejmuje na przykład osoby {/slowniki/terminologia#Apłciowość=agender},
+                    {/slowniki/terminologia#genderfluid=genderfluid},
+                    {/slowniki/terminologia#demidziewczę=demidziewczęta},
+                    {/slowniki/terminologia#demichłopię=demichłopców},
+                    i {/slowniki/terminologia#non-binary=wiele innych tożsamości}.
                 - >
                     Niebinarność to niekoniecznie coś „pomiędzy” męskością a kobiecością. Raczej „poza”.
                     Osoby niebinarne wcale nie muszą być androgyniczne, nie muszą używać neutralnych zaimków, itp.
@@ -495,6 +496,9 @@ faq:
                     i silny poziom zgeneryzowania gramatyki i słownictwa
                     nie jest łatwo „narzucić” konkrente formy, nawet gdybyśmy chciały.
                     Zanim wytworzą się uniwersalne, niebinarne rozwiązania - musimy sobie jakoś z tym poradzić.
+                - >
+                    Kolektyw Rada Języka Neutralnego co roku organizuje {/spis=Niebinarny Spis Powszechny},
+                    by zbadać trendy niebinarnego języka i zidentyfikować, które formy zyskują z czasem na popularności.
         to-sie-nie-uda:
             question: 'Ale to się nie przyjmie! Ale to zamach na tradycję!'
             answer:
@@ -509,6 +513,15 @@ faq:
                     Język nie jest danym z niebios magicznym przykazaniem wyrytym w kamieniu –
                     jest jedynie narzędziem do porozumiewania się.
                     Może, powinien, i będzie się zmieniał – czy tego chcesz czy nie.
+        nowomowa:
+            question: 'Toż to nowomowa!'
+            answer:
+                - >
+                    Nie, nie każda zmiana w języku to „nowomowa”.
+                - >
+                    Nowomowa u Orwella polegała na zubożaniu języka tak, by ludzie nie mogli wyrazić swojego niezadowolenia z systemu.
+                - >
+                    Nasz projekt próbuje wzbogacić język tak, by osoby niebinarne wreszcie mogły się w pełni wyrazić.
         autorytet:
             question: 'Czy potwierdza te wymysły czyjś autorytet?'
             answer:
@@ -687,7 +700,7 @@ faq:
                     Na przykład: owszem, można pisać „kandydaci/tki”, co jest inkluzywne dla kobiet,
                     wciąż jednak pomija osoby niebinarne.
                     Jednym z popularnieszych normatywnych pomysłów na neutralne rzeczowniki
-                    (alternatywa dla {/słowniki/neutratywy=neutratywów})
+                    (alternatywa dla {/slowniki/neutratywy=neutratywów})
                     są konstrukcje „osoba” + imiesłów lub „osoba” + przymiotnik.
                     Zamiast „kandydaci” lub „kandydatki” możemy mówić „osoby kandydujące”.
                     {http://transfuzja.org/=Fundacja Trans-Fuzja} na przykład zamiast „prezesa” lub „prezeski” ma „osobę prezesującą”.
@@ -716,7 +729,7 @@ faq:
             answer:
                 - >
                     Wiele form, które {/=tutaj proponujemy}, można zastosować właśnie w takich sytuacjach, np.:
-                    „{/on/a=moi drodzy/drogie}”, „drogie osoby”, „{/on*=wszys* chętn*}”, „{/onx=jesteś wspanialx}”, itp.
+                    „{/on/a=moi drodzy/drogie}”, „drogie osoby”, „{/on*=wszys* chętn*}”, „{/onx=jesteś wspaniałx}”, itp.
         zmiana:
             question: 'Czy mogę zmienić swoje zaimki?'
             answer:
@@ -754,19 +767,6 @@ faq:
                     niektóre lesbijki ze względów kulturowych i historycznych używają form męskich, itp.
                 - >
                     Mów po prostu „zaimki”. To prościej i sensowniej.
-        moja-flaga:
-            question: 'Mojej flagi nie ma w edytorze wizytówki'
-            answer:
-                - >
-                    Aby uniknąć potencjalnych wandalizmów
-                    (flaga helikopterów szturmowych, MAPów, TERFów, itp.),
-                    zdecydowałośmy się nie umożliwiać wgrywania własnych obrazków na stronę.
-                    Oferujemy natomiast wybór spośród dość bogatej listy co popularniejszych flag
-                    – niestety siłą rzeczy musi być to wybór subiektywny.
-                - >
-                    Możesz spróbować wybrać najbliższą pasującą flagę, z którą się identyfikujesz.
-                    No i zawsze w polu „opis” możesz wpisać, co tylko ci się podoba.
-
         a-moj-dziadek:
             question: 'Czy po to mój dziadek walczył na wojnie, by teraz ktoś mówił o sobie „ono”?'
             answer:
@@ -784,6 +784,8 @@ links:
     recommended: 'Polecamy'
 
     media: 'Zaimki.pl w mediach'
+    mediaGuests: 'Zaproszone'
+    mediaMentions: 'Wspomniane'
 
     social: 'Social media'
 
@@ -838,7 +840,7 @@ english:
             We need to come up with a system that also includes
             neutral forms for adjectives, conjugated forms of verbs and declined forms of pronouns.
             (also: nouns like “painter”, “politician”, “journalist” etc. are gendered as well,
-            but that's [book] {/słowniki=a story for another time}).
+            but that's [book] {/slowniki=a story for another time}).
         - >
             This website is an effort to put together in a structured and accessible way
             the existing ideas for less gendered pronouns and other forms.
@@ -849,7 +851,7 @@ english:
 
 contact:
     header: 'Kontakt'
-    authors: '{/słowniki/neutratywy#autor=Autorza} strony'
+    authors: '{/slowniki/neutratywy#autor=Autorza} strony'
     team:
         name: 'Kolektyw „Rada Języka Neutralnego”'
         description:
@@ -924,7 +926,11 @@ profile:
     birthday: 'Wiek'
     birthdayInfo: 'Nie pokazujemy publicznie pełnej daty urodzenia, jedynie obliczony wiek.'
     flags: 'Flagi'
-    flagsInfo: 'Przeciągnij swoje pride''owe flagi do poniższej ramki.'
+    flagsInfo: >
+        Przeciągnij swoje pride''owe flagi do poniższej ramki.
+        Więcej informacji o etykietkach znajdziesz w naszym <a href="/slowniki/terminologia" target="_blank">Słowniku Terminologii Queerowej</a>.
+    flagsCustom: 'Dodaj inne flagi'
+    flagsCustomWarning: 'Ta flaga została wgrana przez osobę użytkującą. Ekipa zaimki.pl nie jest za nią odpowiedzialna.'
     links: 'Linki'
     column: 'Kolumna'
 
@@ -942,10 +948,20 @@ profile:
         jokingly: 'Żartobliwie'
         meh: 'Spoko'
         no: 'Nie'
+    banner: >
+        Naszej strony możesz też użyć do stworzenia wizytówki, {/@andrea=takiej jak ta},
+        zawierającej Twoje imiona, zaimki, flagi pride'owe, lubiane słowa, itp.
+        Potem możesz do niej podlinkować w swoim bio czy stopce maila.
+        Wystarczy, że założysz konto {/konto=tutaj}.
+    bannerButton: 'Stwórz wizytówkę'
 
 census:
     header: 'Spis'
-    headerLong: 'Niebinarny spis powszechny'
+    headerLong: 'Niebinarny Spis Powszechny'
+    banner: >
+        Trwa „Niebinarny Spis Powszechny”!
+        Jeśli jesteś osobą niebinarną i chcesz nam pomóc zbadać, jakiego języka używamy by się wyrażać,
+        {/spis=kliknij tutaj, by wypełnić formularz}.
     description:
         - >
             Ciekawi Cię, jakiego języka używają polskie osoby niebinarne?
@@ -953,17 +969,22 @@ census:
             Jakimi etykietkami się opisujemy?
             Jak te trendy zmieniają się w czasie?
         - >
-            To super, bo nas też! Dlatego chcemy co roku przeprowadzać niebinarny spis powszechny, w którym to zbadamy.
+            To super, bo nas też! Dlatego chcemy co roku przeprowadzać Niebinarny Spis Powszechny, w którym to zbadamy.
             Serdecznie zapraszamy do udziału <strong>wszystkie osoby niebinarne posługujące się językiem polskim</strong>.
         - >
             Jeśli swoją płeć opisujesz jako „kobieta – zawsze i wyłącznie” albo „mężczyzna – zawsze i wyłącznie”,
             to badanie nie jest skierowane do Ciebie (ale docenimy jeśli podzielisz się linkiem ze znajomymi!).
             Natomiast jeśli opisujesz swoją płeć jako „gdzieś pomiędzy”, „ani mężczyzna, ani kobieta”, „zależy kiedy”,
             „więcej niż jedna”, „poza binarnym podziałem”, „nie wiem”, itp., to bardzo prosimy o wzięcie udziału.
+        #- >
+        #    Ankieta składa się z <strong>%questions% pytań</strong> i jest otwarta <strong>od %start% do %end%</strong>.
+        #    W pytaniach wielokrotnego wyboru można zaznaczyć wiele odpowiedzi, jak również dopisać własne.
+        #    By uniknąć tendencyjności, <strong>kolejność propozycji jest losowa</strong>.
         - >
-            Ankieta składa się z <strong>%questions% pytań</strong> i jest otwarta <strong>od %start% do %end%</strong>.
-            W pytaniach wielokrotnego wyboru można zaznaczyć wiele odpowiedzi, jak również dopisać własne.
-            By uniknąć tendencyjności, <strong>kolejność propozycji jest losowa</strong>.
+            Następny Spis odbędzie się w <strong>lutym 2022</strong>.
+        - >
+            Inspiracją do przeprowadzenia spisu był anglojęzyczny {https://gendercensus.com/=<strong>gender census</strong>}.
+            Jeśli posługujesz się językiem angielskim, zapraszamy do wypełnienia również i tej ankiety.
     agree: >
         Wyrażam zgodę na przetwarzanie moich odpowiedzi
         oraz na użycie zanonimizowanej wersji mojego adresu IP oraz fingerprintu przeglądarki
@@ -997,6 +1018,10 @@ crud:
 
 footer:
     source: 'Kod jest {https://gitlab.com/Avris/Zaimki=udostępniony} na licencji {https://mit.avris.it=MIT}.'
+    license: >
+        {https://gitlab.com/Avris/Zaimki=Kod źródłowy} jest udostępniony na licencji {https://mit.avris.it=MIT} [b:mit.svg].<br/>
+        Treści są udostępnione na licencji {https://creativecommons.org/licenses/by-nc-sa/4.0/deed.pl=CC BY-NC-SA 4.0}
+        [b:creative-commons][b:creative-commons-by][b:creative-commons-nc-eu][b:creative-commons-sa].
     links: 'Kontakt, social media, wsparcie'
 
 notFound:
@@ -1063,7 +1088,7 @@ flags:
     Alloromantic_Asexual: 'Alloromantyczn{adjective_n} aseksualn{adjective_n}'
     Agender: 'Apłciow{adjective_n}'
     Anarcha-Queer: 'Anarchoqueerow{adjective_n}'
-    Androgyne: 'Androgyniczn{adjective_n}'
+    Androgyne: 'Androgynopłciow{adjective_n}'
     Androsexual: 'Androseksualn{adjective_n}'
     Aporagender: 'Aporapłciow{adjective_n}'
     Archaeopronouns: 'Archeozaimki'

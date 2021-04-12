@@ -10,7 +10,19 @@
                 <div class="alert alert-info">
                     {{countResponses}}
                     <T>census.replies</T>
+
+                    <a href="/api/census/export" class="btn btn-outline-secondary btn-sm float-end">
+                        <Icon v="download"/>
+                    </a>
                 </div>
+            </section>
+
+            <section v-if="Object.keys(config.census.results).length > 0" class="alert alert-info">
+                <ul class="mb-0">
+                    <li v-for="(text, link) in config.census.results">
+                        <router-link :to="`/blog/${link}`">{{text}}</router-link>
+                    </li>
+                </ul>
             </section>
 
             <section>
@@ -94,7 +106,7 @@
                 </div>
             </form>
 
-            <div class="btn-group btn-block">
+            <div class="btn-group w-100">
                 <button class="btn btn-outline-primary" :disabled="q === 0" @click="q--">
                     <Icon v="arrow-alt-left"/>
                     <T>census.prev</T>
@@ -105,7 +117,7 @@
                 </button>
             </div>
 
-            <div v-if="$user() && $user().username === 'andrea'" class="mt-4 btn-group btn-block">
+            <div v-if="$user() && $user().username === 'andrea'" class="mt-4 btn-group w-100">
                 <button v-for="(question, i) in questions" :class="['btn', q === i ? 'btn-primary' : 'btn-outline-primary']" :disabled="q === i" @click="q = i">
                     {{i}}
                 </button>
@@ -168,6 +180,11 @@
                 countResponses,
             };
         },
+        mounted() {
+            if (process.client && !this.$user()) {
+                this.finished = !!parseInt(window.localStorage.getItem('census-finished') || 0);
+            }
+        },
         methods: {
             startSurvey() {
                 this.q = 0;
@@ -224,6 +241,7 @@
                         writins: JSON.stringify(this.writins),
                     });
                     this.finished = true;
+                    window.localStorage.setItem('census-finished', '1');
                 }
                 this.$nextTick(() => {
                     if (this.$refs.questionform) {

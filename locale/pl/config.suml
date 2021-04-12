@@ -68,10 +68,11 @@ sources:
         ono/jenu: 'ono'
         vono/vego: 'ono'
         ono/eno: 'ono'
+    extraTypes: ['dukatywy', 'osobatywy']
 
 nouns:
     enabled: true
-    route: 'słowniki'
+    route: 'slowniki'
     collapsable: false
     plurals: true
     pluralsRequired: true
@@ -91,6 +92,7 @@ nouns:
         categories:
             - 'orientacja seksualna'
             - 'orientacja romantyczna'
+            - 'orientacja tertiarna'
             - 'określenie orientacji romantycznej i seksualnej'
             - 'płeć'
             - 'ekspresja płciowa'
@@ -232,7 +234,7 @@ links:
                 Choć polska tradycja nie zna takich imion, to opiniujemy je pozytywnie,
                 bo w zderzeniu dwóch wartości: dobrostanu człowieka wynikającego z jego problemów z tożsamością i tradycji językowej,
                 należy uznać tę pierwszą za wyższą.
-    media:
+    mediaGuests:
         -
             icon: 'newspaper'
             url: 'https://queer.pl/artykul/204685/zaimkipl-strona-jezyk-polski-niebinarnosc'
@@ -275,9 +277,19 @@ links:
             icon: 'play-circle'
             url: 'https://open.spotify.com/episode/286zTXBHA0ChWNaWSwgFa0'
             headline: 'El lenguaje inclusivo de lxs polacxs – Ausir i Dante w hiszpańskojęzycznym podcaście <strong>Proyecto Polonia</strong>'
-
-
-
+        -
+            icon: 'play-circle'
+            url: 'https://www.facebook.com/lobby.lgbtq/videos/117221526885267'
+            headline: 'Konferencja prasowa <strong>Lobby LGBTQ</strong> ws. transfobii w Gazecie Wyborczej'
+            extra: '– przemówienie Archiego'
+            quote: >
+                Każdego dnia walczymy o widoczność osób będących pod parasolem transpłciowości
+                przez tworzenie bezpiecznej i komfortowej przestrzeni językowej,
+                dokładamy wszelkich starań, by rodzaj neutralny nie był rodzajem infantylnym,
+                by zaimki inne niż ona i on przestały brzmieć dziwnie.
+                Robimy to wszystko po to, by żadna osoba nie czuła się i nie była osobą wykluczoną,
+                dlatego właśnie popieramy i podpisałośmy list otwarty do Gazety Wyborczej.
+    mediaMentions:
         -
             icon: 'newspaper'
             url: 'https://queer.pl/artykul/205052/niebinarne-postaci-w-uniwersum-gwiezdnych-wojen-jak-unika-sie-neutratywow-w-polskim-tlumaczeniu'
@@ -313,6 +325,17 @@ links:
             headline: 'Inkluzywny język – Rozmowa z Kahą z Inkluzywnej Mowy (podcast <strong>SZAJN na głos</strong>)'
             extra: '– <span class="text-nowrap">o zaimki.pl</span> i neutratywach w okolicach 11:11'
         -
+            icon: 'book'
+            url: 'https://sjp.pwn.pl/mlodziezowe-slowo-roku/haslo/130-tysiecy-zgloszen-w-plebiscycie-Mlodziezowe-Slowo-Roku-2020-Komentarz-Anny-Ewy-Wileczek-po-miesiacu;6952033.html'
+            headline: '130 tysięcy zgłoszeń w plebiscycie Młodzieżowe Słowo Roku 2020! Komentarz Anny Ewy Wileczek – po miesiącu'
+            extra: ' – <strong>PWN</strong> notujące pojawienie się form neutratywnych'
+            quote: >
+                \[Młodzież] Dokonuje jednoznacznej identyfikacji osób
+                – od neutralnych: typiarz/typiara/, ziomal/ziomówa oraz „neutratywnie” motywowanego ziomczę
+                – po nacechowane pozytywnie formy typu: hotówa ‘atrakcyjna osoba najczęściej płci męskiej’
+                lub chad ‘niezwykle przystojny chłopak, obiekt powszechnej adoracji’,
+                a także przykłady negatywnych waloryzacji.
+        -
             icon: 'newspaper'
             url: 'https://przekroj.pl/kultura/od-zjarania-swiata-rozmowa-z-marcelim-szpakiem-maciej-stroinski'
             headline: 'Od zjarania świata – Rozmowa z Marcelim Szpakiem w <strong>Przekroju</strong>'
@@ -337,6 +360,64 @@ links:
                 (to także portal dla wszystkich, którzy w języku szukają przestrzeni dla siebie).
                 Osoby niebinarne nie mają z jego użyciem problemów, to wpis dla osób cispłciowych,
                 które – nie oszukujmy się – nawet przy wielkiej empatii nie poczują tego samego dyskomfortu, co osoby niebinarne.
+        -
+            icon: 'newspaper'
+            url: 'https://queer.pl/news/205242/niebinarny-spis-powszechny-dolacz-do-badania-nad-niebinarnoscia-w-jezyku-polskim'
+            headline: 'Niebinarny spis powszechny - dołącz do badania nad niebinarnością w języku polskim – <strong>Queer.pl</strong>'
+        -
+            icon: 'newspaper'
+            url: 'https://gazetalubuska.pl/on-ona-onu-trzy-plcie-to-tylko-metafora-czy-osoba-lgbt-czuje-sie-w-gorzowie-bezpiecznie/ar/c15-15436719?fbclid=IwAR1NuRd7YQXFXMdz7UilI7Rsj0NSyzqQap6D_5dIPk_iE4S1a86jthhyMGE'
+            headline: 'On, ona, onu. „Trzy płcie to tylko metafora”. Czy osoba LGBT czuje się w Gorzowie bezpiecznie? – <strong>Gazeta Lubelska</strong>'
+        -
+            icon: 'tv'
+            url: 'https://youtu.be/p6hSUwqZ7v0?t=410'
+            headline: 'Lewica na froncie walki z językiem polskim'
+            extra: ' – prześmiewczy (ale, o ironio, edukacyjny i robiący nam zasięgi) materiał o zaimki.pl w rządowej reżimówce <strong>#Jedziemy w TVP Info</strong>'
+            quote: >
+                Tym razem lewica połączyła siły, aby stworzyć nowy język polski.
+                Jeżeli włożyli Państwo dużo pracy jako dzieci w celu nauczenia się na przykład poprawnego używania zaimków i końcówek,
+                to niestety muszą Państwo zacząć uczyć się tego od nowa.
+                Pomocna ma być w tym strona zaimki.pl.
+                (…)
+                Z pewnością za chwilę będzie to obowiązkowe w szkołach, nasze dzieci będą miały łatwiej,
+                o ile przed tym szaleństwem ich nie uchronimy.
+                (…)
+                Tego jest bardzo dużo, można sobie poczytać. Oczywiście zachęcam do odwiedzin na stronie internetowej zaimki.pl;
+                można tam poćwiczyć język polski w jego przyszłej, nowej odsłonie.
+        -
+            icon: 'newspaper'
+            url: 'https://ksiazki.wp.pl/w-tvp-wysmiewali-osoby-niebinarne-profesor-bralczyk-rozumie-dlaczego-6616979703601760a'
+            headline: 'W TVP wyśmiewali osoby niebinarne. Bralczyk komentuje'
+            extra: ' – <strong>WP.pl</strong>'
+            quote: >
+                Jeśli więc osoba niebinarna nie chce wyrażać się ani w rodzaju męskim, ani w rodzaju żeńskim,
+                językoznawca proponuje jej, przynajmniej w liczbie pojedynczej, użycie rodzaju nijakiego.
+                - Czy wprowadzać jakoś dodatkowy rodzaj gramatyczny? Uważam, że nie. Że to nie jest w języku potrzebne.
+                Jeżeli razi kogoś określenie męskie czy żeńskie w liczbie pojedynczej,
+                to może stosować neutrum - "ono". Co prawda my akurat traktujemy "to" jako często nieosobowe,
+                ale przecież mamy rodzaj nijaki w odniesieniu do chłopięcia, czy dziewczęcia.
+                Mówimy "to" dziecko, "to" dziewczę" i to jest rodzaj nijaki.
+                Dlatego rodzaj nijaki może być teoretycznie zastosowany w odniesieniu do osób, które są niebinarne.
+        -
+            icon: 'newspaper'
+            url: 'https://oko.press/mlodzi-coraz-czesciej-identyfikuja-sie-jako-lgbt-to-rewolucja-z-szacunku-i-empatii/'
+            headline: 'Młodzi coraz częściej identyfikują się jako LGBT+. To rewolucja z szacunku i empatii'
+            extra: ' – <strong>OKO.press</strong>'
+            quote: >
+                „W tym sensie queer jest dla mnie przede wszystkim kulturą życzliwości.”
+                A pierwszą jej praktykę stanowi pytanie o czyjeś zaimki \[link do zaimki.pl].
+                To mały, ale wyraźny sygnał, że nie chcę powodować czyjegoś cierpienia,
+                nawet jeśli nie wszystko, co o sobie mówi, jest dla mnie zrozumiałe.
+        -
+            icon: 'newspaper'
+            url: 'https://wpolityce.pl/polityka/543316-feminatywy-sa-juz-passe-problemem-lewicy-sa-neutratywy'
+            headline: '"Tęsknię za jenu śmiechem", czyli o zmaganiach lewicowej rewolucji z gramatyką postpłciową'
+            extra: ' – <strong>wPolityce.pl</strong>'
+            quote: >
+                Nie wie już czy się śmiać czy płakać.
+                Obawiam się, że to lewicowe szaleństwo nie ma końca lub gdzieś tam przy granicach absurdu
+                będzie musiała czyhać policja myśli, bo inaczej nie da się nad tym zapanować.
+
     socials:
         -
             icon: 'twitter'
@@ -379,7 +460,11 @@ links:
             url: 'https://whosome.pl/redakcja/'
             headline: 'Whosome'
             extra: ' – portal poświęcony Doctor Who i popkulturze; ma politykę umieszczania zaimków w bio.'
-
+        -
+            icon: 'user-friends'
+            url: 'https://www.facebook.com/centrum.rownik/posts/158108032840650'
+            headline: 'Centrum Równik'
+            extra: ' – rozdaje przypinki z zaimkami, również nienormatywnymi.'
 
 people:
     enabled: false
@@ -497,6 +582,15 @@ contact:
         enabled: true
         route: 'kolektyw-rjn'
     blog:
+        wystarczyło-zapytać: 'Wystarczyło zapytać…'
+        krótka-notka-o-osobatywach: 'Krótka notka o osobatywach'
+        czytanie-ze-zrozumieniem: 'Czytanie ze zrozumieniem'
+        spis-2021: 'Niebinarny Spis Powszechny 2021 – wnioski'
+        czy-wolno-uzywac: 'Zamiast pierdyliarda dyskusji czy wolno używać – zróbmy pierdyliard użyć'
+        inkluzywne-liczebniki: 'Inkluzywne liczebniki'
+        zaimki-postpłciowe: 'Zaimki w rodzaju postpłciowym'
+        zaimki-nie-tylko-osobowe: 'Zaimki nie tylko osobowe'
+        archie-wyborcza: 'Przemówienie Arcziego na konferencji prasowej ws. transfobii w Gazecie Wyborczej'
         rekomendacja-formularze: 'Rekomendacja Rady w sprawie pytania o płeć w formularzach'
         podsumowanie-2020: 'Podsumowanie działalności w roku 2020'
         gwiezdne-wojny: 'Niebinarność w „Gwiezdnych Wojnach”'
@@ -545,6 +639,7 @@ census:
                 - ['osobą niebinarną']
                 - ['osobą cispłciową']
                 - ['binarną osobą transpłciową']
+                - ['nie wiem']
         -
             type: 'number'
             min: 1900
@@ -561,6 +656,12 @@ census:
                 - ['za granicą']
                 - ['nie chcę odpowiadać']
         -
+            type: 'radio'
+            question: 'Język polski jest dla Ciebie…'
+            options:
+                - ['językiem rodzimym']
+                - ['kolejnym językiem']
+        -
             type: 'checkbox'
             question: 'Jakimi formami mówisz o sobie?'
             randomise: true
@@ -568,6 +669,12 @@ census:
             instruction:
                 - >
                     Więcej informacji <a href="/" target="_blank">w zakładce „Zaimki”</a>.
+                - >
+                    Interesują nas preferencje, więc nawet jeśli chcesz używać danych form,
+                    ale nie możesz tego bezpiecznie robić, to je zaznacz.
+                - >
+                    Przy formach liczby mnogiej nie chodzi nam o grupę Ty + inne osoby,
+                    lecz o używanie gramatycznej mnogości dla opisania jednej osoby (podobnie do angielskiego they/them)
             options:
                 - ['rodzaj męski', '„byłem zmęczony”']
                 - ['rodzaj żeński', '„byłam zmęczona”']
@@ -577,6 +684,18 @@ census:
                 - ['liczba mnoga, rodzaj niemęskoosobowy', '„byłyśmy zmęczone”']
                 - ['liczba mnoga, rodzaj neutralny', '„byłośmy zmęczone”']
                 - ['liczba mnoga, rodzaj postpłciowy', '„byłuśmy zmęczone”']
+                - ['unikanie form nacechowanych płciowo', '„dopadło mnie zmęczenie”']
+        -
+            type: 'checkbox'
+            question: 'Jeśli chcesz używać wobec siebie nienormatywnych (neologicznych) form językowych w codziennym życiu, ale (w niektórych sytuacjach) nie możesz, co stoi Ci na przeszkodzie?'
+            randomise: false
+            writein: true
+            options:
+                - ['pasują mi normatywne, binarne formy']
+                - ['nic, używam form neologicznych']
+                - ['strach przed stygmatyzacją z powodu „niepoprawnego” języka']
+                - ['strach przed transfobią/enbyfobią']
+                - ['ciężko mi się przyzwyczaić']
         -
             type: 'checkbox'
             question: 'Jak chcesz, by mówiono/pisano o Tobie?'
@@ -623,12 +742,15 @@ census:
                         „'n' jest fajn'”, „lubię je' zwierzątko”
         -
             type: 'checkbox'
-            question: 'Jakich form rzeczownikowych używasz?'
+            question: 'Jakich form rzeczownikowych używasz wobec siebie?'
             randomise: true
             writein: true
             instruction:
                 - >
-                    Więcej informacji <a href="/słowniki" target="_blank">w zakładce „Słowniki”</a>.
+                    Więcej informacji <a href="/slowniki" target="_blank">w zakładce „Słowniki”</a>.
+                - >
+                    Interesują nas preferencje, więc nawet jeśli chcesz używać danych form,
+                    ale nie możesz tego bezpiecznie robić, to je zaznacz.
             options:
                 - ['maskulatywy', 'nauczyciel, partner, pracownik']
                 - ['feminatywy', 'nauczycielka, partnerka, pracowniczka']
@@ -645,7 +767,8 @@ census:
                 - ['„per wy”', '„skądeście przyszli”']
                 - ['pan']
                 - ['pani']
-                - ['państwo']
+                - ['państwo (l. poj.)', '„czy chce państwo…”']
+                - ['państwo (l. mn.)', '„czy chcą państwo…”']
                 - ['pań']
                 - ['panu']
         -
@@ -688,6 +811,7 @@ census:
             optionsLast:
                 - ['nie znam / nie używam angielskiego']
                 - ['nie mam preferencji po angielsku']
+                - ['bez użycia zaimków (nounself, emojiself, …)']
         -
             type: 'checkbox'
             question: 'Jakimi słowami opisujesz swoją płeć?'
@@ -701,7 +825,7 @@ census:
                     Zamiast próbować szukać konkretnych etykietek, prosimy przeczytać wszystkie po kolei i przy każdej zaznaczyć,
                     czy się z nią identyfikujesz, czy nie.
                 - >
-                    Znaczenie etykietek możesz znaleźć w naszym <a href="/słowniki/terminologia" target="_blank">Słowniku Terminologii Queerowej</a>.
+                    Znaczenie etykietek możesz znaleźć w naszym <a href="/slowniki/terminologia" target="_blank">Słowniku Terminologii Queerowej</a>.
 
                 - >
                     Używamy form z podkreślnikami, by uniknąć odmiany przymiotników. Przykładowo słowo „niebinarn_”
@@ -716,7 +840,7 @@ census:
                 - ['agenderow_']
                 - ['bigenderow_']
                 - ['kłir']
-                - ['andogyniczn_']
+                - ['androgyniczn_']
                 - ['aporapłciow_']
                 - ['aporagenderow_']
                 - ['autypłciow_']
@@ -751,9 +875,11 @@ census:
                 - ['kobieta']
                 - ['męsk_']
                 - ['mężczyzna']
+                # - ['osoba'] ?
 
                 - ['nonbinary']
                 - ['enby']
+                - ['nb']
                 - ['agender']
                 - ['bigender']
                 - ['queer']
@@ -772,6 +898,7 @@ census:
                 - ['genderflux']
                 - ['gender questioning']
                 - ['transfeminine']
+                - ['transmasculine']
                 - ['transgender']
                 - ['trans']
                 - ['transneutral']
@@ -780,14 +907,19 @@ census:
             type: 'textarea'
             question: 'Czy masz jakieś dodatkowe uwagi? (nieobowiązkowe)'
             optional: true
+    results:
+        spis-2021: 'Wnioski ze Spisu 2021'
 
 redirects:
-    - { from: '^/neutratywy$', to: '/s%C5%82owniki' }
-    - { from: '^/rzeczowniki$', to: '/s%C5%82owniki' }
-    - { from: '^/slownik$', to: '/s%C5%82owniki' }
-    - { from: '^/slowniki$', to: '/s%C5%82owniki' }
+    - { from: '^/neutratywy$', to: '/slowniki/neutratywy' }
+    - { from: '^/dukatywy$', to: '/slowniki/dukatywy' }
+    - { from: '^/osobatywy$', to: '/slowniki/osobatywy' }
+    - { from: '^/terminologia', to: '/slowniki/terminologia' }
+    - { from: '^/rzeczowniki$', to: '/slowniki' }
+    - { from: '^/slownik$', to: '/slowniki' }
+    - { from: '^/s%C5%82ownik$', to: '/slowniki' }
+    - { from: '^/s%C5%82owniki$', to: '/slowniki' }
     - { from: '^/słownik$', to: '/s%C5%82owniki' }
-    - { from: '^/s%C5%82ownik$', to: '/s%C5%82owniki' }
     - { from: '^/literatura$', to: '/korpus' }
     - { from: '^/cenzus', to: '/spis' }
     - { from: '^/blog/rada-j%C4%99zyka-neutralnego$', to: '/kolektyw-rjn' }

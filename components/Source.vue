@@ -2,18 +2,18 @@
     <div class="my-2" v-if="!deleted">
         <h3 class="h6">
             <Icon :v="source.icon()"/>
-            <strong><template v-if="source.author">{{source.author.replace('^', '')}}</template><span v-if="source.author"> – </span><em><a v-if="source.link" :href="source.link" target="_blank" rel="noopener" v-html="addMarks(source.title)"></a><span v-else v-html="addMarks(source.title)"></span></em></strong><template v-if="source.extra"> ({{source.extra}})</template>, {{source.year}}<template v-if="source.comment">; {{source.comment}}</template>
+            <strong><Spelling v-if="source.author" :text="source.author.replace('^', '')"/><span v-if="source.author"> – </span><em><a v-if="source.link" :href="source.link" target="_blank" rel="noopener"><Spelling :text="addMarks(source.title)"></Spelling></a><Spelling v-else :text="addMarks(source.title)"></Spelling></em></strong><template v-if="source.extra"> (<Spelling :text="source.extra"/>)</template>, {{source.year}}<template v-if="source.comment">; <Spelling :text="source.comment"/></template>
         </h3>
         <ul class="list-inline" v-if="manage && $isGranted('sources')">
             <li v-if="!source.approved" class="list-inline-item">
-                <span class="badge badge-danger">
+                <span class="badge bg-danger">
                     <Icon v="map-marker-question"/>
                     <T>nouns.pending</T>
                 </span>
             </li>
             <!--
             <li v-if="source.submitter" class="list-inline-item">
-                <nuxt-link :to="`/@${source.submitter}`" class="badge badge-light border btn-sm m-1">
+                <nuxt-link :to="`/@${source.submitter}`" class="badge bg-light text-dark border btn-sm m-1">
                     <Icon v="user"/>
                     <span class="btn-label">
                         <T>crud.author</T>:
@@ -23,25 +23,25 @@
             </li>
             -->
             <li v-if="!source.approved" class="list-inline-item">
-                <a href="#" class="badge badge-success btn-sm m-1" @click.prevent="approve()">
+                <a href="#" class="badge bg-success btn-sm m-1" @click.prevent="approve()">
                     <Icon v="check"/>
                     <span class="btn-label"><T>crud.approve</T></span>
                 </a>
             </li>
             <li v-else class="list-inline-item">
-                <a href="#" class="badge badge-light border border-secondary btn-sm m-1" @click.prevent="hide()">
+                <a href="#" class="badge bg-light text-dark border border-secondary btn-sm m-1" @click.prevent="hide()">
                     <Icon v="times"/>
                     <span class="btn-label"><T>crud.hide</T></span>
                 </a>
             </li>
             <li class="list-inline-item">
-                <a href="#" class="badge badge-light border border-danger btn-sm m-1" @click.prevent="remove()">
+                <a href="#" class="badge bg-light text-dark border border-danger btn-sm m-1" @click.prevent="remove()">
                     <Icon v="trash"/>
                     <span class="btn-label"><T>crud.remove</T></span>
                 </a>
             </li>
             <li class="list-inline-item">
-                <a href="#" class="badge badge-light border border-primary btn-sm m-1" @click.prevent="$emit('edit-source', source)">
+                <a href="#" class="badge bg-light text-dark border border-primary btn-sm m-1" @click.prevent="$emit('edit-source', source)">
                     <Icon v="pen"/>
                     <span class="btn-label">
                         <T>crud.edit</T>
@@ -49,12 +49,12 @@
                 </a>
             </li>
             <li class="list-inline-item">
-                <span v-for="p in source.pronouns" :class="['badge', pronounLibrary.isCanonical(p) ? 'badge-success' : 'badge-danger']">
-                    {{p}}
+                <span v-for="p in source.pronouns" :class="['badge', pronounLibrary.isCanonical(p) || (config.sources.extraTypes || []).includes(p) ? 'bg-success' : 'bg-danger', 'm-1']">
+                    <Spelling :text="p"/>
                 </span>
             </li>
             <li class="list-inline-item" v-if="source.key">
-                <span class="badge badge-primary">
+                <span class="badge bg-primary text-white">
                     <T>sources.submit.key</T>: {{source.key}}
                 </span>
             </li>

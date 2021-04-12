@@ -9,41 +9,35 @@
 
         <section class="sticky-top">
             <div class="input-group mb-3 bg-white">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">
-                        <Icon v="filter"/>
-                    </span>
-                </div>
+                <span class="input-group-text">
+                    <Icon v="filter"/>
+                </span>
                 <input class="form-control border-primary" v-model="filter" :placeholder="$t('crud.filterLong')" ref="filter"/>
-                <div class="input-group-append" v-if="filter">
-                    <button class="btn btn-outline-danger" @click="filter = ''; $refs.filter.focus()">
-                        <Icon v="times"/>
-                    </button>
-                </div>
-                <div class="input-group-append">
-                    <button class="btn btn-outline-success" @click="$refs.form.$el.scrollIntoView()">
-                        <Icon v="plus-circle"/>
-                        <T>nouns.submit.action</T>
-                    </button>
-                </div>
+                <button v-if="filter" class="btn btn-outline-danger" @click="filter = ''; $refs.filter.focus()">
+                    <Icon v="times"/>
+                </button>
+                <button class="btn btn-outline-success" @click="$refs.form.$el.scrollIntoView()">
+                    <Icon v="plus-circle"/>
+                    <T>nouns.submit.action</T>
+                </button>
             </div>
         </section>
 
         <Table :data="visibleEntries()" columns="1" fixed :marked="(el) => !el.approved" ref="dictionarytable">
             <template v-slot:header>
-                <th></th>
+                <th class="cell-wide"></th>
                 <th></th>
             </template>
 
             <template v-slot:row="s"><template v-if="s">
-                <td>
+                <td class="cell-wide">
                     <p>
                         <strong>{{s.el.term.map(x => x.trim()).join(', ')}}</strong>
                         <span v-if="s.el.original.length">({{s.el.original.map(x => x.trim()).join('; ')}})</span>
                         – {{s.el.definition}}
                         <template v-if="s.el.category">
                             <br/>
-                            <span class="badge badge-primary">
+                            <span class="badge bg-primary text-white">
                                 {{s.el.category}}
                             </span>
                         </template>
@@ -63,7 +57,7 @@
                             – {{s.el.definition}}
                             <template v-if="s.el.category">
                                 <br/>
-                                <span class="badge badge-primary">
+                                <span class="badge bg-primary text-white">
                                 {{s.el.category}}
                             </span>
                             </template>
@@ -276,6 +270,11 @@
             &:hover .btn-label {
                 display: inline;
             }
+        }
+    }
+    @include media-breakpoint-down('md', $grid-breakpoints) {
+        .cell-wide {
+            min-width: 90vw;
         }
     }
 

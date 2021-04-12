@@ -293,6 +293,43 @@ faq:
                     Nonbinary folks can use binary pronouns, some lesbians use {/he=he/him} for cultural reasons, etc.
                 - >
                     Simply say “pronouns”.
+        flags:
+            question: 'Can you add this flag? Can you remove that flag?'
+            answer:
+                - >
+                    No.
+                - >
+                    Maintaining the list of flags and labels is an increasingly time-consuming task for our team.
+                    It's also challenging in terms of filtering out trolls and vandals from valid, good-faith identities.
+                    We don't want to be identity police. And we don't want to spend all our time on managing flags either.
+                    It's a project about language and pronouns, after all, not about flags. They're just a bonus.
+                - >
+                    We did our best to select a list of flags that are the most popular
+                    and, to our best knowledge, generally accepted.
+                    We are not planning to extend or shrink that list.
+                - >
+                    We are aware that a few flags might not be liked by some
+                    (eg. because of a history of TERFs trying to take over a term and make it transphobic,
+                    because of multiple confusing definitions,
+                    or even because of aspects of a life of a mythical character).
+                    We are queer and trans ourselves, we care about our trans siblings.
+                    Unfortunately, it's really hard to make such decisions
+                    when we get messages both from trans people asking to add a flag they honestly identify with,
+                    and also from other trans people asking to remove it because it somehow hurts trans people.
+                    It's not like history of every label is clear or like there's an authoritative source to look it up.
+                    And even if queerphobes try to make some terms hurtful,
+                    we believe in the community's power to reclaim hateful terms.
+                - >
+                    If you don't like a flag, just don't use it.
+                    If your flag is missing, just upload it
+                    (it will be marked as user-generated to mitigate vandalisms).
+        custom-pronouns:
+            question: 'My pronouns aren''t listed'
+            answer:
+                - >
+                    There's a generator on the homepage, you can use it to create a link to any pronoun set you like.
+                - >
+                    You can also just list the five forms using slashes, eg. {/ze/zem/zir/zirs/zirself=ze/zem/zir/zirs/zirself}
 
 links:
     header: 'Links'
@@ -386,6 +423,8 @@ profile:
     birthdayInfo: 'We do not publish your birthday, just the calculated age.'
     flags: 'Flags'
     flagsInfo: 'Drag & drop your pride flags into this frame.'
+    flagsCustom: 'Upload custom flags'
+    flagsCustomWarning: 'This flag has been uploaded by a user. The team of pronouns.page is not responsible for it.'
     links: 'Links'
     column: 'Column'
 
@@ -403,6 +442,12 @@ profile:
         jokingly: 'Jokingly'
         meh: 'Okay'
         no: 'Nope'
+    banner: >
+        You can also use our website to create a card, {/@andrea=like this one},
+        containing your names, pronouns, pride flags, liked words, etc.
+        Then you can link to it in your bio or email footer.
+        Just create an account {/account=here}.
+    bannerButton: 'Create a card'
 
 share: 'Share'
 
@@ -419,7 +464,10 @@ crud:
     author: 'Added by'
 
 footer:
-    source: 'Source code is {https://gitlab.com/Avris/Zaimki=published} under the {https://mit.avris.it=MIT} license.'
+    license: >
+        {https://gitlab.com/Avris/Zaimki=Source code} is licensed under {https://mit.avris.it=MIT} [b:mit.svg].<br/>
+        Content is licensed under {https://creativecommons.org/licenses/by-nc-sa/4.0=CC BY-NC-SA 4.0}
+        [b:creative-commons][b:creative-commons-by][b:creative-commons-nc-eu][b:creative-commons-sa].
     links: 'Contact, social media, support'
 
 notFound:

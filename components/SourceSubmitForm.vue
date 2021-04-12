@@ -48,6 +48,7 @@
                 </div>
                 <div class="form-group">
                     <label for="fragments"><T>sources.submit.fragments</T></label>
+                    <p class="small text-muted mb-0"><T>sources.submit.fragmentsInfo</T></p>
                     <ListInput v-model="form.fragments" v-slot="s" id="fragments">
                         <textarea v-model="s.val" class="form-control" rows="3" @keyup="s.update(s.val)" required></textarea>
                     </ListInput>
@@ -59,12 +60,11 @@
                     </p>
                     <ListInput v-model="form.pronouns" v-slot="s">
                         <input v-model="s.val" type="text" class="form-control" @keyup="s.update(s.val)" required maxlength="24"/>
-                        <div v-if="s.val && !pronounLibrary.isCanonical(s.val)" class="input-group-append">
-                            <small class="input-group-text bg-danger text-white">
-                                <Icon v="exclamation-triangle"/>
-                                <span class="ml-1"><T>profile.pronounsNotFound</T></span>
-                            </small>
-                        </div>
+                        <small v-if="s.val && !pronounLibrary.isCanonical(s.val) && !(config.sources.extraTypes || []).includes(s.val)"
+                               class="input-group-text bg-danger text-white">
+                            <Icon v="exclamation-triangle"/>
+                            <span class="ml-1"><T>profile.pronounsNotFound</T></span>
+                        </small>
                     </ListInput>
                 </div>
                 <div class="form-group">
@@ -90,11 +90,11 @@
                 <div class="alert alert-info" v-if="form.base">
                     <Icon v="info-circle"/>
                     <T>nouns.editing</T>
-                    <button class="btn btn-sm float-right" @click="form.base = null">
+                    <button class="btn btn-sm float-end" @click="form.base = null">
                         <Icon v="times"/>
                     </button>
                 </div>
-                <button class="btn btn-success btn-block" :disabled="submitting">
+                <button class="btn btn-success w-100" :disabled="submitting">
                     <Icon v="plus-circle"/>
                     <T>sources.submit.action</T>
                 </button>

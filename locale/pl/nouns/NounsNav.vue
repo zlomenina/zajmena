@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="d-none d-md-inline-flex btn-group btn-block mb-2">
+        <div class="d-none d-md-inline-flex btn-group btn-block mb-2 w-100">
             <router-link v-for="{name, icon, route} in links" :key="name"
                          :to="buildRoute(route)"
                          :class="['btn', isActiveRoute(route) ? 'btn-primary' : 'btn-outline-primary']">
@@ -8,7 +8,7 @@
                 <T>nouns.{{name}}.header</T>
             </router-link>
         </div>
-        <div class="d-block d-md-none btn-group-vertical btn-block mb-2">
+        <div class="d-block d-md-none btn-group-vertical btn-block mb-2 w-100">
             <router-link v-for="{name, icon, route} in links" :key="name"
                          :to="buildRoute(route)"
                          :class="['btn', isActiveRoute(route) ? 'btn-primary' : 'btn-outline-primary']">
@@ -45,7 +45,7 @@
                 return `/${this.config.nouns.route}/${route}`;
             },
             isActiveRoute(route) {
-                return decodeURIComponent(this.$route.fullPath) === this.buildRoute(route);
+                return decodeURIComponent(this.$route.fullPath).replace(/\/$/, '') === this.buildRoute(route).replace(/\/$/, '');
             },
         }
     }

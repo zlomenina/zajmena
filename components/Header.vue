@@ -7,56 +7,58 @@
                     <span class="higher"><T>title</T></span>
                 </nuxt-link>
             </h1>
-            <div v-if="config.locale === 'zh'" class="btn-group m-2">
-                <button v-for="(display, code) in {traditional: '繁體', simplified: '简体'}"
-                        :class="'btn btn-sm ' + (spelling === code ? 'btn-secondary disabled' : 'btn-outline-secondary')"
-                        :disabled="spelling === code"
-                        @click="setSpelling(code)"
-                >
-                    {{display}}
-                </button>
-            </div>
-            <!--
-            <Dropdown v-if="Object.keys(locales).length > 1" btnClass="btn-outline-secondary btn-sm">
-                <template v-slot:toggle>
-                    <Icon v="language"/>
-                    {{locales[config.locale].name}}
-                </template>
+            <div>
+                <div v-if="config.locale === 'zh'" class="btn-group m-2">
+                    <button v-for="(display, code) in {traditional: '繁體', simplified: '简体'}"
+                            :class="'btn btn-sm ' + (spelling === code ? 'btn-secondary disabled' : 'btn-outline-secondary')"
+                            :disabled="spelling === code"
+                            @click="setSpelling(code)"
+                    >
+                        {{display}}
+                    </button>
+                </div>
+                <Dropdown v-if="Object.keys(locales).length > 1" btnClass="btn-outline-secondary btn-sm" class="d-inline-block">
+                    <template v-slot:toggle>
+                        <Icon v="language"/>
+                        {{locales[config.locale].name}}
+                    </template>
 
-                <template v-slot:menu>
-                    <li v-for="(options, locale) in locales" :key="locale" v-if="locale !== config.locale">
-                        <a :href="options.url" class="dropdown-item">
-                            {{options.name}}
-                        </a>
-                    </li>
-                    <li class="dropdown-divider"></li>
-                    <li>
-                        <LocaleLink locale="en" link="/blog/creating-new-language-version" class="dropdown-item small">
-                            <Icon v="plus"/>
-                            <T>localise.shorter</T>
-                        </LocaleLink>
-                    </li>
-                </template>
-            </Dropdown>
-            -->
-            <div class="btn-group">
-                <a v-for="(options, locale) in locales" :key="locale"
-                   :href="options.url"
-                   :class="'btn btn-sm ' + (locale === config.locale ? 'btn-secondary disabled' : 'btn-outline-secondary')"
-                   :disabled="locale === config.locale"
-                >
-                    {{options.name}}
-                </a>
-                <LocaleLink locale="en" link="/blog/creating-new-language-version" class="btn btn-sm btn-outline-secondary">
-                    <Icon v="plus"/>
-                </LocaleLink>
+                    <template v-slot:menu>
+                        <li v-for="(options, locale) in locales" :key="locale" v-if="locale !== config.locale">
+                            <a :href="options.url" class="dropdown-item">
+                                {{options.name}}
+                            </a>
+                        </li>
+                        <li class="dropdown-divider"></li>
+                        <li>
+                            <LocaleLink locale="en" link="/blog/creating-new-language-version" class="dropdown-item small">
+                                <Icon v="plus"/>
+                                <T>localise.shorter</T>
+                            </LocaleLink>
+                        </li>
+                    </template>
+                </Dropdown>
+                <!--
+                <div class="btn-group">
+                    <a v-for="(options, locale) in locales" :key="locale"
+                       :href="options.url"
+                       :class="'btn btn-sm ' + (locale === config.locale ? 'btn-secondary disabled' : 'btn-outline-secondary')"
+                       :disabled="locale === config.locale"
+                    >
+                        {{options.name}}
+                    </a>
+                    <LocaleLink locale="en" link="/blog/creating-new-language-version" class="btn btn-sm btn-outline-secondary">
+                        <Icon v="plus"/>
+                    </LocaleLink>
+                </div>
+                -->
             </div>
         </div>
         <div class="d-block d-md-none">
-            <div class="btn-group-vertical btn-block nav-custom mb-2">
+            <div class="btn-group-vertical d-flex nav-custom mb-2">
                 <nuxt-link v-for="link in links" :key="link.link" :to="link.link" :class="`btn btn-sm ${isActiveRoute(link) ? 'active' : ''}`">
                     <Icon :v="link.icon"/>
-                    {{ link.textLong || link.text }}
+                    <Spelling :text="link.textLong || link.text"/>
                 </nuxt-link>
             </div>
         </div>
@@ -67,26 +69,33 @@
                 <Icon v="bars"/>
             </button>
             <div :class="['bg-white border p-3', hamburgerActive ? '' : 'd-none']">
-                <div class="btn-group-vertical btn-block nav-custom nav-custom-left mb-2">
+                <div class="btn-group-vertical d-flex nav-custom nav-custom-start mb-2">
                     <nuxt-link v-for="link in links" :key="link.link" :to="link.link" :class="`btn btn-sm ${isActiveRoute(link) ? 'active' : ''}`">
                         <Icon :v="link.icon"/>
-                        {{ link.textLong || link.text }}
+                        <Spelling :text="link.textLong || link.text"/>
                     </nuxt-link>
                 </div>
             </div>
         </div>
         <div class="d-none d-md-block">
-            <div class="btn-group btn-block nav-custom mb-2">
+            <div class="btn-group d-flex nav-custom mb-2">
                 <nuxt-link v-for="link in links" :key="link.link" :to="link.link" :class="`btn btn-sm ${isActiveRoute(link) ? 'active' : ''}`">
                     <Icon :v="link.icon" size="1.6"/>
                     <br/>
-                    <span class="text-nowrap">{{ link.text }}</span>
+                    <span class="text-nowrap"><Spelling :text="link.text"/></span>
                 </nuxt-link>
             </div>
         </div>
-        <div v-if="locales[config.locale].published === false" class="alert alert-warning">
+        <div v-if="locales[config.locale].published === false" class="alert alert-warning mt-3">
             <Icon v="exclamation-triangle"/>
             This language version is still under construction!
+        </div>
+        <div v-show="showCensus" class="alert alert-info mt-3">
+            <a href="#" class="float-end" @click.prevent="dismissCensus">
+                <Icon v="times"/>
+            </a>
+            <Icon v="user-chart" size="2" class="d-inline-block float-start mr-3 mt-2"/>
+            <T silent>census.banner</T>
         </div>
     </header>
     <header v-else class="mb-4">
@@ -101,12 +110,14 @@
 
 <script>
     import { mapState } from 'vuex'
+    import {DateTime} from "luxon";
 
     export default {
         data() {
             return {
                 hamburgerActive: false,
                 hamburgerShown: false,
+                censusDismissed: false,
             };
         },
         computed: {
@@ -179,6 +190,7 @@
                         icon: 'bookmark',
                         text: this.$t('links.header'),
                         textLong: this.$t('links.headerLong'),
+                        extra: ['blog', 'blogEntry'],
                     });
                 }
 
@@ -230,6 +242,21 @@
 
                 return links;
             },
+            showCensus() {
+                if (!process.client) {
+                    return false;
+                }
+                const finished = !!parseInt(window.localStorage.getItem('census-finished') || 0);
+                const dismissed = !!parseInt(window.localStorage.getItem('census-dismissed') || 0);
+                const alreadyIn = this.$route.path === '/' + this.config.census.route;
+                if (!this.config.census.enabled || finished || dismissed || this.censusDismissed || alreadyIn) {
+                    return false;
+                }
+                const start = DateTime.fromISO(this.config.census.start).toLocal();
+                const end = DateTime.fromISO(this.config.census.end).toLocal();
+                const now = DateTime.utc().setZone(this.config.format.timezone);
+                return now >= start && now <= end;
+            },
         },
         methods: {
             isActiveRoute(link) {
@@ -250,6 +277,10 @@
                 const st = document.body.scrollTop || document.querySelector('html').scrollTop;
                 this.hamburgerShown = st > 300;
             },
+            dismissCensus() {
+                window.localStorage.setItem('census-dismissed', '1');
+                this.censusDismissed = true;
+            }
         },
         created() {
             if (process.client) {
@@ -270,19 +301,19 @@
 <style lang="scss" scoped>
     @import "assets/variables";
 
-    @include media-breakpoint-down('sm', $grid-breakpoints) {
+    @include media-breakpoint-down('md', $grid-breakpoints) {
         h1 {
             font-size: 2rem;
         }
 
         .nav-custom {
             .btn {
-                border-left: 1px solid $gray-500;
+                border-inline-start: 1px solid $gray-500;
                 border-radius: 0;
 
                 &:hover, &:focus, &.active {
-                    border-left: 3px solid $primary;
-                    padding-left: calc(#{$btn-padding-x-sm} - 2px);
+                    border-inline-start: 3px solid $primary;
+                    padding-inline-start: calc(#{$btn-padding-x-sm} - 2px);
                     color: $primary;
                 }
 
@@ -291,14 +322,14 @@
         }
     }
 
-    .nav-custom-left {
+    .nav-custom-start {
         .btn {
-            border-left: 1px solid $gray-500;
+            border-inline-start: 1px solid $gray-500;
             border-radius: 0;
 
             &:hover, &:focus, &.active {
-                border-left: 3px solid $primary;
-                padding-left: calc(#{$btn-padding-x-sm} - 2px);
+                border-inline-start: 3px solid $primary;
+                padding-inline-start: calc(#{$btn-padding-x-sm} - 2px);
                 color: $primary;
             }
 
@@ -307,7 +338,7 @@
     }
 
     @include media-breakpoint-up('md', $grid-breakpoints) {
-        .nav-custom:not(.nav-custom-left) {
+        .nav-custom:not(.nav-custom-start) {
             .btn {
                 border-bottom: 1px solid $gray-500;
                 border-radius: 0;

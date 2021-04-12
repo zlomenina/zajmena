@@ -1,11 +1,12 @@
 <template>
-    <div>
-        <Links top/>
+    <div class="main">
+        <Blog/>
+        <Links/>
         <Media/>
         <Recommended/>
         <Socials/>
         <LanguageVersions/>
-
+        <Support/>
         <section>
             <Share :title="$t('links.headerLong')"/>
         </section>

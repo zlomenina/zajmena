@@ -96,6 +96,17 @@
                 </ButtonList>
             </div>
 
+            <details class="form-group border rounded">
+                <summary class="px-3 py-2">
+                    <T>profile.flagsCustom</T>
+                </summary>
+                <div class="border-top">
+                    <ImageWidgetRich v-model="customFlags"/>
+                </div>
+            </details>
+
+            <Answer question="flags" small/>
+
             <div class="form-group">
                 <h3 class="h4">
                     <Icon v="link"/>
@@ -130,7 +141,7 @@
                 </template>
             </div>
 
-            <button class="btn btn-primary btn-block" type="submit">
+            <button class="btn btn-primary w-100" type="submit">
                 <Icon v="save"/>
                 <T>profile.editor.save</T>
             </button>
@@ -178,6 +189,7 @@
                         birthday: profile.birthday,
                         links: Object.keys(profile.links).length ? profile.links : [],
                         flags: profile.flags,
+                        customFlags: profile.customFlags,
                         words: profile.words.map(x => dictToList(x)),
                         teamName: profile.teamName,
                         footerName: profile.footerName,
@@ -198,6 +210,7 @@
                     birthday: profile.birthday,
                     links: Object.keys(profile.links).length ? profile.links : [],
                     flags: profile.flags.filter(f => !f.startsWith('-')),
+                    customFlags: profile.customFlags,
                     words: defaultWords,
                     teamName: profile.teamName,
                     footerName: profile.footerName,
@@ -212,6 +225,7 @@
                 birthday: null,
                 links: [],
                 flags: [],
+                customFlags: {},
                 words: defaultWords,
                 teamName: '',
                 footerName: '',
@@ -234,6 +248,7 @@
                     birthday: this.birthday,
                     links: [...this.links],
                     flags: [...this.flags],
+                    customFlags: {...this.customFlags},
                     words: this.words.map(x => listToDict(x)),
                     teamName: this.teamName,
                     footerName: this.footerName,
@@ -243,7 +258,7 @@
                 this.$router.push(`/@${this.$user().username}`)
             },
             normalisePronoun(pronoun) {
-                const link = decodeURIComponent(
+                return decodeURIComponent(
                     pronoun
                         .toLowerCase()
                         .trim()
@@ -251,11 +266,15 @@
                         .replace(new RegExp('^' + this.$base.replace(/^https?:\/\//, '')), '')
                         .replace(new RegExp('^/'), '')
                 );
-
-                return buildPronoun(pronouns, link);
+            },
+            normaliseAndBuildPronoun(pronoun) {
+                return buildPronoun(pronouns, this.normalisePronoun(pronoun));
             },
             validatePronoun(pronoun) {
-                return this.normalisePronoun(pronoun) ? null : 'profile.pronounsNotFound'
+                pronoun = this.normalisePronoun(pronoun);
+                return pronoun === this.config.pronouns.any || buildPronoun(pronouns, pronoun)
+                    ? null
+                    : 'profile.pronounsNotFound'
             },
         },
         computed: {
@@ -267,7 +286,7 @@
                         opinion = 0.5;
                     }
                     if (opinion > mainOpinion) {
-                        const p = this.normalisePronoun(pronoun);
+                        const p = this.normaliseAndBuildPronoun(pronoun);
                         if (p) {
                             mainPronoun = p;
                             mainOpinion = opinion;

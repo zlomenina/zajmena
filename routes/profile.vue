@@ -6,7 +6,7 @@
                 @{{username}}
             </h2>
             <div>
-                <div class="text-right">
+                <div class="text-end">
                     <nuxt-link v-if="$user() && $user().username === username" to="/editor"
                                class="btn btn-outline-primary btn-sm mb-2"
                     >
@@ -16,7 +16,7 @@
                 </div>
                 <div v-if="Object.keys(profiles).length > 1" class="locale-list">
                     <a :href="`https://pronouns.page/@${username}`" v-if="$user() && $user().username === username"
-                       class="btn btn-outline-secondary btn-sm mb-1 mr-1"
+                       class="btn btn-outline-secondary btn-sm mb-1 me-1"
                     >
                         <Icon v="external-link"/>
                         pronouns.page/@{{username}}
@@ -24,7 +24,7 @@
                     <br/>
                     <LocaleLink v-for="(options, locale) in locales" :key="locale" v-if="profiles[locale] !== undefined"
                                 :locale="locale" :link="`/@${username}`"
-                                :class="['btn', locale === config.locale ? 'btn-primary disabled' : 'btn-outline-primary', 'btn-sm', 'mb-1 mr-1']">
+                                :class="['btn', locale === config.locale ? 'btn-primary disabled' : 'btn-outline-primary', 'btn-sm', 'mb-1 me-1']">
                         {{options.name}}
                     </LocaleLink>
                 </div>
@@ -33,7 +33,7 @@
 
         <section v-if="profile.age ||profile.description.trim().length">
             <p v-for="line in profile.description.split('\n')" class="mb-1">
-                {{ line }}
+                <Spelling escape :text="line"/>
             </p>
             <p v-if="profile.age">
                 <Icon v="birthday-cake"/>
@@ -41,10 +41,20 @@
             </p>
         </section>
 
-        <section v-if="profile.flags.length">
+        <section v-if="profile.flags.length || profile.customFlags.length">
             <ul class="list-inline">
                 <li v-for="flag in profile.flags" v-if="allFlags[flag]" class="list-inline-item pr-2">
-                    <Flag :name="flag.startsWith('-') ? allFlags[flag] : $translateForPronoun(allFlags[flag], mainPronoun)" :alt="allFlags[flag]" :img="`/flags/${flag}.png`" :terms="terms"/>
+                    <Flag :name="flag.startsWith('-') ? allFlags[flag] : $translateForPronoun(allFlags[flag], mainPronoun)"
+                          :alt="allFlags[flag]"
+                          :img="`/flags/${flag}.png`"
+                          :terms="terms"/>
+                </li>
+                <li v-for="(desc, flag) in profile.customFlags" class="list-inline-item pr-2">
+                    <Flag :name="desc"
+                          :alt="desc"
+                          :img="buildImageUrl(flag, 'flag')"
+                          :terms="terms"
+                          custom/>
                 </li>
             </ul>
         </section>
@@ -76,7 +86,7 @@
 
                 <ul class="list-unstyled">
                     <li v-for="{link, pronoun, opinion} in pronounOpinions">
-                        <Opinion :word="pronoun.name(glue) + (pronoun.smallForm ? '/' + pronoun.morphemes[pronoun.smallForm] : '')" :opinion="opinion" :link="`/${link}`"/>
+                        <Opinion :word="typeof pronoun === 'string' ? pronoun : (pronoun.name(glue) + (pronoun.smallForm ? '/' + pronoun.morphemes[pronoun.smallForm] : ''))" :opinion="opinion" :link="`/${link}`"/>
                     </li>
                 </ul>
             </div>
@@ -89,7 +99,7 @@
             </h3>
 
             <div>
-                <div v-for="group in profile.words" v-if="Object.keys(profile.words).length" class="float-left w-50 w-md-25">
+                <div v-for="group in profile.words" v-if="Object.keys(profile.words).length" class="float-start w-50 w-md-25">
                     <ul class="list-unstyled">
                         <li v-for="(opinion, word) in group"><Opinion :word="word" :opinion="opinion"/></li>
                     </ul>
@@ -100,6 +110,10 @@
         <section>
             <OpinionLegend/>
         </section>
+
+        <Separator icon="heart"/>
+
+        <Support/>
     </div>
     <div v-else-if="Object.keys(profiles).length">
         <h2 class="text-nowrap mb-3">
@@ -179,6 +193,16 @@
                             .replace(new RegExp('^' + this.$base.replace(/^https?:\/\//, '')), '')
                             .replace(new RegExp('^/'), '')
                     );
+
+                    if (link === this.config.pronouns.any) {
+                        pronounOpinions.push({
+                            link,
+                            pronoun: link,
+                            opinion: this.profile.pronouns[pronoun],
+                        });
+                        continue;
+                    }
+
                     const pronounEntity = buildPronoun(pronouns, link);
 
                     if (pronounEntity) {
@@ -195,6 +219,9 @@
                 let mainPronoun = buildPronoun(pronouns, this.config.profile.flags.defaultPronoun);
                 let mainOpinion = -1;
                 for (let {pronoun, opinion} of this.pronounOpinions) {
+                    if (typeof pronoun === 'string') {
+                        continue;
+                    }
                     if (opinion === 2) {
                         opinion = 0.5;
                     }
@@ -228,8 +255,8 @@
     .list-group-item-hoverable {
         &:hover {
             color: $primary;
-            border-left: 3px solid $primary;
-            padding-left: calc(#{$list-group-item-padding-x} - 2px);
+            border-inline-start: 3px solid $primary;
+            padding-inline-start: calc(#{$list-group-item-padding-x} - 2px);
         }
     }
 

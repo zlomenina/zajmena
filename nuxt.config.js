@@ -50,9 +50,20 @@ const buildFlags = () => {
     });
 };
 
+const postCssPlugins = [
+    require('autoprefixer'),
+];
+
+if (config.dir === 'rtl') {
+    postCssPlugins.push(require('rtlcss'));
+}
+
 export default {
     target: 'server',
     head: {
+        htmlAttrs: {
+            dir: config.dir || 'ltr',
+        },
         title: title,
         meta: [
             { charset: 'utf-8' },
@@ -106,6 +117,9 @@ export default {
         }
     },
     build: {
+        postcss: {
+            plugins: postCssPlugins,
+        },
         extend (config, ctx) {
             config.module.rules.push({
                 test: /\.csv|\.tsv$/,
@@ -170,7 +184,10 @@ export default {
 
             if (config.links.enabled) {
                 routes.push({ path: '/' + config.links.route, component: resolve(__dirname, 'routes/links.vue') });
-                routes.push({ path: '/' + config.links.blogRoute + '/:slug', component: resolve(__dirname, 'routes/blog.vue'), name: 'blog' });
+                if (Object.keys(config.contact.blog).length) {
+                    routes.push({ path: '/' + config.links.blogRoute, component: resolve(__dirname, 'routes/blog.vue'), name: 'blog' });
+                    routes.push({ path: '/' + config.links.blogRoute + '/:slug', component: resolve(__dirname, 'routes/blogEntry.vue'), name: 'blogEntry' });
+                }
             }
 
             if (config.people.enabled) {

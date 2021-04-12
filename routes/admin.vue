@@ -7,16 +7,16 @@
         </h2>
 
         <section v-if="$isGranted('users')">
-            <details class="border mb-3">
+            <details class="border mb-3" @click="loadUsers">
                 <summary class="bg-light p-3">
                     <Icon v="users"/>
                     Users
                     ({{stats.users.overall}} overall, {{stats.users.admins}} admins, {{visibleUsers.length}} visible)
                 </summary>
                 <div class="border-top">
-                    <div class="input-group mt-4">
-                        <input class="form-control" v-model="userFilter" :placeholder="$t('crud.filterLong')"/>
-                        <span class="input-group-append">
+                    <Loading :value="users" size="5rem">
+                        <div class="input-group mt-4">
+                            <input class="form-control" v-model="userFilter" :placeholder="$t('crud.filterLong')"/>
                             <button :class="['btn', adminsFilter ? 'btn-secondary' : 'btn-outline-secondary']"
                                     @click="adminsFilter = !adminsFilter"
                             >
@@ -27,58 +27,60 @@
                             >
                                 Only this version
                             </button>
-                        </span>
-                    </div>
-                    <Table :data="visibleUsers" :columns="4">
-                        <template v-slot:header>
-                            <th class="text-nowrap">
-                                <T>admin.user.user</T>
-                            </th>
-                            <th class="text-nowrap">
-                                <T>admin.user.email</T>
-                            </th>
-                            <th class="text-nowrap">
-                                <T>admin.user.roles</T>
-                            </th>
-                            <th class="text-nowrap">
-                                <T>admin.user.profiles</T>
-                            </th>
-                        </template>
+                        </div>
+                        <Table :data="visibleUsers" :columns="4">
+                            <template v-slot:header>
+                                <th class="text-nowrap">
+                                    <T>admin.user.user</T>
+                                </th>
+                                <th class="text-nowrap">
+                                    <T>admin.user.email</T>
+                                </th>
+                                <th class="text-nowrap">
+                                    <T>admin.user.roles</T>
+                                </th>
+                                <th class="text-nowrap">
+                                    <T>admin.user.profiles</T>
+                                </th>
+                            </template>
 
-                        <template v-slot:row="s">
-                            <td>
-                                <Avatar :user="s.el" dsize="2rem"/>
-                                {{s.el.username}}
-                            </td>
-                            <td>
-                                <p>
-                                    <a :href="`mailto:${s.el.email}`" target="_blank" rel="noopener">
-                                        {{s.el.email}}
-                                    </a>
-                                </p>
-                                <ul v-if="s.el.socialConnections.length" class="list-inline">
-                                    <li v-for="conn in s.el.socialConnections" class="list-inline-item">
-                                        <Icon :v="socialProviders[conn].icon || conn" set="b"/>
-                                    </li>
-                                </ul>
-                            </td>
-                            <td>
-                                <Roles :user="s.el"/>
-                            </td>
-                            <td>
-                                <ul class="list-unstyled">
-                                    <li v-for="locale in s.el.profiles" v-if="locales[locale]">
-                                        <LocaleLink :link="`/@${s.el.username}`" :locale="locale">
-                                            {{ locales[locale].name }}
-                                        </LocaleLink>
-                                    </li>
-                                </ul>
-                            </td>
-                        </template>
-                    </Table>
+                            <template v-slot:row="s">
+                                <td>
+                                    <Avatar :user="s.el" dsize="2rem"/>
+                                    {{s.el.username}}
+                                </td>
+                                <td>
+                                    <p>
+                                        <a :href="`mailto:${s.el.email}`" target="_blank" rel="noopener">
+                                            {{s.el.email}}
+                                        </a>
+                                    </p>
+                                    <ul v-if="s.el.socialConnections.length" class="list-inline">
+                                        <li v-for="conn in s.el.socialConnections" class="list-inline-item">
+                                            <Icon :v="socialProviders[conn].icon || conn" set="b"/>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <Roles :user="s.el"/>
+                                </td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        <li v-for="locale in s.el.profiles" v-if="locales[locale]">
+                                            <LocaleLink :link="`/@${s.el.username}`" :locale="locale">
+                                                {{ locales[locale].name }}
+                                            </LocaleLink>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </template>
+                        </Table>
+                    </Loading>
                 </div>
             </details>
         </section>
+
+        <ChartSet name="users" :data="stats.users.chart" init="cumulative"/>
 
         <section v-for="(locale, k) in stats.locales" :key="k">
             <details class="border mb-3" open>
@@ -122,6 +124,9 @@
                         </ul>
                     </div>
                 </div>
+                <div class="p-3 border-top">
+                    <ChartSet name="profiles" :data="locale.chart"/>
+                </div>
             </details>
         </section>
     </div>
@@ -138,27 +143,32 @@
                 userFilter: '',
                 localeFilter: true,
                 adminsFilter: false,
+                users: undefined,
             }
         },
         async asyncData({ app, store }) {
             let stats = { users: {}};
-            let users = {};
 
             try {
                 stats = await app.$axios.$get(`/admin/stats`);
             } catch {}
 
-            try {
-                users = await app.$axios.$get(`/admin/users`);
-            } catch {}
-
             return {
                 stats,
-                users,
             };
+        },
+        methods: {
+            async loadUsers() {
+                if (this.users === undefined) {
+                    this.users = await this.$axios.$get(`/admin/users`);
+                }
+            },
         },
         computed: {
             visibleUsers() {
+                if (this.users === undefined) {
+                    return [];
+                }
                 return Object.values(this.users).filter(u =>
                     u.username.toLowerCase().includes(this.userFilter.toLowerCase())
                         && (!this.adminsFilter || u.roles !== '')

@@ -5,7 +5,7 @@
             <T>contact.team.name</T>
         </h2>
 
-        <figure class="float-right border rounded">
+        <figure class="float-end border rounded">
             <img src="/img/collective-logo.svg" alt=""/>
             <figcaption>
                 <p><T>contact.team.logo</T></p>
@@ -23,19 +23,11 @@
             <T>contact.team.description</T>
         </section>
 
-        <section v-if="Object.keys(config.contact.blog).length">
-            <h3>
-                <Icon v="pen-nib"/>
-                <T>contact.team.blog</T>
-            </h3>
-            <ul>
-                <li v-for="(title, slug) in config.contact.blog" class="mb-2">
-                    <nuxt-link :to="`/blog/${slug}`">
-                        {{title}}
-                    </nuxt-link>
-                </li>
-            </ul>
-        </section>
+        <router-link :to="'/' + config.links.blogRoute" v-if="Object.keys(config.contact.blog).length"
+                     class="btn btn-outline-primary btn-lg">
+            <Icon v="pen-nib"/>
+            <T>contact.team.blog</T>
+        </router-link>
 
         <section>
             <h3>
@@ -60,10 +52,10 @@
                         <a :href="`https://pronouns.page/@${member.username}`">
                             <Avatar :user="member" dsize="4rem"/>
                         </a>
-                        <span class="ml-2">
+                        <span class="ms-2">
                             {{ member.teamName }}
                             <br/>
-                            <a :href="`https://pronouns.page/@${member.username}`" class="badge badge-light border">
+                            <a :href="`https://pronouns.page/@${member.username}`" class="badge bg-light text-dark border">
                                 @{{member.username}}
                             </a>
                         </span>

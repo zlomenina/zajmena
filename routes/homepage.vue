@@ -7,6 +7,14 @@
 
         <section>
             <T>home.about</T>
+
+            <div v-if="!user && $t('profile.banner', {}, false)" class="alert alert-info">
+                <nuxt-link :to="'/' + config.user.route" class="float-end btn btn-primary m-2 me-0">
+                    <Icon v="id-card"/>
+                    <Spelling :text="$t('profile.bannerButton')"/>
+                </nuxt-link>
+                <LinkedText :text="$t('profile.banner')"/>
+            </div>
         </section>
 
         <section>
@@ -24,7 +32,7 @@
             <ul class="list-group mt-4">
                 <li v-for="[group, groupPronouns] in pronounLibrary.split()" class="list-group-item">
                     <p class="h5">
-                        {{ group.name }}
+                        <Spelling :text="group.name"/>
                     </p>
                     <div class="small my-1" v-if="group.description">
                         <Icon v="info-circle"/>
@@ -34,14 +42,14 @@
                 </li>
                 <li v-if="config.pronouns.multiple !== false" class="list-group-item">
                     <p class="h5">
-                        {{ config.pronouns.multiple.name }}
+                        <Spelling :text="config.pronouns.multiple.name"/>
                     </p>
                     <div class="small my-1" v-if="config.pronouns.multiple.description">
                         <Icon v="info-circle"/>
                         <em v-html="config.pronouns.multiple.description"></em>
                     </div>
                     <SimplePronounList :pronouns="config.pronouns.multiple.examples" class="mb-3"/>
-                    <a v-if="!customiseMultiple" href="#" @click.prevent="customiseMultiple = true" class="btn btn-outline-primary btn-block">
+                    <a v-if="!customiseMultiple" href="#" @click.prevent="customiseMultiple = true" class="btn btn-outline-primary w-100">
                         <Icon v="sliders-h-square"/>
                         <T>pronouns.alt.button</T>
                     </a>
@@ -57,7 +65,7 @@
                                         <button :class="['btn', multiple.includes(pronounName) ? 'btn-primary' : 'btn-outline-primary', 'btn-sm', 'my-1']"
                                                 @click="toggleMultiple(pronounName)"
                                         >
-                                            {{pronoun.name()}}
+                                            <Spelling :text="pronoun.name()"/>
                                         </button>
                                     </li>
                                 </ul>
@@ -70,7 +78,7 @@
                 </li>
                 <li v-if="config.pronouns.null !== false" class="list-group-item">
                     <p class="h5">
-                        {{ config.pronouns.null.description }}
+                        <Spelling :text="config.pronouns.null.description"/>
                     </p>
                     <div class="small my-1" v-if="config.pronouns.null.history">
                         <Icon v="info-circle"/>
@@ -83,7 +91,7 @@
                 </li>
                 <li v-if="config.pronouns.emoji !== false" class="list-group-item">
                     <p class="h5">
-                        {{ config.pronouns.emoji.description }}
+                        <Spelling :text="config.pronouns.emoji.description"/>
                     </p>
                     <div class="small my-1" v-if="config.pronouns.emoji.history">
                         <Icon v="info-circle"/>
@@ -101,7 +109,7 @@
                     <p>
                         <T>home.generator.description</T>
                     </p>
-                    <a v-if="!customise" href="#" @click.prevent="customise = true" class="btn btn-outline-primary btn-block">
+                    <a v-if="!customise" href="#" @click.prevent="customise = true" class="btn btn-outline-primary w-100">
                         <Icon v="sliders-h-square"/>
                         <T>home.generator.button</T>
                     </a>
@@ -120,7 +128,7 @@
                                         <button :class="['btn', pronoun.name(glue) === selectedPronoun.name(glue) ? 'btn-primary' : 'btn-outline-primary', 'btn-sm', 'my-1']"
                                                 @click="selectedPronoun = pronouns[pronounName].clone()"
                                         >
-                                            {{pronoun.name(glue)}}
+                                            <Spelling :text="pronoun.name(glue)"/>
                                         </button>
                                     </li>
                                 </ul>
@@ -128,12 +136,12 @@
 
                             <div class="alert alert-primary">
                                 <p class="h3 mb-0 text-center">
-                                    {{ selectedPronoun.name(glue) }}
+                                    <Spelling :text="selectedPronoun.name(glue)"/>
                                     <br/>
                                     <input v-model="selectedPronoun.description"
                                            class="form-control form-input p-0 form-control-sm"
                                            :size="selectedPronoun.description.length + 3"
-                                           maxlength="48"
+                                           maxlength="64"
                                     />
                                 </p>
                             </div>
@@ -152,7 +160,7 @@
                                                    @focus="selectedMorpheme = part.str"
                                                    @blur="selectedMorpheme = ''"
                                             />
-                                            <span v-else>{{part.str}}</span>
+                                            <span v-else><Spelling :text="part.str"/></span>
                                         </span>
                                     </li>
                                 </ul>
@@ -212,6 +220,7 @@
             <Media/>
             <Socials/>
             <LanguageVersions/>
+            <Support/>
         </section>
     </div>
 </template>
@@ -221,6 +230,7 @@
     import { ExamplePart } from "~/src/classes";
     import Compressor from "../src/compressor";
     import MORPHEMES from '../data/pronouns/morphemes';
+    import {mapState} from "vuex";
 
     export default {
         data() {
@@ -241,6 +251,9 @@
             }
         },
         computed: {
+            ...mapState([
+                'user',
+            ]),
             usedBase() {
                 const name = this.selectedPronoun.name(this.glue);
                 for (let key in this.pronouns) {
@@ -310,11 +323,11 @@
     .form-input {
         text-align: center;
         &.active {
-            @include alert-variant(
+            /*@include alert-variant(
                 theme-color-level('primary', $alert-bg-level),
                 theme-color-level('primary', $alert-border-level),
                 theme-color-level('primary', $alert-color-level)
-            );
+            );FIXME*/
         }
         &.form-control {
             width: auto;
@@ -325,9 +338,9 @@
         }
     }
 
-    @include media-breakpoint-up('md', $grid-breakpoints) {
+    /*@include media-breakpoint-up('md', $grid-breakpoints) {
         .btn-md-lg {
             @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $btn-font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
         }
-    }
+    }*/
 </style>

@@ -194,7 +194,7 @@ export class SourceLibrary {
 
             if (pronoun === '') {
                 for (let p of this.pronouns) {
-                    if (!pronounLibrary.isCanonical(p)) {
+                    if (!pronounLibrary.isCanonical(p) && !(config.sources.extraTypes || []).includes(p)) {
                         sources = [...sources, ...this.map[p]];
                     }
                 }
@@ -297,11 +297,16 @@ export class Pronoun {
     nameOptions() {
         const options = new Set();
         const optionsN = this.morphemes[MORPHEMES[0]].split('&');
-        const optionsG = this.morphemes[MORPHEMES[1]] === this.morphemes[MORPHEMES[0]] && MORPHEMES.length > 2 && !config.pronouns.threeForms
-            ? this.morphemes[MORPHEMES[2]].split('&')
-            : this.morphemes[MORPHEMES[1]].split('&');
+        const optionsG = this.morphemes[MORPHEMES[1]].split('&');
+        const optionsGAlt = MORPHEMES.length > 2 ? (this.morphemes[MORPHEMES[2]] || '').split('&') : [];
+
         for (let i in optionsN) {
-            let nameOption = optionsN[i] + '/' + optionsG[i < optionsG.length - 1 ? i : optionsG.length - 1];
+            let optionN = optionsN[i];
+            let optionG = optionsG[i < optionsG.length - 1 ? i : optionsG.length - 1];
+            if (optionN === optionG && optionsGAlt.length && !config.pronouns.threeForms) {
+                optionG = optionsGAlt[i < optionsGAlt.length - 1 ? i : optionsGAlt.length - 1];
+            }
+            let nameOption = optionN + '/' + optionG;
             if (config.pronouns.threeForms) {
                 nameOption += '/' + this.morphemes[MORPHEMES[2]].split('&')[i];
             } else if (this.thirdForm) {
@@ -460,7 +465,7 @@ export class Pronoun {
 
         if (data.length !== MORPHEMES.length + extraFields
             || data[0].length === 0
-            || data[data.length - 1].length > 48
+            || data[data.length - 1].length > 64
             || data.slice(1, data.length - extraFields).filter(s => s.length > 24).length
         ) {
             return null;
@@ -567,7 +572,7 @@ export class Noun {
         this.femPl = femPl ? femPl.split('|') : [];
         this.neutrPl = neutrPl ? neutrPl.split('|') : [];
         this.sources = sources ? sources.split(',') : [];
-        this.sourcesData = sourcesData.map(s => new Source(s));
+        this.sourcesData = sourcesData.filter(s => !!s).map(s => new Source(s));
         this.approved = !!approved;
         this.base = base_id;
         this.author = author;
