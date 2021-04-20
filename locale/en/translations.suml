@@ -462,6 +462,7 @@ crud:
     filterLong: 'Filter the list…'
     search: 'Search…'
     author: 'Added by'
+    saved: 'Changes saved successfully!'
 
 footer:
     license: >
@@ -516,7 +517,7 @@ quotation:
 localise:
     shorter: 'Add more'
     short: 'Adding language versions'
-    long: 'Want to create a new language version? Check out'
+    long: 'Want to create a new language version? Awesome! Please check out'
     longLink: 'this manual!'
 
 images:
