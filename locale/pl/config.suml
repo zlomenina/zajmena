@@ -102,7 +102,7 @@ nouns:
         route: 'terminologia'
 
 names:
-    enabled: false
+    enabled: true
     route: 'imiona'
     legally: true
     count: true
@@ -473,7 +473,7 @@ links:
             extra: ' – rozdaje przypinki z zaimkami, również nienormatywnymi.'
 
 people:
-    enabled: false
+    enabled: true
     route: 'znane'
 
 english:
