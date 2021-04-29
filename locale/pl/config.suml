@@ -289,6 +289,12 @@ links:
                 by zaimki inne niż ona i on przestały brzmieć dziwnie.
                 Robimy to wszystko po to, by żadna osoba nie czuła się i nie była osobą wykluczoną,
                 dlatego właśnie popieramy i podpisałośmy list otwarty do Gazety Wyborczej.
+        -
+            icon: 'play-circle'
+            url: 'https://www.facebook.com/330540866965366/videos/977896432960282'
+            headline: 'Osoby, łosie i dukaty – wstęp do neutralnej płciowo i niebinarnej polszczyzny'
+            extra: '– wykład Sybila, <strong>Nowa Siła Kuratorska﻿</strong>'
+
     mediaMentions:
         -
             icon: 'newspaper'
@@ -492,7 +498,7 @@ english:
                 - >
                     The thing is, historically this grammatical gender has only been applied
                     to inanimate objects, pets and kids (in a very limited way).
-                    To apply it for adults sounds dehumanizing for most {https://avris.it/blog/queer-typic=typic} listeners
+                    To apply it for adults sounds dehumanizing for most cis listeners
                     and using the neuter forms of verbs in the 1st and 2nd person
                     is so rare that listeners (falsely) think that it's incorrect.
                     Eg. one could say „dziecko zrobił<strong>o</strong>” (=“the kid has done”),
@@ -576,8 +582,8 @@ contact:
     contacts:
         -
             icon: 'envelope'
-            url: 'mailto:contact@pronouns.page'
-            headline: 'contact@pronouns.page'
+            url: 'mailto:kontakt@zaimki.pl'
+            headline: 'kontakt@zaimki.pl'
     team:
         enabled: true
         route: 'kolektyw-rjn'
