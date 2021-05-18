@@ -8,7 +8,7 @@
         </section>
 
         <section class="sticky-top">
-            <div class="input-group mb-3 bg-white">
+            <div class="input-group bg-white text-filter">
                 <span class="input-group-text">
                     <Icon v="filter"/>
                 </span>
@@ -21,9 +21,17 @@
                     <T>nouns.submit.action</T>
                 </button>
             </div>
+            <div class="btn-group mb-3 d-flex bg-white category-filter">
+                <button v-for="category in config.nouns.inclusive.categories"
+                   :class="['btn btn-sm', filter === ':' + category ? 'btn-primary' : 'btn-outline-primary']"
+                   @click="filter = filter === ':' + category ? '' : ':' + category"
+                >
+                    {{ category }}
+                </button>
+            </div>
         </section>
 
-        <Table :data="visibleEntries()" :marked="(el) => !el.approved" fixed ref="dictionarytable">
+        <Table :data="visibleEntries()" columns="3" :marked="(el) => !el.approved" fixed ref="dictionarytable">
             <template v-slot:header>
                 <th class="text-nowrap">
                     <Icon v="comment-times"/>
@@ -313,6 +321,20 @@
             &:hover .btn-label {
                 display: inline;
             }
+        }
+    }
+
+    .text-filter {
+        * {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+    }
+    .category-filter {
+        margin-top: -1px;
+        .btn {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
         }
     }
 </style>

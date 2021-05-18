@@ -187,10 +187,17 @@ export default {
 
             if (config.links.enabled) {
                 routes.push({ path: '/' + config.links.route, component: resolve(__dirname, 'routes/links.vue') });
-                if (Object.keys(config.contact.blog).length) {
-                    routes.push({ path: '/' + config.links.blogRoute, component: resolve(__dirname, 'routes/blog.vue'), name: 'blog' });
-                    routes.push({ path: '/' + config.links.blogRoute + '/:slug', component: resolve(__dirname, 'routes/blogEntry.vue'), name: 'blogEntry' });
+                if (config.links.academicRoute) {
+                    routes.push({ path: '/' + config.links.academicRoute, component: resolve(__dirname, 'routes/academic.vue') });
                 }
+                if (config.links.mediaRoute) {
+                    routes.push({ path: '/' + config.links.mediaRoute, component: resolve(__dirname, 'routes/media.vue') });
+                }
+            }
+
+            if (config.links.blog && Object.keys(config.links.blog).length) {
+                routes.push({ path: '/' + config.links.blogRoute, component: resolve(__dirname, 'routes/blog.vue'), name: 'blog' });
+                routes.push({ path: '/' + config.links.blogRoute + '/:slug', component: resolve(__dirname, 'routes/blogEntry.vue'), name: 'blogEntry' });
             }
 
             if (config.people.enabled) {
