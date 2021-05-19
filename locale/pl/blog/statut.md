@@ -32,7 +32,7 @@ Do prowadzenia swoich działań może zatrudniać pracowników oraz powoływać 
 ### § 6 <small>– Komunikacja elektroniczna</small>
 
 Rada może wykorzystywać środki komunikacji elektronicznej,
-również w głosowaniach na posiedzeniach władzy Rady.
+również w głosowaniach na posiedzeniach władz Rady.
 
 ## Rozdział II <small> – Cele i sposoby ich realizacji</small>
 
@@ -140,9 +140,9 @@ a w drugim terminie bez względu na liczbę obecnych osób członkowskich.
 ### § 15 <small>– Walne Zebranie</small>
 
 1.  Najwyższą władzą Rady jest Walne Zebranie. 
-2.  Walne Zebrania jest zwoływane przez Zarząd bądź Komisję Rewizyjną nie rzadziej niż raz w roku,
-    zawiadamiając osoby członkowskie o jego terminie, miejscu i proponowanym porządku obrad
-    co najmniej na 14 dni przed terminem Walnego Zebrania.
+2.  Walne Zebrania jest zwoływane nie rzadziej niż raz w roku przez Zarząd bądź Komisję Rewizyjną.
+    Zawiadomienie osób członkowskich o jego terminie, miejscu i proponowanym porządku obrad
+    ma miejsce na co najmniej 14 dni przed terminem Walnego Zebrania.
     Jeśli na zebraniu nie ma wymaganego kworum,
     zwołuje się zebranie w drugim terminie nie później niż w ciągu miesiąca od dnia zwołania Walnego Zebrania.
 3.  Do kompetencji Walnego Zebrania należy: 
@@ -193,7 +193,7 @@ a w drugim terminie bez względu na liczbę obecnych osób członkowskich.
 1.  Źródłami majątku Rady są: 
      - składki członkowskie,
      - darowizny, zapisy i spadki, środki pochodzące z ofiarności publicznej, 
-     - dotacje, subwencje, udziały, lokaty,
+     - dotacje, subwencje, granty, udziały, lokaty,
      - dochody z majątku Rady,
      - dochody z własnej działalności.
 2.  Rada prowadzi gospodarkę finansową zgodnie z obowiązującymi przepisami.
