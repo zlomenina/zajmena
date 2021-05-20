@@ -11,7 +11,7 @@ Odpowiednikiem nazwy w języku angielskim jest „Neutral Language Council”.
 
 ### § 2 <small>– Siedziba i teren działania</small>
 
-Siedzibą Rady jest Wrocław.
+Siedzibą Rady jest <tu wpisać miasto osoby z zarządu która udostępni swój adres do korespondencji>.
 Terenem działania Rady jest obszar Rzeczpospolitej Polskiej.
 Dla realizacji celów statutowych Rada może prowadzić działania poza granicami kraju z poszanowaniem tamtejszego prawa.
 
@@ -59,6 +59,7 @@ Rada realizuje swoje cele poprzez:
 ### § 9 <small>– Zwyczajne</small>
 
 1.  Zwyczajną osobą członkowską Rady może być każda osoba fizyczna,
+    włącznie z osobami niemającymi obywatelstwa lub miejsca zamieszkania na terytorium Rzeczypospolitej Polskiej,
     która złoży pisemną deklarację i rekomendację dwojga osób członkowskich Rady,
     oraz zostanie przyjęta przez Zarząd uchwałą podjętą nie później
     niż w ciągu miesiąca od daty złożenia deklaracji.
@@ -157,7 +158,8 @@ a w drugim terminie bez względu na liczbę obecnych osób członkowskich.
 
 ### § 16 <small>– Zarząd</small>
 
-1.  Zarząd jest powołany do kierowania całą działalnością Rady zgodnie z uchwałami Walnego Zebrania
+1.  Zarząd jest powołany na czteroletnią kadencję
+    do kierowania całą działalnością Rady zgodnie z uchwałami Walnego Zebrania
     oraz reprezentowania Rady na zewnątrz. 
 2.  Zarząd składa się z od 3 osób.
 3.  Osoby członkowskie zarządu mogą otrzymywać wynagrodzenie za pełnione funkcje.
@@ -174,7 +176,7 @@ a w drugim terminie bez względu na liczbę obecnych osób członkowskich.
 
 ### § 17 <small>– Komisja Rewizyjna</small>
 
-1.  Komisja Rewizyjna powołana jest do sprawowania kontroli nad działalnością Rady.
+1.  Komisja Rewizyjna jest powołana na czteroletnią kadencję do sprawowania kontroli nad działalnością Rady.
 2.  Komisja Rewizyjna składa się od 3 osób..
 3.  Posiedzenia Komisji Rewizyjnej odbywają się w miarę potrzeb,
     nie rzadziej jednak niż raz w roku.
