@@ -629,20 +629,32 @@ contact:
             headline: 'kontakt@zaimki.pl'
     team:
         enabled: true
-        route: 'kolektyw-rjn'
+        route: 'kolektyw'
+    legal:
+        enabled: true
+        route: 'rada'
+        charterRoute: 'statut'
 
 support:
     enabled: true
     links:
         -
-            icon: 'coffee'
-            url: 'https://ko-fi.com/radajezykaneutralnego'
-            headline: 'Ko-Fi'
-        -
             icon: 'paypal'
             iconSet: 'b'
             url: 'https://paypal.me/RJNeutralnego'
             headline: 'PayPal'
+        -
+            icon: 'coffee'
+            url: 'https://ko-fi.com/radajezykaneutralnego'
+            headline: 'Ko-Fi'
+        -
+            icon: 'money-check-alt'
+            clipboard: 'PL29 4333 8884 1826 8297 9910 0763'
+            headline: 'Konto (PLN)'
+        -
+            icon: 'money-check-alt'
+            clipboard: 'PL64 3129 7476 4438 4116 2025 3879'
+            headline: 'Konto (EUR)'
 
 user:
     enabled: true
@@ -962,6 +974,7 @@ redirects:
     - { from: '^/blog/rada-j%C4%99zyka-neutralnego$', to: '/kolektyw-rjn' }
     - { from: '^/blog/rada-języka-neutralnego$', to: '/kolektyw-rjn' }
     - { from: '^/manifest$', to: '/blog/manifest' }
+    - { from: '^/kolektyw-rjn', to: '/kolektyw' }
 
 api:
     examples:
