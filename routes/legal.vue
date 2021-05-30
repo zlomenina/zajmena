@@ -31,7 +31,7 @@
                 <T>contact.legal.board</T>
             </h3>
 
-            <MemberList :members="Object.values(board)"/>
+            <MemberList :members="board"/>
         </section>
 
         <section>
@@ -40,7 +40,7 @@
                 <T>contact.legal.auditorBoard</T>
             </h3>
 
-            <MemberList :members="Object.values(auditorBoard)"/>
+            <MemberList :members="auditorBoard"/>
         </section>
     </div>
 </template>
@@ -49,12 +49,6 @@
     import { head } from "../src/helpers";
 
     export default {
-        data() {
-            return {
-                board: {},
-                auditorBoard: {},
-            }
-        },
         head() {
             return head({
                 title: this.$t('contact.team.name'),
@@ -65,16 +59,28 @@
                 membersByLocale: await app.$axios.$get(`/admin/list`),
             }
         },
-        mounted() {
-            for (let localeMembers of Object.values(this.membersByLocale)) {
-                for (let member of localeMembers) {
-                    if (this.config.contact.legal.board.includes(member.username)) {
-                        this.board[member.username] = member;
-                    }
-                    if (this.config.contact.legal.auditorBoard.includes(member.username)) {
-                        this.auditorBoard[member.username] = member;
+        computed: {
+            board() {
+                const board = {};
+                for (let localeMembers of Object.values(this.membersByLocale)) {
+                    for (let member of localeMembers) {
+                        if (this.config.contact.legal.board.includes(member.username)) {
+                            board[member.username] = member;
+                        }
                     }
                 }
+                return Object.values(board);
+            },
+            auditorBoard() {
+                const auditorBoard = {};
+                for (let localeMembers of Object.values(this.membersByLocale)) {
+                    for (let member of localeMembers) {
+                        if (this.config.contact.legal.auditorBoard.includes(member.username)) {
+                            auditorBoard[member.username] = member;
+                        }
+                    }
+                }
+                return Object.values(auditorBoard);
             }
         }
     }

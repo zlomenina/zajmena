@@ -42,6 +42,21 @@
             <Authors/>
         </section>
 
+        <section v-if="config.contact.legal">
+            <router-link :to="`/${config.contact.legal.route}`">
+                <h3 class="mb-3">
+                    <Icon v="collective-logo.svg"/>
+                    <T>contact.legal.name</T>
+                </h3>
+            </router-link>
+
+            <ul>
+                <li v-for="(value, name) in $t('contact.legal.numbers')">
+                    <strong>{{name}}:</strong> {{value}}
+                </li>
+            </ul>
+        </section>
+
         <Support/>
     </div>
 </template>

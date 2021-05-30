@@ -29,7 +29,7 @@
                 <T>contact.team.members</T>
             </h3>
 
-            <MemberList v-for="(members, locale) in membersByLocale" v-if="members.length" :locale="locale" :members="members"/>
+            <MemberList v-for="(members, locale) in membersByLocale" v-if="members.length" :key="locale" :locale="locale" :members="members"/>
         </section>
     </div>
 </template>
