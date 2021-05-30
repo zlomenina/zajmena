@@ -1,9 +1,9 @@
 <template>
     <NotFound v-if="!content"/>
     <div v-else class="blog-post">
-        <router-link :to="'/' + config.links.blogRoute" v-if="Object.keys(config.links.blog).length">
-            <Icon v="pen-nib"/>
-            <T>links.blog</T>
+        <router-link :to="'/' + config.contact.legal.route">
+            <Icon v="collective-logo.svg"/>
+            <T>contact.legal.name</T>
         </router-link>
 
         <BlogPost :content="content"/>
@@ -24,7 +24,8 @@
 
     export default {
         async asyncData({route}) {
-            return await blog.methods.fetchBlogPost('blog', route.params.slug);
+            console.log(route);
+            return await blog.methods.fetchBlogPost('legal', route.params.slug);
         },
         head() {
             return head({

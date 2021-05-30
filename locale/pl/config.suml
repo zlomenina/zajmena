@@ -633,7 +633,10 @@ contact:
     legal:
         enabled: true
         route: 'rada'
-        charterRoute: 'statut'
+        documents:
+            statut: 'Statut'
+        board: ['Archie', 'Sybil', 'andrea']
+        auditorBoard: ['ausir', 'Nikita', 'Lunica']
 
 support:
     enabled: true
@@ -649,11 +652,11 @@ support:
             headline: 'Ko-Fi'
         -
             icon: 'money-check-alt'
-            clipboard: 'PL29 4333 8884 1826 8297 9910 0763'
+            clipboard: 'PL29 4333 8884 1826 8297 9910 0763' # TODO
             headline: 'Konto (PLN)'
         -
             icon: 'money-check-alt'
-            clipboard: 'PL64 3129 7476 4438 4116 2025 3879'
+            clipboard: 'PL64 3129 7476 4438 4116 2025 3879' # TODO
             headline: 'Konto (EUR)'
 
 user:

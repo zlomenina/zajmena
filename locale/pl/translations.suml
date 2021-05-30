@@ -876,9 +876,23 @@ contact:
                 Inicjatywy zaimki.pl / {https://pronouns.page=pronouns.page}
                 oraz {https://facebook.com/neutratywy=Słownik Neutratywów Języka Polskiego}
                 są tworzone przez kolektyw „Rada Języka Neutralnego”.
+            - >
+                Formalną częścią kolektywu jest {/rada=stowarzyszenie} wpisane do KRS pod numerem 123456789.
         logo: 'Logo kolektywu to połączenie symbolu transpłciowości z chmurką dialogową symbolizującą język.'
         members: 'Obecny skład'
         upcoming: 'Nadchodzące wersje językowe'
+    legal:
+        name: 'Stowarzyszenie „Rada Języka Neutralnego”'
+        description:
+            - >
+                Stowarzyszenie „Rada Języka Neutralnego” jest formalną częścią {/kolektyw=kolektywu o tej samej nazwie}.
+        numbers:
+            KRS: '123456789'
+            NIP: '9046910530'
+            REGON: '477398929'
+        documents: 'Dokumenty'
+        board: 'Zarząd'
+        auditorBoard: 'Komisja rewizyjna'
 
 support:
     header: 'Wsparcie'
@@ -1094,6 +1108,9 @@ images:
     upload:
         instruction: 'Kliknij tutaj lub upuść tu obrazek'
         instructionShort: 'Wgraj'
+
+clipboard:
+    success: 'Skopiowano do schowka'
 
 error:
     generic: 'Coś poszło nie tak, spróbuj ponownie…'

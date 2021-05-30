@@ -23,45 +23,13 @@
             <T>contact.team.description</T>
         </section>
 
-        <router-link :to="'/' + config.links.blogRoute" v-if="Object.keys(config.links.blog).length"
-                     class="btn btn-outline-primary btn-lg">
-            <Icon v="pen-nib"/>
-            <T>links.blog</T>
-        </router-link>
-
         <section>
             <h3>
                 <Icon v="user-friends"/>
                 <T>contact.team.members</T>
             </h3>
 
-            <template v-for="(members, locale) in membersByLocale" v-if="members.length">
-                <h4 class="mt-4">
-                    <template v-if="locale === ''">
-                        <T>contact.team.upcoming</T>
-                    </template>
-                    <template v-else-if="locale === config.locale">
-                        {{locales[locale].name}}
-                    </template>
-                    <a v-else :href="locales[locale].url">
-                        {{locales[locale].name}}
-                    </a>
-                </h4>
-                <ul class="list-unstyled member-list">
-                    <li v-for="member in members" class="mb-3 d-flex">
-                        <a :href="`https://pronouns.page/@${member.username}`">
-                            <Avatar :user="member" dsize="4rem"/>
-                        </a>
-                        <span class="ms-2">
-                            {{ member.teamName }}
-                            <br/>
-                            <a :href="`https://pronouns.page/@${member.username}`" class="badge bg-light text-dark border">
-                                @{{member.username}}
-                            </a>
-                        </span>
-                    </li>
-                </ul>
-            </template>
+            <MemberList v-for="(members, locale) in membersByLocale" v-if="members.length" :locale="locale" :members="members"/>
         </section>
     </div>
 </template>
@@ -110,12 +78,5 @@
 
     .bigger {
         font-size: 2rem;
-    }
-
-    @include media-breakpoint-up('md', $grid-breakpoints) {
-        .member-list {
-            column-count: 3;
-            column-width: 16rem;
-        }
     }
 </style>

@@ -14,6 +14,17 @@
                 </p>
             </div>
             <div class="text-center d-flex flex-column justify-content-center">
+                <div v-if="config.contact.legal" class="small">
+                    <router-link :to="`/${config.contact.legal.route}`">
+                        <Icon v="collective-logo.svg"/>
+                        <T>contact.legal.name</T>
+                    </router-link>
+                    <ul>
+                        <li v-for="(value, name) in $t('contact.legal.numbers')" class="list-unstyled">
+                            <strong>{{name}}:</strong> {{value}}
+                        </li>
+                    </ul>
+                </div>
                 <p class="small mb-0">
                     <Icon v="users"/>
                     <T>footer.links</T>:
@@ -28,17 +39,19 @@
                             <Icon :v="link.icon" :set="link.iconSet || 'l'"/>
                         </SquareButton>
                     </span>
-                    <span>
+                    <span><Spaceless>
                         <SquareButton link="https://avris.it" aria-label="avris.it">
                             <img src="~assets/avris.svg" alt="Avris"/>
                         </SquareButton>
-                        <SquareButton v-for="s in config.support.links" :key="s.url" :link="s.url" :aria-label="s.headline">
-                            <Icon :v="s.icon" :set="s.iconSet || 'l'"/>
-                        </SquareButton>
+                        <Clipboardable v-for="s in config.support.links" :key="s.url" :message="s.clipboard">
+                            <SquareButton :link="s.url" :aria-label="s.headline">
+                                <Icon :v="s.icon" :set="s.iconSet || 'l'"/>
+                            </SquareButton>
+                        </Clipboardable>
                         <SquareButton link="https://gitlab.com/Avris/Zaimki" aria-label="GitLab">
                             <Icon v="gitlab" set="b"/>
                         </SquareButton>
-                    </span>
+                    </Spaceless></span>
                 </div>
                 <ul v-if="config.user.enabled" class="list-inline small">
                     <li class="list-inline-item">

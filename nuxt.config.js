@@ -96,6 +96,7 @@ export default {
     css: [],
     plugins: [
         { src: '~/plugins/vue-matomo.js', ssr: false },
+        { src: '~/plugins/vue-clipboard.js', ssr: false },
         { src: '~/plugins/globals.js' },
         { src: '~/plugins/auth.js' },
     ],
@@ -213,6 +214,10 @@ export default {
             }
             if (config.contact.team.enabled) {
                 routes.push({ path: '/' + config.contact.team.route, component: resolve(__dirname, 'routes/team.vue') });
+            }
+            if (config.contact.legal.enabled) {
+                routes.push({ path: '/' + config.contact.legal.route, component: resolve(__dirname, 'routes/legal.vue') });
+                routes.push({ path: '/' + config.contact.legal.route + '/:slug', component: resolve(__dirname, 'routes/legalDocument.vue')});
             }
 
             if (config.census.enabled) {
