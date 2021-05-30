@@ -1110,7 +1110,7 @@ images:
         instructionShort: 'Wgraj'
 
 clipboard:
-    success: 'Skopiowano do schowka'
+    success: 'Skopiowano'
 
 error:
     generic: 'Coś poszło nie tak, spróbuj ponownie…'
