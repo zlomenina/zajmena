@@ -295,6 +295,7 @@ links:
     headerLong: 'Extra links'
     recommended: 'We recommend'
 
+    blog: 'Blog'  # TODO
     media: 'Pronouns.page in the media'
 
     social: 'Social media'
@@ -436,6 +437,7 @@ confirm:
     header: 'Êtes-vous sûrs?'
     yes: 'Oui, je suis sûr'
     no: 'Non, annuler'
+    ok: 'OK'
 
 terms:
     header: 'Conditions d''Utilisation'

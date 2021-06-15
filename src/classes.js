@@ -113,7 +113,9 @@ export class Source {
         this.title = title;
         this.extra = extra;
         this.year = year;
-        this.fragments = fragments ? fragments.replace(/\|/g, '\n').split('@') : [];
+        this.fragments = fragments
+            ? fragments.replace(/\|/g, '\n').replace('\\@', '###').split('@').map(x => x.replace('###', '\\@'))
+            : [];
         this.comment = comment;
         this.link = link;
         this.submitter = submitter;
@@ -697,6 +699,10 @@ export class InclusiveEntry {
     matches(filter) {
         if (!filter) {
             return true;
+        }
+
+        if (filter.startsWith(':')) {
+            return this.categories.includes(filter.substring(1));
         }
 
         for (let field of ['insteadOf', 'say']) {

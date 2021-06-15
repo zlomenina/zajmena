@@ -299,6 +299,7 @@ links:
     headerLong: 'Extra links'
     recommended: 'Wij raden aan'
 
+    blog: 'Blog'  # TODO
     media: 'Pronouns.page in de media'
 
     social: 'Sociale media'
@@ -449,6 +450,7 @@ confirm:
     header: 'Weet je zeker dat?'
     yes: 'Ja, dat weet ik zeker'
     no: 'Nee, annuleer'
+    ok: 'OK'
 
 terms:
     header: 'Gebruiksvoorwaarden'

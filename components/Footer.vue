@@ -48,10 +48,14 @@
                         </nuxt-link>
                     </li>
                     <li class="list-inline-item">
-                        <nuxt-link to="/api">
+                        <nuxt-link v-if="config.api !== null" to="/api">
                             <Icon v="laptop-code"/>
                             <T>api.header</T>
                         </nuxt-link>
+                        <LocaleLink v-else locale="en" link="/api">
+                            <Icon v="laptop-code"/>
+                            <T>api.header</T>
+                        </LocaleLink>
                     </li>
                 </ul>
                 <ul v-if="config.user.enabled" class="list-inline small">
@@ -63,6 +67,7 @@
                     </li>
                 </ul>
                 <Share/>
+                <ModeSwitch class="mt-3"/>
             </div>
         </div>
     </footer>

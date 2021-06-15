@@ -1,8 +1,8 @@
 <template>
-    <div class="main">
-        <Blog/>
+    <div>
+        <LinksNav/>
+
         <Links/>
-        <Media/>
         <Recommended/>
         <Socials/>
         <LanguageVersions/>

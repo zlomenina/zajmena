@@ -68,7 +68,7 @@ sources:
         ono/jenu: 'ono'
         vono/vego: 'ono'
         ono/eno: 'ono'
-    extraTypes: ['dukatywy', 'osobatywy']
+    extraTypes: ['dukatywy', 'osobatywy', 'unikanie']
 
 nouns:
     enabled: true
@@ -85,7 +85,7 @@ nouns:
         - 'osobatywy'
     inclusive:
         enabled: true
-        categories: ['queer/lgbtq+', 'transpłciowość', 'interpłciowość', 'niepełnosprawność', 'rasa i narodowość']
+        categories: ['nieheteronormatywność', 'transpłciowość', 'interpłciowość', 'feminizm', 'niepełnosprawność', 'rasa i narodowość', 'ubóstwo']
         route: 'inkluzywny'
     terms:
         enabled: true
@@ -115,15 +115,30 @@ faq:
 
 links:
     enabled: true
+    split: true
     route: 'linki'
     blogRoute: 'blog'
-    links:
-        -
-            icon: 'globe-europe'
-            url: 'https://pronoun.is/'
-            lang: ['en']
-            headline: 'Pronoun.is'
-            extra: '– anglojęzyczna inspiracja dla tej strony.'
+    academicRoute: 'nauka'
+    mediaRoute: 'media'
+
+    blog:
+        polskie-media-o-demi-lovato: 'Polskie media o coming oucie Demi Lovato'
+        rodzaj-żeńskoosobowy: 'Rodzaj żeńskoosobowy'
+        manifest: 'Manifest Niebinarnej Polszczyzny'
+        wystarczyło-zapytać: 'Wystarczyło zapytać…'
+        krótka-notka-o-osobatywach: 'Krótka notka o osobatywach'
+        czytanie-ze-zrozumieniem: 'Czytanie ze zrozumieniem'
+        spis-2021: 'Niebinarny Spis Powszechny 2021 – wnioski'
+        czy-wolno-uzywac: 'Zamiast pierdyliarda dyskusji czy wolno używać – zróbmy pierdyliard użyć'
+        inkluzywne-liczebniki: 'Inkluzywne liczebniki'
+        zaimki-postpłciowe: 'Zaimki w rodzaju postpłciowym'
+        zaimki-nie-tylko-osobowe: 'Zaimki nie tylko osobowe'
+        archie-wyborcza: 'Przemówienie Arcziego na konferencji prasowej ws. transfobii w Gazecie Wyborczej'
+        rekomendacja-formularze: 'Rekomendacja Rady w sprawie pytania o płeć w formularzach'
+        podsumowanie-2020: 'Podsumowanie działalności w roku 2020'
+        gwiezdne-wojny: 'Niebinarność w „Gwiezdnych Wojnach”'
+        czas-się-obnosić: 'Nadszedł czas się obnosić! – przemówienie Sybila z Wrocławskiego Marszu Równości'
+    academic:
         -
             icon: 'comment-alt-edit'
             url: 'https://rjp.pan.pl/index.php?option=com_content&view=article&id=317:byom-byo&catid=44&Itemid=208'
@@ -132,6 +147,61 @@ links:
                 Nigdzie nie występuje zastrzeżenie, że nie tworzy się form 1. i 2. osoby rodzaju nijakiego w czasie przeszłym.
                 Tak więc z punktu widzenia gramatycznego formy <em>byłom, byłoś, robiłom, robiłoś, widziałom, widziałoś</em> itd.
                 są poprawne, zgodne z systemem językowym.
+        -
+            icon: 'comment-alt-edit'
+            lang: ['en']
+            url: 'https://anglica-journal.com/resources/html/article/details?id=207730'
+            headline: 'Misgendered in Translation?: Genderqueerness in Polish Translations of English-language Television Series'
+            extra: ' – Szymon Misiek; Uniwersytet Warszawski; ANGLICA. An International Journal of English Studies'
+            quote: >
+                In recent years, the English-speaking world observed growing awareness
+                of the gender non-binary/genderqueer community.
+                Among other things, this involved the issue of inclusive language,
+                e.g. the <em>singular they</em> pronoun has been declared the word of the year
+                by the American Dialect Society in 2015, and by Merriam-Webster in 2019.
+                There is also growing media representation of characters using <em>singular they</em> in popular culture.
+                This, however, poses a challenge to translators, as some languages – like Polish –
+                are much more heavily gendered and lack an obvious equivalent of <em>singular they</em>.
+                This article analyses Polish translations of three English-language television series
+                featuring non-binary characters and discusses good practices one can employ
+                when dealing with similar trans- lation challenges.
+        -
+            icon: 'comment-alt-edit'
+            headline: 'Neutrativa im Polnischen. Theorie – Norm – Usus'
+            extra: ' – Michał Dudas; Johannes Gutenberg Universität Mainz (Hausarbeit zur Erlangung des Akademischen Grades Master of Arts)'
+            lang: ['de']
+            quote: >
+                Äußerst positiv zu bewerten sind folgende Punkte.
+                (a) Die Seite bietet eine optimale Auswahl an Informationen und guten Übersichten,
+                wodurch sie auch für Laien sprachlich zugänglich ist.
+                (b) Die Autorys (sowie andere, die zum Projekt beitragen)
+                weisen m. E. ein erhöhtes Sprachbewusstsein auf (z. B. im Bereich der komplexen Morphonologie).
+                (c) Die Sprachexperimente basieren u. a auf den Leistungen der Übersetzer*innen
+                und die Modifikationen versuchen gleichzeitig, die poln. Flexion von der M–F-Binarität loszulösen,
+                ohne das System zu sprengen.
+                (d) Formularfelder laden die User*innen zur Kooperation ein.
+                (e) Schließlich verwenden die Autorys auf der Seite konsequent die nichtbinären Formen.
+        -
+            icon: 'book'
+            url: 'https://gufaculty360.georgetown.edu/s/contact/00336000014RaQuAAK/iwona-sadowska'
+            lang: ['en']
+            headline: 'Polish: A Comprehensive Grammar – Iwona Sadowska; Georgetown University (to be published in 2022)'
+        -
+            icon: 'play-circle'
+            url: 'https://www.youtube.com/watch?v=YOEB6Ixp048'
+            headline: 'Nie-binarny język polski – seminarium naukowe (Queer UW)'
+        -
+            icon: 'play-circle'
+            url: 'https://www.facebook.com/gdynaukajestkobieta/videos/193680249317891'
+            headline: 'Tip-top. Krok w stronę feminatywów.'
+            extra: 'Sybil (Gdy Nauka jest Kobietą UAM)'
+    links:
+        -
+            icon: 'globe-europe'
+            url: 'https://pronoun.is/'
+            lang: ['en']
+            headline: 'Pronoun.is'
+            extra: '– anglojęzyczna inspiracja dla tej strony.'
         -
             icon: 'comment-alt-edit'
             url: 'https://avris.it/blog/genderneutralizacja-polszczyzny'
@@ -150,19 +220,6 @@ links:
             headline: 'Czemu KAŻDY powinien mieć zaimki w bio'
         -
             icon: 'comment-alt-edit'
-            url: '/blog/gwiezdne-wojny'
-            headline: 'Niebinarność w „Gwiezdnych Wojnach”'
-        -
-            icon: 'comment-alt-edit'
-            url: '/blog/czas-się-obnosić'
-            headline: 'Nadszedł czas się obnosić!'
-            extra: '– przemówienie Sybila z Wrocławskiego Marszu Równości'
-        -
-            icon: 'comment-alt-edit'
-            url: '/blog/rekomendacja-formularze'
-            headline: 'Rekomendacja Rady w sprawie pytania o płeć w formularzach'
-        -
-            icon: 'comment-alt-edit'
             url: 'https://www.przemyslenia-maniaka.pl/2019/11/maniak-marudzi-27-niebinarne-tumaczenia.html'
             headline: 'Maniak marudzi #27: Niebinarne tłumaczenia'
             extra: '– artykuł pokazujący, że „nie da się przetłumaczyć they/them na polski” to tylko wymówka.'
@@ -171,12 +228,6 @@ links:
             url: 'https://opowiadania.org/wp-content/uploads/2020/09/opo16_gazeta_rd.pdf'
             headline: 'Ludzie z komputera, ludzie z internetu'
             extra: '– Michał Radomił Wiśniewski o „wojnie kulturowej” o zaimki, o naszym projekcie i o dukaizmach.'
-        -
-            icon: 'comment-alt-edit'
-            lang: ['en']
-            url: 'https://anglica-journal.com/resources/html/article/details?id=207730'
-            headline: 'Misgendered in Translation?: Genderqueerness in Polish Translations of English-language Television Series'
-            extra: '– ANGLICA. An International Journal of English Studies'
         -
             icon: 'comment-alt-edit'
             url: 'http://wasowska.net/2020/09/rowni-wobec-jezyka-o-jezyku-neutralnym-plciowo/'
@@ -190,11 +241,6 @@ links:
                 Jeśli chcesz rozbudzić w uczniach zainteresowanie językiem polskim, spróbuj odejść choć na jedną lekcję
                 od sztywnych reguł i z pomocą kategorii Literatura strony zaimki.pl
                 porozmawiać o ewolucji języka i neutratywach. Może uczniowie spróbują wymyślić własne?
-        -
-            icon: 'play-circle'
-            url: 'https://www.youtube.com/watch?v=YOEB6Ixp048'
-            headline: 'Nie-binarny język polski – seminarium naukowe (Queer UW)'
-            extra: ''
         -
             icon: 'play-circle'
             url: 'https://www.youtube.com/watch?v=BX8ld20YeUc'
@@ -234,6 +280,25 @@ links:
                 Choć polska tradycja nie zna takich imion, to opiniujemy je pozytywnie,
                 bo w zderzeniu dwóch wartości: dobrostanu człowieka wynikającego z jego problemów z tożsamością i tradycji językowej,
                 należy uznać tę pierwszą za wyższą.
+        -
+            icon: 'book'
+            url: 'https://www.interakcja.org.pl/slownictwo/'
+            headline: 'Fundacja Interakcja o słownictwie dotyczącym interpłciowości'
+        -
+            icon: 'play-circle'
+            url: 'https://www.youtube.com/watch?v=UvRdZKk3RLM'
+            headline: 'Czy język polski jest seksistowski?'
+            extra: ' – Mateusz Adamczyk o asymetrii rodzajowo-płciowej, androcentryzmie językowym, inkluzywności, i o tym, czemu „osoba” jest bardziej włączająca niż „człowiek”.'
+        -
+            icon: 'play-circle'
+            url: 'https://www.youtube.com/watch?v=UvRdZKk3RLM'
+            headline: 'Feminatywy? Tak, ale...'
+            extra: ' – Mateusz Adamczyk; pod koniec jest też o potrzebie reprezentacji niebinarności w języku'
+            quote: >
+                Jak pokazują współczesne badania, formy generyczne silniej kojarzą nam się z mężczyznami niż z kobietami,
+                i dlatego nie ma tutaj tej symetrii, ani w języku, ani poza nim.
+                Dlatego właśnie tworzenie i używanie feminatywów jest ważne, społecznie potrzebne,
+                na co zresztą zwraca uwagę także Rada Języka Polskiego.
     mediaGuests:
         -
             icon: 'newspaper'
@@ -294,7 +359,26 @@ links:
             url: 'https://www.facebook.com/330540866965366/videos/977896432960282'
             headline: 'Osoby, łosie i dukaty – wstęp do neutralnej płciowo i niebinarnej polszczyzny'
             extra: '– wykład Sybila, <strong>Nowa Siła Kuratorska﻿</strong>'
-
+        -
+            icon: 'play-circle'
+            url: 'https://fakty.tvn24.pl/fakty-po-poludniu,96/demi-lovato-mowi-ze-jest-osoba-niebinarna,1061387.html'
+            headline: 'Demi Lovato ogłasza, że jest osobą niebinarną'
+            extra: '– Sybil w <strong>TVN24</strong>'
+        -
+            icon: 'play-circle'
+            url: 'https://www.facebook.com/teczuj/videos/2996967110625524'
+            headline: 'Panel ekspercki: język neutralny | język osób niebinarnych'
+            extra: 'Archie i Andrea, <strong>Tęczuj</strong>'
+        -
+            icon: 'play-circle'
+            url: 'https://www.facebook.com/SCORP.IFMSA.Poland/posts/2952524161684978'
+            headline: 'Webinar „O co chodzi z tymi zaimkami?”'
+            extra: 'Sybil i Andrea, <strong>Międzynarodowe Stowarzyszenie Studentów Medycyny IFMSA-Poland</strong>'
+        -
+            icon: 'play-circle'
+            url: 'https://www.facebook.com/gdynaukajestkobieta/videos/193680249317891'
+            headline: 'Tip-top. Krok w stronę feminatywów.'
+            extra: 'Sybil, <strong>Gdy Nauka jest Kobietą UAM</strong>'
     mediaMentions:
         -
             icon: 'newspaper'
@@ -423,7 +507,62 @@ links:
                 Nie wie już czy się śmiać czy płakać.
                 Obawiam się, że to lewicowe szaleństwo nie ma końca lub gdzieś tam przy granicach absurdu
                 będzie musiała czyhać policja myśli, bo inaczej nie da się nad tym zapanować.
-
+        -
+            icon: 'newspaper'
+            url: 'https://www.plotek.pl/plotek/7,154063,27103090,demi-lovato-oglasza-jestem-osoba-niebinarna.html'
+            headline: 'Demi Lovato robi coming out na Instagramie: Identyfikuję się jako osoba niebinarna'
+            extra: ' – <strong>Plotek.pl</strong>'
+            quote: >
+                Demi używa zaimków "they/them", które na polski w kontekście osób niebinarnych możemy tłumaczyć różnorako
+                - nie mamy wypracowanego jednego, konkretnego uzusu.
+                Za stowarzyszeniem Miłość Nie Wyklucza polecamy przejrzenie strony zaimki.pl
+                i jej propozycje tłumaczeń m.in. zaimków i rzeczowników nacechowanych płciowo.
+        -
+            icon: 'newspaper'
+            url: 'https://kultura.gazeta.pl/kultura/7,127222,27108402,nowa-samantha-w-seksie-w-wielkim-miescie-do-ekipy-dolacza.html'
+            headline: 'Nowa Samantha w "Seksie w wielkim mieście"? Do ekipy dołącza niebinarna postać'
+            extra: ' – <strong>Gazeta.pl Kultura</strong>'
+            quote: >
+                W języku polskim w kontekście osób niebinarnych nie mamy wypracowanego jednego, konkretnego uzusu.
+                Jedną z możliwości jest stosowanie znaku zastępującego, np. "pisałxm" lub "pisał_m".
+                Często używa się też rodzaju neutralnego ("pisałom", "ono pisało") lub form męskich i żeńskich na zmianę.
+                Więcej o zaimkach niebinarnych możesz przeczytać na zaimki.pl.
+        -
+            icon: 'play-circle'
+            url: 'https://www.youtube.com/watch?v=V-uZqrT8ovw'
+            headline: 'Jak mówić, by nie wykluczać.'
+            extra: ' – <strong>Mówiąc Inaczej</strong>'
+        -
+            icon: 'newspaper'
+            url: 'https://vibez.pl/wydarzenia/dlaczego-demi-lovato-jest-piosenkarko-czyli-jak-mowic-o-osobach-niebinarnych-6641697426492384a'
+            headline: 'Dlaczego Demi Lovato jest piosenkarko? Czyli jak mówić o osobach niebinarnych'
+            extra: ' – <strong>Vibez</strong>'
+            quote: >
+                Im częściej będzie się to działo, tym łatwiej oswoimy się z „piekarko”, „lekarcze” i „hedoniszcze”.
+                Czy dla mnie te słowa wciąż brzmią inaczej i trochę dziwne? Tak. Ale cieszę się, że istnieje narzędzie,
+                które pozwala mi je poznawać i ich używać, dzięki czemu nie ranię osób, dla których są one ważne.
+        -
+            icon: 'book'
+            url: 'https://lubimyczytac.pl/ksiazka/4971035/gender-queer-autobiografia'
+            headline: 'Gender Queer. Autobiografia – Maia Kobabe'
+            extra: ' – przedmowa do wydania polskiego autorstwa Karoliny Fedyk'
+            quote: >
+                To tylko niektóre z możliwości – więcej można znaleźć na stronie zaimki.pl
+                oraz w Słowniku Neutratywów Języka Polskiego.
+                A form stosowanych przez polskie osoby niebinarne i transpłciowe
+                jest zapewne jeszcze więcej i z każdym dniem powstają nowe.
+        -
+            icon: 'newspaper'
+            url: 'https://zycie.hellozdrowie.pl/casey-legler-wiedzieli-jak-ubierac-dziewczyny-nie-spodziewali-sie-mnie/'
+            headline: 'Casey Legler: Wiedzieli, jak ubierać dziewczyny – nie spodziewali się mnie. Ubrali mnie w męskie ciuchy, bo takie na mnie pasowały'
+            extra: ' – <strong>Hello Zdrowie</strong>'
+            quote: >
+                Spróbowałyśmy, korzystając z dostępnych źródeł
+                (m.in. Zaimki.pl – serwis zajmujący się popularyzowaniem języka neutralnego płciowo),
+                skonstruować ten materiał w oparciu o rodzaj neutralny i neutratywy (ono, „zrobiłom”, „poszłoś”…).
+                Mamy świadomość, że nie wszystkich to rozwiązanie usatysfakcjonuje.
+                Wierzymy jednak, że w ten sposób dokładamy swój głos w dyskusji o tym,
+                że niebinarność nie tylko może, ale powinna manifestować się w języku.
     socials:
         -
             icon: 'twitter'
@@ -471,6 +610,11 @@ links:
             url: 'https://www.facebook.com/centrum.rownik/posts/158108032840650'
             headline: 'Centrum Równik'
             extra: ' – rozdaje przypinki z zaimkami, również nienormatywnymi.'
+        -
+            icon: 'cogs'
+            url: 'http://dobrerzeczy.online/femaleSwitcher/'
+            headline: 'Female switcher'
+            extra: ' – apka, która zamieni formy fleksyjne wyświetlanych tekstów z rodzaju męskiego na żeński.'
 
 people:
     enabled: true
@@ -587,21 +731,6 @@ contact:
     team:
         enabled: true
         route: 'kolektyw-rjn'
-    blog:
-        manifest: 'Manifest Niebinarnej Polszczyzny'
-        wystarczyło-zapytać: 'Wystarczyło zapytać…'
-        krótka-notka-o-osobatywach: 'Krótka notka o osobatywach'
-        czytanie-ze-zrozumieniem: 'Czytanie ze zrozumieniem'
-        spis-2021: 'Niebinarny Spis Powszechny 2021 – wnioski'
-        czy-wolno-uzywac: 'Zamiast pierdyliarda dyskusji czy wolno używać – zróbmy pierdyliard użyć'
-        inkluzywne-liczebniki: 'Inkluzywne liczebniki'
-        zaimki-postpłciowe: 'Zaimki w rodzaju postpłciowym'
-        zaimki-nie-tylko-osobowe: 'Zaimki nie tylko osobowe'
-        archie-wyborcza: 'Przemówienie Arcziego na konferencji prasowej ws. transfobii w Gazecie Wyborczej'
-        rekomendacja-formularze: 'Rekomendacja Rady w sprawie pytania o płeć w formularzach'
-        podsumowanie-2020: 'Podsumowanie działalności w roku 2020'
-        gwiezdne-wojny: 'Niebinarność w „Gwiezdnych Wojnach”'
-        czas-się-obnosić: 'Nadszedł czas się obnosić! – przemówienie Sybila z Wrocławskiego Marszu Równości'
 
 support:
     enabled: true
@@ -921,6 +1050,8 @@ redirects:
     - { from: '^/neutratywy$', to: '/slowniki/neutratywy' }
     - { from: '^/dukatywy$', to: '/slowniki/dukatywy' }
     - { from: '^/osobatywy$', to: '/slowniki/osobatywy' }
+    - { from: '^/inkluzywny', to: '/slowniki/inkluzywny' }
+    - { from: '^/inkluzywnosc', to: '/slowniki/inkluzywny' }
     - { from: '^/terminologia', to: '/slowniki/terminologia' }
     - { from: '^/rzeczowniki$', to: '/slowniki' }
     - { from: '^/slownik$', to: '/slowniki' }
@@ -939,9 +1070,18 @@ api:
         pronouns_one:
             - '/api/pronouns/ono/jej'
             - '/api/pronouns/ono/jej?examples[]=Czy%20chcia%C5%82%7Bverb_end_inter%7Dby%C5%9B%20skorzysta%C4%87%20z%20naszej%20oferty%3F%7CCzy%20chci%7Bverb_middle_inter%7Dby%C5%9Bcie%20skorzysta%C4%87%20z%20naszej%20oferty%3F%7C0'
+        pronouns_banner: ['/api/banner/onu.png']
 
         sources_all: ['/api/sources']
-        sources_one: ['/api/sources/01ERQRCV0EHWZ4SX05BRFCEFBZ']
+        sources_one: ['/api/sources/01F1JDD446TNY56PQG7E6MFRRH']
 
         nouns_all: ['/api/nouns']
         nouns_search: ['/api/nouns/search/ateis']
+
+        inclusive_all: ['/api/inclusive']
+        inclusive_search: ['/api/inclusive/search/cygan']
+
+        terms_all: ['/api/terms']
+        terms_search: ['/api/terms/search/apłciow']
+
+        profile_get: ['/api/profile/get/andrea']

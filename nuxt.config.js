@@ -153,6 +153,7 @@ export default {
         LOCALES: locales,
         FLAGS: buildFlags(),
         BUCKET: `https://${process.env.AWS_S3_BUCKET}.s3-${process.env.AWS_REGION}.amazonaws.com`,
+        STATS_FILE: process.env.STATS_FILE,
     },
     serverMiddleware: ['~/server/index.js'],
     axios: {
@@ -187,10 +188,17 @@ export default {
 
             if (config.links.enabled) {
                 routes.push({ path: '/' + config.links.route, component: resolve(__dirname, 'routes/links.vue') });
-                if (Object.keys(config.contact.blog).length) {
-                    routes.push({ path: '/' + config.links.blogRoute, component: resolve(__dirname, 'routes/blog.vue'), name: 'blog' });
-                    routes.push({ path: '/' + config.links.blogRoute + '/:slug', component: resolve(__dirname, 'routes/blogEntry.vue'), name: 'blogEntry' });
+                if (config.links.academicRoute) {
+                    routes.push({ path: '/' + config.links.academicRoute, component: resolve(__dirname, 'routes/academic.vue') });
                 }
+                if (config.links.mediaRoute) {
+                    routes.push({ path: '/' + config.links.mediaRoute, component: resolve(__dirname, 'routes/media.vue') });
+                }
+            }
+
+            if (config.links.blog && Object.keys(config.links.blog).length) {
+                routes.push({ path: '/' + config.links.blogRoute, component: resolve(__dirname, 'routes/blog.vue'), name: 'blog' });
+                routes.push({ path: '/' + config.links.blogRoute + '/:slug', component: resolve(__dirname, 'routes/blogEntry.vue'), name: 'blogEntry' });
             }
 
             if (config.people.enabled) {
@@ -232,7 +240,9 @@ export default {
                 }
             }
 
-            routes.push({ path: '/api', component: resolve(__dirname, 'routes/api.vue') });
+            if (config.api !== null) {
+                routes.push({ path: '/api', component: resolve(__dirname, 'routes/api.vue') });
+            }
 
             routes.push({ name: 'all', path: '*', component: resolve(__dirname, 'routes/pronoun.vue') });
         },
