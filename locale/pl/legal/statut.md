@@ -11,7 +11,7 @@ Odpowiednikiem nazwy w języku angielskim jest „Neutral Language Council”.
 
 ### § 2 <small>– Siedziba i teren działania</small>
 
-Siedzibą Rady jest Jaworzno>.
+Siedzibą Rady jest Jaworzno.
 Terenem działania Rady jest obszar Rzeczpospolitej Polskiej.
 Dla realizacji celów statutowych Rada może prowadzić działania poza granicami kraju z poszanowaniem tamtejszego prawa.
 
