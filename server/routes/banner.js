@@ -5,6 +5,9 @@ import { loadSuml } from '../loader';
 import avatar from '../avatar';
 import {buildPronoun, parsePronouns} from "../../src/buildPronoun";
 import {loadTsv} from "../../src/tsv";
+import {handleErrorAsync} from "../../src/helpers";
+import cache from "../../src/cache";
+import fs from "fs";
 
 const translations = loadSuml('translations');
 
@@ -26,77 +29,82 @@ const drawCircle = (context, image, x, y, size) => {
 
 const router = Router();
 
-router.get('/banner/:pronounName*.png', async (req, res) => {
-    const pronounName = req.params.pronounName + req.params[0];
+router.get('/banner/:pronounName*.png', handleErrorAsync(async (req, res) => {
     const width = 1200
     const height = 600
     const mime = 'image/png';
     const imageSize = 200;
     let leftRatio = 4;
 
-    registerFont('static/fonts/quicksand-v21-latin-ext_latin-regular.ttf', { family: 'Quicksand', weight: 'regular'});
-    registerFont('static/fonts/quicksand-v21-latin-ext_latin-700.ttf', { family: 'Quicksand', weight: 'bold'});
+    const pronounName = req.params.pronounName + req.params[0];
 
-    const canvas = createCanvas(width, height)
-    const context = canvas.getContext('2d')
+    const result = await cache('banner', `${pronounName}.png`, 24 * 60, async () => {
+        registerFont('static/fonts/quicksand-v21-latin-ext_latin-regular.ttf', {family: 'Quicksand', weight: 'regular'});
+        registerFont('static/fonts/quicksand-v21-latin-ext_latin-700.ttf', {family: 'Quicksand', weight: 'bold'});
 
-    const bg = await loadImage('static/bg.png');
-    context.drawImage(bg, 0, 0, width, height);
+        const canvas = createCanvas(width, height)
+        const context = canvas.getContext('2d')
 
-    const fallback = async _ => {
-        const logo = await loadImage('node_modules/@fortawesome/fontawesome-pro/svgs/light/tags.svg');
-        leftRatio = 5;
-        context.drawImage(logo, width / leftRatio - imageSize / 2, height / 2 - imageSize / 1.25 / 2, imageSize, imageSize / 1.25);
-        context.font = `regular ${translations.title.length < 10 ? 120 : translations.title.length < 14 ? 80 : 72}pt Quicksand`;
-        context.fillText(translations.title, width / leftRatio + imageSize / 1.5, height / 2 + (translations.title.length < 10 ? 48 : translations.title.length < 14 ? 24 : 24));
-    }
+        const bg = await loadImage('static/bg.png');
+        context.drawImage(bg, 0, 0, width, height);
 
-    if (pronounName.startsWith('@')) {
-        const user = await req.db.get(SQL`SELECT id, username, email, avatarSource FROM users WHERE username=${pronounName.substring(1)}`);
-        if (!user) {
-            await fallback();
-            return res.set('content-type', mime).send(canvas.toBuffer(mime));
+        const fallback = async _ => {
+            const logo = await loadImage('node_modules/@fortawesome/fontawesome-pro/svgs/light/tags.svg');
+            leftRatio = 5;
+            context.drawImage(logo, width / leftRatio - imageSize / 2, height / 2 - imageSize / 1.25 / 2, imageSize, imageSize / 1.25);
+            context.font = `regular ${translations.title.length < 10 ? 120 : translations.title.length < 14 ? 80 : 72}pt Quicksand`;
+            context.fillText(translations.title, width / leftRatio + imageSize / 1.5, height / 2 + (translations.title.length < 10 ? 48 : translations.title.length < 14 ? 24 : 24));
         }
 
-        const avatarImage = await loadImage(await avatar(req.db, user));
+        if (pronounName.startsWith('@')) {
+            const user = await req.db.get(SQL`SELECT id, username, email, avatarSource FROM users WHERE username=${pronounName.substring(1)}`);
+            if (!user) {
+                await fallback();
+                return canvas.toBuffer(mime);
+            }
 
-        drawCircle(context, avatarImage, width / leftRatio - imageSize / 2, height / 2 - imageSize / 2, imageSize);
+            const avatarImage = await loadImage(await avatar(req.db, user));
 
-        context.font = `regular 48pt Quicksand`
-        context.fillText('@' + user.username, width / leftRatio + imageSize, height / 2)
+            drawCircle(context, avatarImage, width / leftRatio - imageSize / 2, height / 2 - imageSize / 2, imageSize);
 
-        const logo = await loadImage('static/favicon.svg');
+            context.font = `regular 48pt Quicksand`
+            context.fillText('@' + user.username, width / leftRatio + imageSize, height / 2)
 
-        context.font = 'regular 24pt Quicksand'
-        context.fillStyle = '#C71585';
-        const logoSize = 24 * 1.25;
-        context.drawImage(logo, width / leftRatio + imageSize, height / 2 + logoSize - 4, logoSize, logoSize / 1.25)
-        context.fillText(translations.title, width / leftRatio + imageSize + 36, height / 2 + 48);
+            const logo = await loadImage('static/favicon.svg');
 
-        return res.set('content-type', mime).send(canvas.toBuffer(mime));
-    }
+            context.font = 'regular 24pt Quicksand'
+            context.fillStyle = '#C71585';
+            const logoSize = 24 * 1.25;
+            context.drawImage(logo, width / leftRatio + imageSize, height / 2 + logoSize - 4, logoSize, logoSize / 1.25)
+            context.fillText(translations.title, width / leftRatio + imageSize + 36, height / 2 + 48);
 
-    const pronoun = buildPronoun(
-        parsePronouns(loadTsv(__dirname + '/../../data/pronouns/pronouns.tsv')),
-        pronounName,
-    );
+            return canvas.toBuffer(mime);
+        }
 
-    const logo = await loadImage('node_modules/@fortawesome/fontawesome-pro/svgs/light/tags.svg');
+        const pronoun = buildPronoun(
+            parsePronouns(loadTsv(__dirname + '/../../data/pronouns/pronouns.tsv')),
+            pronounName,
+        );
 
-    if (!pronoun && pronounName !== req.config.pronouns.any) {
-        await fallback();
-        return res.set('content-type', mime).send(canvas.toBuffer(mime));
-    }
+        const logo = await loadImage('node_modules/@fortawesome/fontawesome-pro/svgs/light/tags.svg');
 
-    context.drawImage(logo, width / leftRatio - imageSize / 2, height / 2 - imageSize / 1.25 / 2, imageSize, imageSize / 1.25)
-    context.font = 'regular 48pt Quicksand'
-    context.fillText(translations.pronouns.intro + ':', width / leftRatio + imageSize / 1.5, height / 2 - 36)
+        if (!pronoun && pronounName !== global.config.pronouns.any) {
+            await fallback();
+            return canvas.toBuffer(mime);
+        }
 
-    const pronounNameOptions = pronounName === req.config.pronouns.any ? [req.config.pronouns.any] : pronoun.nameOptions();
-    context.font = `bold ${pronounNameOptions.length <= 2 ? '70' : '36'}pt Quicksand`
-    context.fillText(pronounNameOptions.join('\n'), width / leftRatio + imageSize / 1.5, height / 2 + (pronounNameOptions.length <= 2 ? 72 : 24))
+        context.drawImage(logo, width / leftRatio - imageSize / 2, height / 2 - imageSize / 1.25 / 2, imageSize, imageSize / 1.25)
+        context.font = 'regular 48pt Quicksand'
+        context.fillText(translations.pronouns.intro + ':', width / leftRatio + imageSize / 1.5, height / 2 - 36)
 
-    return res.set('content-type', mime).send(canvas.toBuffer(mime));
-});
+        const pronounNameOptions = pronounName === global.config.pronouns.any ? [global.config.pronouns.any] : pronoun.nameOptions();
+        context.font = `bold ${pronounNameOptions.length <= 2 ? '70' : '36'}pt Quicksand`
+        context.fillText(pronounNameOptions.join('\n'), width / leftRatio + imageSize / 1.5, height / 2 + (pronounNameOptions.length <= 2 ? 72 : 24));
+
+        return canvas.toBuffer(mime);
+    });
+
+    return res.set('content-type', mime).send(result);
+}));
 
 export default router;

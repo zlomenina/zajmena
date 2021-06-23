@@ -1,10 +1,10 @@
 # Polskie media o coming oucie Demi Lovato
 
-<small>03.10.2020 | [@Sybil](/@Sybil), [@andrea](/@andrea)</small>
+<small>2021-05-03 | [@Sybil](/@Sybil), [@andrea](/@andrea)</small>
 
 ![](/img/Demi-Lovato.jpg)
 
-Sprawdzamy, jak polskie media opisują Demi Lovato:
+[Sybil sprawdza](https://twitter.com/mykofanes/status/1395121716255412227), jak polskie media opisują Demi Lovato:
 
 ## [Plotek](https://www.plotek.pl/plotek/7,154063,27103090,demi-lovato-oglasza-jestem-osoba-niebinarna.html)
 
@@ -16,7 +16,7 @@ Sprawdzamy, jak polskie media opisują Demi Lovato:
 > Za stowarzyszeniem Miłość Nie Wyklucza polecamy przejrzenie strony zaimki.pl i jej propozycje tłumaczeń
 > m.in. zaimków i rzeczowników nacechowanych płciowo.
 
-Ale Was kurwa szanuję za użycie [form z „x”](/onx).
+Ale Was szanuję za użycie [form z „x”](/onx).
 Dzięki za wspomnienie o naszej inicjatywie!
 
 ## [TVN24](https://tvn24.pl/kultura-i-styl/demi-lovato-wyznala-ze-jest-osoba-niebinarna-5098311)

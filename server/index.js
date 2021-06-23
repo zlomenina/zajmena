@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser';
 import grant from "grant";
 import router from "./routes/user";
 import { loadSuml } from './loader';
-import {buildLocaleList, isGranted} from "../src/helpers";
+import {isGranted} from "../src/helpers";
 
 global.config = loadSuml('config');
 
@@ -23,17 +23,47 @@ app.use(session({
     saveUninitialized: false,
 }));
 
+class LazyDatabase {
+    constructor() {
+        this.db = null;
+    }
+
+    async get(...args) {
+        if (this.db === null) {
+            this.db = await dbConnection();
+        }
+        return this.db.get(...args)
+    }
+
+    async all(...args) {
+        if (this.db === null) {
+            this.db = await dbConnection();
+        }
+        return this.db.all(...args);
+    }
+
+    async close() {
+        if (this.db !== null) {
+            try {
+                await this.db.close();
+            } catch {}
+        }
+    }
+}
+
 app.use(async function (req, res, next) {
-    req.config = global.config;
-    req.locales = buildLocaleList(global.config.locale);
-    req.rawUser = authenticate(req);
-    req.user = req.rawUser && req.rawUser.authenticated ? req.rawUser : null;
-    req.isGranted = (area, locale = global.config.locale) => req.user && isGranted(req.user, locale, area);
-    req.db = await dbConnection();
-    res.on('finish', async () => {
-        await req.db.close();
-    });
-    next();
+    try {
+        req.rawUser = authenticate(req);
+        req.user = req.rawUser && req.rawUser.authenticated ? req.rawUser : null;
+        req.isGranted = (area, locale = global.config.locale) => req.user && isGranted(req.user, locale, area);
+        req.db = new LazyDatabase();
+        res.on('finish', async () => {
+            await req.db.close();
+        });
+        next();
+    } catch (err) {
+        next(err);
+    }
 });
 
 router.use(grant.express()(require('./social').config));
@@ -53,6 +83,13 @@ app.use(require('./routes/pronounce').default);
 app.use(require('./routes/census').default);
 
 app.use(require('./routes/images').default);
+app.use(require('./routes/blog').default);
+
+app.use(function (err, req, res, next) {
+    console.error(err.stack);
+    res.status(500).send('Unexpected server error');
+    req.db.close();
+});
 
 export default {
     path: '/api',

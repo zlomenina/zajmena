@@ -644,7 +644,7 @@ faq:
                     Bo to słowo jest zwyczajnie paskudne. Jest wykluczające. Odczłowieczające.
                     {https://www.synonimy.pl/synonim/nijaki/=Kojarzy się} przeciętnością, bezbarwnością, bylejakością, nudą i mdłościami.
                     Problem ten jest zauważany {https://journals.umcs.pl/et/article/view/6367/pdf=w pracach naukowych} \[str. 117-118]
-                    i {https://youtu.be/HOQazoVKf3c?t=1859=przez członków Rady Języka Polskiego}.
+                    i {https://youtu.be/HOQazoVKf3c?t=1859=przez współpracowników Rady Języka Polskiego}.
                 - >
                     Dlatego proponujemy alternatywę, pochodzącą od łacińskiej nazwy tego rodzaju gramatycznego:
                     {https://en.wiktionary.org/wiki/neuter#Latin=neuter}.
@@ -790,7 +790,7 @@ links:
     headerLong: 'Dodatkowe materiały'
 
     blog: 'Blog'
-    academic: 'Prace naukowe'
+    academic: 'Nauka'
     links: 'Dodatkowe materiały'
 
     media: 'Zaimki.pl w mediach'
@@ -1069,6 +1069,7 @@ confirm:
     header: 'Czy jesteś pewnx?'
     yes: 'Tak, na pewno'
     no: 'Nie, anuluj'
+    ok: 'OK'
 
 terms:
     header: 'Regulamin'
@@ -1116,6 +1117,18 @@ clipboard:
 
 error:
     generic: 'Coś poszło nie tak, spróbuj ponownie…'
+
+mode:
+    dark: 'Tryb nocny'
+    light: 'Tryb dzienny'
+
+ban:
+    reason: 'Powód blokady'
+    action: 'Zablokuj tę osobę'
+    confirm: 'Czy na pewno chcesz zbanować @%username%?'
+    header: 'Twoje konto jest zablokowane. Twoje profile nie są widoczne publicznie.'
+    banned: 'Zbanowanx'
+    termsIntro: 'Zgodnie z naszym {/regulamin=Regulaminem}:'
 
 flags:
     Abroromantic: 'Abroromantyczn{adjective_n}'

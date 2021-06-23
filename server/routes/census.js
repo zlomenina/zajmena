@@ -3,6 +3,7 @@ import SQL from 'sql-template-strings';
 import sha1 from 'sha1';
 import {ulid} from "ulid";
 import Papa from 'papaparse';
+import {handleErrorAsync} from "../../src/helpers";
 
 const getIp = req => {
     try {
@@ -22,8 +23,8 @@ const hasFinished = async req => {
     if (req.user) {
         const byUser = await req.db.get(SQL`
             SELECT * FROM census
-            WHERE locale = ${req.config.locale}
-            AND edition = ${req.config.census.edition}
+            WHERE locale = ${global.config.locale}
+            AND edition = ${global.config.census.edition}
             AND userId = ${req.user.id}
         `);
         return !!byUser;
@@ -32,8 +33,8 @@ const hasFinished = async req => {
     const fingerprint = buildFingerprint(req);
     const byFingerprint = await req.db.get(SQL`
         SELECT * FROM census
-        WHERE locale = ${req.config.locale}
-        AND edition = ${req.config.census.edition}
+        WHERE locale = ${global.config.locale}
+        AND edition = ${global.config.census.edition}
         AND fingerprint = ${fingerprint}
         AND userId IS NULL
     `);
@@ -42,18 +43,18 @@ const hasFinished = async req => {
 
 const router = Router();
 
-router.get('/census/finished', async (req, res) => {
+router.get('/census/finished', handleErrorAsync(async (req, res) => {
     return res.json(await hasFinished(req));
-});
+}));
 
-router.post('/census/submit', async (req, res) => {
+router.post('/census/submit', handleErrorAsync(async (req, res) => {
     const suspicious = await hasFinished(req);
 
     const id = ulid();
     await req.db.get(SQL`INSERT INTO census (id, locale, edition, userId, fingerprint, answers, writins, ip, userAgent, acceptLanguage, suspicious) VALUES (
         ${id},
-        ${req.config.locale},
-        ${req.config.census.edition},
+        ${global.config.locale},
+        ${global.config.census.edition},
         ${req.user ? req.user.id : null},
         ${buildFingerprint(req)},
         ${req.body.answers},
@@ -65,17 +66,17 @@ router.post('/census/submit', async (req, res) => {
     )`);
 
     return res.json(id);
-});
+}));
 
-router.get('/census/count', async (req, res) => {
+router.get('/census/count', handleErrorAsync(async (req, res) => {
     return res.json((await req.db.get(SQL`
         SELECT COUNT(*) as c FROM census
-        WHERE locale = ${req.config.locale}
-        AND edition = ${req.config.census.edition}
+        WHERE locale = ${global.config.locale}
+        AND edition = ${global.config.census.edition}
     `)).c);
-});
+}));
 
-router.get('/census/export', async (req, res) => {
+router.get('/census/export', handleErrorAsync(async (req, res) => {
     if (!req.isGranted('census')) {
         res.status(401).json({error: 'Unauthorised'});
     }
@@ -83,8 +84,8 @@ router.get('/census/export', async (req, res) => {
     const report = [];
     for (let {answers, writins} of await req.db.all(SQL`
         SELECT answers, writins FROM census
-        WHERE locale = ${req.config.locale}
-        AND edition = ${req.config.census.edition}
+        WHERE locale = ${global.config.locale}
+        AND edition = ${global.config.census.edition}
         AND suspicious = 0
     `)) {
         answers = JSON.parse(answers);
@@ -110,6 +111,6 @@ router.get('/census/export', async (req, res) => {
     }
 
     return res.set('content-type', 'text/csv').send(Papa.unparse(report));
-});
+}));
 
 export default router;

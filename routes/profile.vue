@@ -1,5 +1,10 @@
 <template>
     <div v-if="profile">
+        <ClientOnly>
+        <div slot="placeholder" class="my-5 text-center">
+            <Spinner size="5rem"/>
+        </div>
+
         <div class="mb-3 d-flex justify-content-between flex-column flex-md-row">
             <h2 class="text-nowrap">
                 <Avatar :user="profile"/>
@@ -31,6 +36,16 @@
             </div>
         </div>
 
+        <section v-if="$isGranted('users') && profile.bannedReason">
+            <div class="alert alert-warning">
+                <p class="h4">
+                    <Icon v="ban"/>
+                    {{$t('ban.banned')}}
+                </p>
+                <p class="mb-0">{{profile.bannedReason}}</p>
+            </div>
+        </section>
+
         <section v-if="profile.age ||profile.description.trim().length">
             <p v-for="line in profile.description.split('\n')" class="mb-1">
                 <Spelling escape :text="line"/>
@@ -41,7 +56,7 @@
             </p>
         </section>
 
-        <section v-if="profile.flags.length || profile.customFlags.length">
+        <section v-if="profile.flags.length || Object.keys(profile.customFlags).length">
             <ul class="list-inline">
                 <li v-for="flag in profile.flags" v-if="allFlags[flag]" class="list-inline-item pr-2">
                     <Flag :name="flag.startsWith('-') ? allFlags[flag] : $translateForPronoun(allFlags[flag], mainPronoun)"
@@ -111,11 +126,24 @@
             <OpinionLegend/>
         </section>
 
+        <client-only>
+            <section v-if="$isGranted('users')">
+                <div class="alert alert-warning">
+                    <textarea v-model="profile.bannedReason" class="form-control" rows="3" :placeholder="$t('ban.reason')" :disabled="saving"></textarea>
+                    <button class="btn btn-danger d-block w-100 mt-2" :disabled="saving" @click="ban">
+                        <Icon v="ban"/>
+                        {{$t('ban.action')}}
+                    </button>
+                </div>
+            </section>
+        </client-only>
+
         <Separator icon="heart"/>
         <Support/>
         <section>
             <Share/>
         </section>
+        </ClientOnly>
     </div>
     <div v-else-if="Object.keys(profiles).length">
         <h2 class="text-nowrap mb-3">
@@ -137,23 +165,31 @@
 </template>
 
 <script>
-    import { head } from "../src/helpers";
+    import {head, listToDict} from "../src/helpers";
     import { pronouns } from "~/src/data";
     import { buildPronoun } from "../src/buildPronoun";
+    import ClientOnly from 'vue-client-only'
 
     export default {
+        components: { ClientOnly },
         data() {
              return {
-                profiles: {},
-                glue: ' ' + this.$t('pronouns.or') + ' ',
-                allFlags: process.env.FLAGS,
+                 profiles: {},
+                 glue: ' ' + this.$t('pronouns.or') + ' ',
+                 allFlags: process.env.FLAGS,
+                 saving: false,
+                 terms: [],
             }
         },
         async asyncData({ app, route }) {
             return {
                 profiles: await app.$axios.$get(`/profile/get/${encodeURIComponent(route.params.pathMatch)}`),
-                terms: await app.$axios.$get(`/terms`),
             };
+        },
+        async mounted() {
+            if (this.config.nouns.terms.enabled) {
+                this.terms = await this.$axios.$get(`/terms`);
+            }
         },
         computed: {
             username() {
@@ -237,6 +273,20 @@
 
                 return mainPronoun;
             },
+        },
+        methods: {
+            async ban() {
+                await this.$confirm(this.$t('ban.confirm', {username: this.username}), 'danger');
+                this.saving = true;
+                try {
+                    await this.$post(`/admin/ban/${encodeURIComponent(this.username)}`, {
+                        reason: this.profile.bannedReason,
+                    });
+                    window.location.reload();
+                } finally {
+                    this.saving = false;
+                }
+            }
         },
         head() {
             return head({

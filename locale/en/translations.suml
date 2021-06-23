@@ -128,6 +128,7 @@ sources:
         extra: 'Additional info (translator, name of journal, …)'
         year: 'Release year (of the English version)'
         fragments: 'Fragments'
+        fragmentsInfo: 'You can mark the relevant pronouns using square brackets: “Then \[\[they]] saw how \[\[they]] did all of that to \[\[themselves]].”'
         comment: 'Comment'
         link: 'Link to the content'
         thanks: 'Thanks for contributing!'
@@ -522,6 +523,7 @@ confirm:
     header: 'Are you sure?'
     yes: 'Yes, I''m sure'
     no: 'No, cancel'
+    ok: 'OK'
 
 terms:
     header: 'Terms of Service'
@@ -566,3 +568,15 @@ images:
 
 error:
     generic: 'Something went wrong, please try again…'
+
+mode:
+    dark: 'Dark mode'
+    light: 'Light mode'
+
+ban:
+    reason: 'Ban reason'
+    action: 'Ban this person'
+    confirm: 'Are you sure you want to ban @%username%?'
+    header: 'You''re banned. Your profile will not be shown to anyone.'
+    banned: 'Banned'
+    termsIntro: 'According to our {/terms=Terms of Service}:'

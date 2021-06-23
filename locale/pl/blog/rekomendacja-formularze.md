@@ -1,6 +1,6 @@
 # Rekomendacja Rady w sprawie pytania o płeć w formularzach
 
-<small>24.01.2020 | [@andrea](/@andrea), [@szymon](/@szymon)</small>
+<small>2020-01-24 | [@andrea](/@andrea), [@szymon](/@szymon)</small>
 
 Formularze, czy to online czy papierowe, najczęściej są bardzo nieprzyjazne osobom niebinarnym.
 Narzucają nam wybór, w którym żadna opcja nie jest prawdą. Mężczyzna czy kobieta? Pan czy Pani?
@@ -162,6 +162,6 @@ może to pomóc osobom respondenckim zapoznać się z tematem.
         <img src="/img/forms-pl/honorifics.png" alt="Zwrot grzecznościowy: Państwo, Pani, Panu, Pan, Pań, per „Ty”, Żaden z powyższych: [Pole wolnego tekstu]">
     </figure>
     <figure>
-        <img src="/img/forms-pl/pronouns.png" alt="Jak mamy się do Ciebie zwracać? (i) Więcej informacji znadziesz na stronie zaimki.pl; ono (np. zrobiłoś, poszłoś), on (np. zrobiłeś, poszedłeś), onu (np. zrobiłuś, poszłuś), ona (np. zrobiłaś, poszłaś), oni (np. zrobiliście, poszliście), Żadna z powyższych: [Pole wolnego tekstu]">
+        <img src="/img/forms-pl/pronouns.png" alt="Jak mamy się do Ciebie zwracać? (i) Więcej informacji znajdziesz na stronie zaimki.pl; ono (np. zrobiłoś, poszłoś), on (np. zrobiłeś, poszedłeś), onu (np. zrobiłuś, poszłuś), ona (np. zrobiłaś, poszłaś), oni (np. zrobiliście, poszliście), Żadna z powyższych: [Pole wolnego tekstu]">
     </figure>
 </div>

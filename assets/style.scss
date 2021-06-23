@@ -7,7 +7,7 @@
 @import "~bootstrap/scss/type";
 //@import "~bootstrap/scss/images";
 //@import "~bootstrap/scss/containers";
-//@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
 @import "~bootstrap/scss/buttons";
@@ -41,6 +41,8 @@ $fa-font-path: "~@fortawesome/fontawesome-pro/webfonts";
 @import "~@fortawesome/fontawesome-pro/scss/fontawesome";
 @import "~@fortawesome/fontawesome-pro/scss/light";
 @import "~@fortawesome/fontawesome-pro/scss/brands";
+
+@import "./dark";
 
 html {
     scroll-behavior: smooth;
@@ -155,4 +157,11 @@ form[disabled] {
 #arc-widget > iframe {
     position: fixed !important;
     bottom: 3px !important;
+}
+
+@include media-breakpoint-up('lg') {
+    .table-wide {
+        margin-left: calc(-50vw + 50% + 3rem);
+        margin-right: calc(-50vw + 50% + 3rem);
+    }
 }

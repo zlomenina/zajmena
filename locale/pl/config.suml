@@ -121,23 +121,7 @@ links:
     academicRoute: 'nauka'
     mediaRoute: 'media'
 
-    blog:
-        polskie-media-o-demi-lovato: 'Polskie media o coming oucie Demi Lovato'
-        rodzaj-żeńskoosobowy: 'Rodzaj żeńskoosobowy'
-        manifest: 'Manifest Niebinarnej Polszczyzny'
-        wystarczyło-zapytać: 'Wystarczyło zapytać…'
-        krótka-notka-o-osobatywach: 'Krótka notka o osobatywach'
-        czytanie-ze-zrozumieniem: 'Czytanie ze zrozumieniem'
-        spis-2021: 'Niebinarny Spis Powszechny 2021 – wnioski'
-        czy-wolno-uzywac: 'Zamiast pierdyliarda dyskusji czy wolno używać – zróbmy pierdyliard użyć'
-        inkluzywne-liczebniki: 'Inkluzywne liczebniki'
-        zaimki-postpłciowe: 'Zaimki w rodzaju postpłciowym'
-        zaimki-nie-tylko-osobowe: 'Zaimki nie tylko osobowe'
-        archie-wyborcza: 'Przemówienie Arcziego na konferencji prasowej ws. transfobii w Gazecie Wyborczej'
-        rekomendacja-formularze: 'Rekomendacja Rady w sprawie pytania o płeć w formularzach'
-        podsumowanie-2020: 'Podsumowanie działalności w roku 2020'
-        gwiezdne-wojny: 'Niebinarność w „Gwiezdnych Wojnach”'
-        czas-się-obnosić: 'Nadszedł czas się obnosić! – przemówienie Sybila z Wrocławskiego Marszu Równości'
+    blog: true
     academic:
         -
             icon: 'comment-alt-edit'
@@ -190,6 +174,24 @@ links:
             icon: 'play-circle'
             url: 'https://www.youtube.com/watch?v=YOEB6Ixp048'
             headline: 'Nie-binarny język polski – seminarium naukowe (Queer UW)'
+        -
+            icon: 'play-circle'
+            url: 'https://www.facebook.com/gdynaukajestkobieta/videos/193680249317891'
+            headline: 'Tip-top. Krok w stronę feminatywów.'
+            extra: 'Sybil (Gdy Nauka jest Kobietą UAM)'
+        -
+            icon: 'newspaper'
+            url: 'https://ksiazki.wp.pl/w-tvp-wysmiewali-osoby-niebinarne-profesor-bralczyk-rozumie-dlaczego-6616979703601760a'
+            headline: 'Opinia prof. Bralczyka nt. form neutralnych'
+            quote: >
+                Jeśli więc osoba niebinarna nie chce wyrażać się ani w rodzaju męskim, ani w rodzaju żeńskim,
+                językoznawca proponuje jej, przynajmniej w liczbie pojedynczej, użycie rodzaju nijakiego.
+                - Czy wprowadzać jakoś dodatkowy rodzaj gramatyczny? Uważam, że nie. Że to nie jest w języku potrzebne.
+                Jeżeli razi kogoś określenie męskie czy żeńskie w liczbie pojedynczej,
+                to może stosować neutrum - "ono". Co prawda my akurat traktujemy "to" jako często nieosobowe,
+                ale przecież mamy rodzaj nijaki w odniesieniu do chłopięcia, czy dziewczęcia.
+                Mówimy "to" dziecko, "to" dziewczę" i to jest rodzaj nijaki.
+                Dlatego rodzaj nijaki może być teoretycznie zastosowany w odniesieniu do osób, które są niebinarne.
     links:
         -
             icon: 'globe-europe'
@@ -284,6 +286,16 @@ links:
             url: 'https://www.youtube.com/watch?v=UvRdZKk3RLM'
             headline: 'Czy język polski jest seksistowski?'
             extra: ' – Mateusz Adamczyk o asymetrii rodzajowo-płciowej, androcentryzmie językowym, inkluzywności, i o tym, czemu „osoba” jest bardziej włączająca niż „człowiek”.'
+        -
+            icon: 'play-circle'
+            url: 'https://www.youtube.com/watch?v=UvRdZKk3RLM'
+            headline: 'Feminatywy? Tak, ale...'
+            extra: ' – Mateusz Adamczyk; pod koniec jest też o potrzebie reprezentacji niebinarności w języku'
+            quote: >
+                Jak pokazują współczesne badania, formy generyczne silniej kojarzą nam się z mężczyznami niż z kobietami,
+                i dlatego nie ma tutaj tej symetrii, ani w języku, ani poza nim.
+                Dlatego właśnie tworzenie i używanie feminatywów jest ważne, społecznie potrzebne,
+                na co zresztą zwraca uwagę także Rada Języka Polskiego.
     mediaGuests:
         -
             icon: 'newspaper'
@@ -354,6 +366,16 @@ links:
             url: 'https://www.facebook.com/teczuj/videos/2996967110625524'
             headline: 'Panel ekspercki: język neutralny | język osób niebinarnych'
             extra: 'Archie i Andrea, <strong>Tęczuj</strong>'
+        -
+            icon: 'play-circle'
+            url: 'https://www.facebook.com/SCORP.IFMSA.Poland/posts/2952524161684978'
+            headline: 'Webinar „O co chodzi z tymi zaimkami?”'
+            extra: 'Sybil i Andrea, <strong>Międzynarodowe Stowarzyszenie Studentów Medycyny IFMSA-Poland</strong>'
+        -
+            icon: 'play-circle'
+            url: 'https://www.facebook.com/gdynaukajestkobieta/videos/193680249317891'
+            headline: 'Tip-top. Krok w stronę feminatywów.'
+            extra: 'Sybil, <strong>Gdy Nauka jest Kobietą UAM</strong>'
     mediaMentions:
         -
             icon: 'newspaper'
@@ -526,6 +548,61 @@ links:
                 oraz w Słowniku Neutratywów Języka Polskiego.
                 A form stosowanych przez polskie osoby niebinarne i transpłciowe
                 jest zapewne jeszcze więcej i z każdym dniem powstają nowe.
+        -
+            icon: 'newspaper'
+            url: 'https://zycie.hellozdrowie.pl/casey-legler-wiedzieli-jak-ubierac-dziewczyny-nie-spodziewali-sie-mnie/'
+            headline: 'Casey Legler: Wiedzieli, jak ubierać dziewczyny – nie spodziewali się mnie. Ubrali mnie w męskie ciuchy, bo takie na mnie pasowały'
+            extra: ' – <strong>Hello Zdrowie</strong>'
+            quote: >
+                Spróbowałyśmy, korzystając z dostępnych źródeł
+                (m.in. Zaimki.pl – serwis zajmujący się popularyzowaniem języka neutralnego płciowo),
+                skonstruować ten materiał w oparciu o rodzaj neutralny i neutratywy (ono, „zrobiłom”, „poszłoś”…).
+                Mamy świadomość, że nie wszystkich to rozwiązanie usatysfakcjonuje.
+                Wierzymy jednak, że w ten sposób dokładamy swój głos w dyskusji o tym,
+                że niebinarność nie tylko może, ale powinna manifestować się w języku.
+        -
+            icon: 'newspaper'
+            url: 'https://krytykapolityczna.pl/kraj/januszewska-adamczyk-jezyk-feminatyw/'
+            headline: 'Niedasizm językowy nie istnieje'
+            extra: ' – Mateusz Adamczyk, <strong>Krytyka Polityczna</strong>'
+            quote: >
+                Wiedzę na ten temat najlepiej czerpać od samych osób niebinarnych,
+                bo przecież one najlepiej wiedzą, jak chcą, by o nich mówiono.
+                „Nic o nas bez nas” – to hasło powinno być nadrzędną zasadą
+                wypracowywania wszelkich strategii komunikacyjnych.
+                Dziś to naprawdę łatwe, bo mamy internet.
+                Doskonałym źródłem wiedzy jest np. strona zaimki.pl.
+                Znajdziemy tam mnóstwo przykładów z komentarzami osób niebinarnych.
+                Jeśli jednak pytasz mnie o konkretne przykłady, to możemy się wspomóc rodzajem nijakim,
+                który zalecałbym jednak nazywać neutralnym.
+        -
+            icon: 'newspaper'
+            url: 'https://formy.xyz/krotka-forma/jak-wspierac-neutralny-genderowo-proces-projektowy/'
+            headline: 'Jak wspierać neutralny genderowo proces projektowy?'
+            extra: ' – <strong>formy.xyz</strong>'
+            quote: >
+                Mów do osób! Zamiast męskoosobowych rzeczowników stosuj zwrot „osoby”.
+                To dobrze brzmiące, coraz bardziej popularne niebinarne rozwiązanie.
+                Na portalu zaimki.pl znajdziesz wiele innych podpowiedzi.
+                (…)
+                Wracaj do poradnika Zaimki.pl. Ucz się.
+                Stosuj zasady, które osoby LGBTQ+ uznają za przyjazne.
+        -
+            icon: 'newspaper'
+            url: 'https://www.polityka.pl/tygodnikpolityka/kultura/2122947,1,konfrontacja-jezyka-z-plcia.read'
+            headline: 'Konfrontacja języka z płcią'
+            extra: ' – Bartek Chaciński, <strong>Polityka</strong>'
+            quote: >
+                To ledwie drobny ślad szerokiej gamy problemów plastycznej i rozbudowanej polszczyzny
+                w konfrontacji z językiem neutralnym, kilka miesięcy temu wyszydzanym
+                na antenie TVP przez Michała Rachonia, który na zmianę krztusząc się ze śmiechu i strasząc nowomową,
+                odczytywał na antenie przykłady ze strony Zaimki.pl.
+                Jedynego tak obszernego słownika neutratywów, czyli – analogicznie do znanych nam
+                feminatywów i maskulatywów – wyrazów neutralnych płciowo.
+                Słownik ten prowadzi filologiczny kolektyw Rada Języka Neutralnego,
+                a korzystają z niego choćby tłumacze w poszukiwaniu wskazań i przykładów.
+                Bo te potrzebne są coraz częściej, tak samo jak przez lata terminologia związana z nowymi technologiami,
+                światem korporacji czy reklamy. Świat się zmienia, przynajmniej poza TVP.
     socials:
         -
             icon: 'twitter'
@@ -573,6 +650,11 @@ links:
             url: 'https://www.facebook.com/centrum.rownik/posts/158108032840650'
             headline: 'Centrum Równik'
             extra: ' – rozdaje przypinki z zaimkami, również nienormatywnymi.'
+        -
+            icon: 'cogs'
+            url: 'http://dobrerzeczy.online/femaleSwitcher/'
+            headline: 'Female switcher'
+            extra: ' – apka, która zamieni formy fleksyjne wyświetlanych tekstów z rodzaju męskiego na żeński.'
 
 people:
     enabled: false

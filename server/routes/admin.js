@@ -2,64 +2,73 @@ import { Router } from 'express';
 import SQL from 'sql-template-strings';
 import avatar from '../avatar';
 import {config as socialLoginConfig} from "../social";
-import {buildDict, now, shuffle, sortByValue} from "../../src/helpers";
+import {buildDict, now, shuffle, handleErrorAsync, buildLocaleList} from "../../src/helpers";
 import locales from '../../src/locales';
-import {decodeTime} from "ulid";
+import {calculateStats, statsFile} from '../../src/stats';
+import fs from 'fs';
+import cache from "../../src/cache";
 
 const router = Router();
 
-router.get('/admin/list', async (req, res) => {
-    const admins = await req.db.all(SQL`
-        SELECT u.username, p.teamName, p.locale, u.id, u.email, u.avatarSource
-        FROM users u
-        LEFT JOIN profiles p ON p.userId = u.id
-        WHERE p.teamName IS NOT NULL AND p.teamName != ''
-        ORDER BY RANDOM()
-    `);
+router.get('/admin/list', handleErrorAsync(async (req, res) => {
+    return res.json(await cache('main', 'admins.js', 10, async () => {
+        const admins = await req.db.all(SQL`
+            SELECT u.username, p.teamName, p.locale, u.id, u.email, u.avatarSource
+            FROM users u
+                     LEFT JOIN profiles p ON p.userId = u.id
+            WHERE p.teamName IS NOT NULL
+              AND p.teamName != ''
+            ORDER BY RANDOM()
+        `);
 
-    const adminsGroupped = buildDict(function*() {
-        yield [req.config.locale, []];
-        for (let [locale, , , published] of locales) {
-            if (locale !== req.config.locale && published) {
-                yield [locale, []];
+        const adminsGroupped = buildDict(function* () {
+            yield [global.config.locale, []];
+            for (let [locale, , , published] of locales) {
+                if (locale !== global.config.locale && published) {
+                    yield [locale, []];
+                }
+            }
+            yield ['', []];
+        });
+        for (let admin of admins) {
+            admin.avatar = await avatar(req.db, admin);
+            delete admin.id;
+            delete admin.email;
+
+            if (adminsGroupped[admin.locale] !== undefined) {
+                adminsGroupped[admin.locale].push(admin);
+            } else {
+                adminsGroupped[''].push(admin);
             }
         }
-        yield ['', []];
-    });
-    for (let admin of admins) {
-        admin.avatar = await avatar(req.db, admin);
-        delete admin.id;
-        delete admin.email;
 
-        if (adminsGroupped[admin.locale] !== undefined) {
-            adminsGroupped[admin.locale].push(admin);
-        } else {
-            adminsGroupped[''].push(admin);
-        }
-    }
+        return adminsGroupped;
+    }));
+}));
 
-    return res.json(adminsGroupped);
-});
+router.get('/admin/list/footer', handleErrorAsync(async (req, res) => {
+    return res.json(shuffle(await cache('main', 'footer.js', 10, async () => {
+        const fromDb = await req.db.all(SQL`
+            SELECT u.username, p.footerName, p.footerAreas, p.locale
+            FROM users u
+            LEFT JOIN profiles p ON p.userId = u.id
+            WHERE p.locale = ${global.config.locale}
+              AND p.footerName IS NOT NULL AND p.footerName != ''
+              AND p.footerAreas IS NOT NULL AND p.footerAreas != ''
+        `);
 
-router.get('/admin/list/footer', async (req, res) => {
-    const fromDb = await req.db.all(SQL`
-        SELECT u.username, p.footerName, p.footerAreas, p.locale
-        FROM users u
-        LEFT JOIN profiles p ON p.userId = u.id
-        WHERE p.locale = ${req.config.locale}
-          AND p.footerName IS NOT NULL AND p.footerName != ''
-          AND p.footerAreas IS NOT NULL AND p.footerAreas != ''
-    `);
+        const fromConfig = global.config.contact.authors || [];
 
-    const fromConfig = req.config.contact.authors || [];
+        return [...fromDb, ...fromConfig];
+    })));
+}));
 
-    return res.json(shuffle([...fromDb, ...fromConfig]));
-});
-
-router.get('/admin/users', async (req, res) => {
+router.get('/admin/users', handleErrorAsync(async (req, res) => {
     if (!req.isGranted('users')) {
         return res.status(401).json({error: 'Unauthorised'});
     }
+
+    return res.json({});
 
     const users = await req.db.all(SQL`
         SELECT u.id, u.username, u.email, u.roles, u.avatarSource, p.locale
@@ -94,87 +103,82 @@ router.get('/admin/users', async (req, res) => {
     }
 
     return res.json(groupedUsers);
-});
+}));
 
-const formatMonth = d => `${d.getFullYear()}-${(d.getMonth() + 1).toString().padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')}`;
-
-const buildChart = (rows) => {
-    const dates = rows.map(row => new Date(decodeTime(row.id)));
-
-    const chart = {};
-
-    let loop = dates[0];
-    const end = dates[dates.length - 1];
-    while(loop <= end){
-        chart[formatMonth(loop)] = 0;
-        loop = new Date(loop.setDate(loop.getDate() + 1));
-    }
-    chart[formatMonth(loop)] = 0;
-
-    for (let date of dates) {
-        chart[formatMonth(date)]++;
-    }
-
-    return chart;
-}
-
-router.get('/admin/stats', async (req, res) => {
+router.get('/admin/stats', handleErrorAsync(async (req, res) => {
     if (!req.isGranted('panel')) {
         return res.status(401).json({error: 'Unauthorised'});
     }
 
-    const users = {
-        overall: (await req.db.get(SQL`SELECT count(*) AS c FROM users`)).c,
-        admins: (await req.db.get(SQL`SELECT count(*) AS c FROM users WHERE roles!=''`)).c,
-        chart: buildChart(await req.db.all(SQL`SELECT id FROM users ORDER BY id`)),
-    };
+    const stats = fs.existsSync(statsFile)
+        ? JSON.parse(fs.readFileSync(statsFile))
+        : await calculateStats(req.db, buildLocaleList(global.config.locale));
 
-    const locales = {};
-    for (let locale in req.locales) {
-        if (!req.locales.hasOwnProperty(locale)) { continue; }
-        if (!req.isGranted('panel', locale)) { continue; }
-        const profiles = await req.db.all(SQL`SELECT pronouns, flags FROM profiles WHERE locale=${locale}`);
-        const pronouns = {}
-        const flags = {}
-        for (let profile of profiles) {
-            const pr = JSON.parse(profile.pronouns);
-            for (let pronoun in pr) {
-                if (!pr.hasOwnProperty(pronoun)) { continue; }
-
-                if (pronoun.includes(',') || pr[pronoun] < 0) {
-                    continue;
-                }
-                const p = pronoun.replace(/^.*:\/\//, '').replace(/^\//, '').toLowerCase().replace(/^[a-z]+\.[^/]+\//, '');
-                if (pronouns[p] === undefined) {
-                    pronouns[p] = 0;
-                }
-                pronouns[p] += pr[pronoun] === 1 ? 1 : 0.5;
-            }
-
-            const fl = JSON.parse(profile.flags);
-            for (let flag of fl) {
-                if (flags[flag] === undefined) {
-                    flags[flag] = 0;
-                }
-                flags[flag] += 1;
-            }
+    for (let locale in stats.locales) {
+        if (stats.locales.hasOwnProperty(locale) && !req.isGranted('panel', locale)) {
+            delete stats.locales[locale];
         }
-
-        locales[locale] = {
-            name: req.locales[locale].name,
-            url: req.locales[locale].url,
-            profiles: profiles.length,
-            pronouns: sortByValue(pronouns, true),
-            flags: sortByValue(flags, true),
-            nouns: {
-                approved: (await req.db.get(SQL`SELECT count(*) AS c FROM nouns WHERE locale=${locale} AND approved=1 AND deleted=0`)).c,
-                awaiting: (await req.db.get(SQL`SELECT count(*) AS c FROM nouns WHERE locale=${locale} AND approved=0 AND deleted=0`)).c,
-            },
-            chart: buildChart(await req.db.all(SQL`SELECT id FROM profiles WHERE locale=${locale} ORDER BY id`)),
-        };
     }
 
-    return res.json({ users, locales });
-});
+    return res.json(stats);
+}));
+
+const normalise = s => s.trim().toLowerCase();
+
+router.post('/admin/ban/:username', handleErrorAsync(async (req, res) => {
+    if (!req.isGranted('users')) {
+        return res.status(401).json({error: 'Unauthorised'});
+    }
+
+    await req.db.get(SQL`
+        UPDATE users
+        SET bannedReason = ${req.body.reason || null} 
+        WHERE lower(trim(replace(replace(replace(replace(replace(replace(replace(replace(replace(username, 'Ą', 'ą'), 'Ć', 'ć'), 'Ę', 'ę'), 'Ł', 'ł'), 'Ń', 'ń'), 'Ó', 'ó'), 'Ś', 'ś'), 'Ż', 'ż'), 'Ź', 'ż'))) = ${normalise(req.params.username)}
+    `);
+
+    return res.json(true);
+}));
+
+router.get('/admin/suspicious', handleErrorAsync(async (req, res) => {
+    if (!req.isGranted('users')) {
+        return res.status(401).json({error: 'Unauthorised'});
+    }
+
+    return res.json(await req.db.all(SQL`
+        SELECT users.id, users.username, profiles.locale FROM profiles
+        LEFT JOIN users ON profiles.userId = users.id
+        WHERE users.suspiciousChecked != 1
+          AND users.bannedReason IS NULL
+          AND (
+              lower(customFlags) LIKE '%super%'
+           OR lower(description) LIKE '%super%'
+           OR lower(customFlags) LIKE '%phobe%'
+           OR lower(description) LIKE '%phobe%'
+           OR lower(customFlags) LIKE '%phobic%'
+           OR lower(description) LIKE '%phobic%'
+           OR lower(customFlags) LIKE '%terf%'
+           OR lower(description) LIKE '%terf%'
+           OR lower(customFlags) LIKE '%radfem%'
+           OR lower(description) LIKE '%radfem%'
+           OR lower(customFlags) LIKE '%gender critical%'
+           OR lower(description) LIKE '%gender critical%'
+        )
+        ORDER BY users.id DESC
+    `));
+}));
+
+router.post('/admin/suspicious/checked/:id', handleErrorAsync(async (req, res) => {
+    if (!req.isGranted('users')) {
+        return res.status(401).json({error: 'Unauthorised'});
+    }
+
+    await req.db.get(SQL`
+        UPDATE users
+        SET suspiciousChecked = 1
+        WHERE id=${req.params.id}
+    `);
+
+    return res.json(true);
+}));
 
 export default router;
