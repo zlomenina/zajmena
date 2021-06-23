@@ -11,7 +11,7 @@ Odpowiednikiem nazwy w języku angielskim jest „Neutral Language Council”.
 
 ### § 2 <small>– Siedziba i teren działania</small>
 
-Siedzibą Rady jest <tu wpisać miasto osoby z zarządu która udostępni swój adres do korespondencji>.
+Siedzibą Rady jest Jaworzno>.
 Terenem działania Rady jest obszar Rzeczpospolitej Polskiej.
 Dla realizacji celów statutowych Rada może prowadzić działania poza granicami kraju z poszanowaniem tamtejszego prawa.
 
@@ -39,19 +39,21 @@ również w głosowaniach na posiedzeniach władz Rady.
 ### § 7 <small> – Cele</small>
 
 Celem Rady jest kształtowanie i promowanie języka neutralnego płciowo oraz języka inkluzywnego,
-ze szczególnym uwzględnieniem reprezentacji osób niebinarnych w warstwie językowej.
+ze szczególnym uwzględnieniem reprezentacji osób niebinarnych.
+Rada wspiera również działania na rzecz równości i sprawiedliwości społecznej.
 
 ### § 8 <small> – Realizacja</small>
 
 Rada realizuje swoje cele poprzez:
 
  - prowadzenie stron internetowych oraz kont w mediach społecznościowych,
-   na których zbiera i rozpowszechnia informacje o języku neutralnym i inkluzywnym,
+   na których zbiera i rozpowszechnia treści związane z celami Rady,
+ - produkcję i dystrybucję materiałów promujących wartości wyrażone w celach Rady,
  - wydawanie książek, czasopism, broszur związanych z celami Rady,
  - organizowanie warsztatów, konferencji, seminariów, szkoleń i wykładów,
  - organizowanie kampanii informacyjnych,
- - organizowanie badań nt. języka używanego przez osoby niebinarne oraz ogólnie języka neutralnego,
- - wspieranie i współudział w pracach naukowych dotyczących zagadnień języka, tożsamości płciowej i seksualności,
+ - organizowanie i prowadzenie badań nt. języka używanego przez osoby niebinarne oraz ogólnie języka neutralnego i inkluzywnego,
+ - wspieranie i współudział w pracach naukowych dotyczących celów Rady,
  - prowadzenie działalności gospodarczej i zbiórek na pokrycie kosztów realizacji celów statutowych.
 
 ## Rozdział III <small>– Osoby członkowskie Rady</small>
@@ -59,10 +61,10 @@ Rada realizuje swoje cele poprzez:
 ### § 9 <small>– Zwyczajne</small>
 
 1.  Zwyczajną osobą członkowską Rady może być każda osoba fizyczna,
-    włącznie z osobami niemającymi obywatelstwa lub miejsca zamieszkania na terytorium Rzeczypospolitej Polskiej,
+    włącznie z osobami małoletnimi na zasadach określonych w ustawie,
+    oraz osobami niemającymi obywatelstwa lub miejsca zamieszkania na terytorium Rzeczypospolitej Polskiej,
     która złoży pisemną deklarację i rekomendację dwojga osób członkowskich Rady,
-    oraz zostanie przyjęta przez Zarząd uchwałą podjętą nie później
-    niż w ciągu miesiąca od daty złożenia deklaracji.
+    oraz zostanie przyjęta przez Zarząd uchwałą podjętą nie później niż w ciągu miesiąca od daty złożenia deklaracji.
 2.  Zwyczajne osoby członkowskie mają prawo do:
      - biernego i czynnego uczestniczenia w wyborach do władz Rady,
      - korzystania z dorobku i wszelkich form działalności Rady,
@@ -79,7 +81,7 @@ Rada realizuje swoje cele poprzez:
 1.  Wspierającą osobą członkowską Rady może zostać osoba fizyczna i prawna
     deklarująca pomoc finansową, rzeczową lub merytoryczną w realizacji celów Rady.
     Staje się nią złożeniu pisemnej deklaracji na podstawie uchwały Zarządu
-    podjętej nie później niż w ciągu miesięca od daty złożenia deklaracji.
+    podjętej nie później niż w ciągu miesiąca od daty złożenia deklaracji.
 2.  Wspierające osoby członkowskie nie posiadają biernego ani czynnego prawa wyborczego,
     mogą jednak brać udział z głosem doradczym w statutowych władzach Rady,
     poza tym posiadają takie prawa jak zwyczajne osoby członkowskie.
@@ -89,8 +91,10 @@ Rada realizuje swoje cele poprzez:
 
 ### § 11 <small>– Honorowe</small>
 
-1.  Honorową osobą członkowską Rady może być osoba fizyczna, która wniosła wybitny wkład w działalność i rozwój Rady.
-    Staje się nią po przyjęciu uchwały przez Walne Zebranie na wniosek Zarządu albo co najmniej 5 osób członkowskich Rady.
+1.  Honorową osobą członkowską Rady może być osoba fizyczna lub prawna,
+    która wniosła wybitny wkład w działalność i rozwój Rady.
+    Staje się nią po przyjęciu uchwały przez Walne Zebranie na wniosek Zarządu
+    albo co najmniej 5 osób członkowskich Rady.
 2.  Honorowe osoby członkowskie nie posiadają biernego ani czynnego prawa wyborczego,
     mogą jednak brać udział z głosem doradczym w statutowych władzach Rady,
     poza tym posiadają takie prawa jak zwyczajne osoby członkowskie.
@@ -103,8 +107,8 @@ Rada realizuje swoje cele poprzez:
  - wykluczenia przez Zarząd z powodu: 
     - rażącego naruszenia zasad statutowych i wartości Rady,
     - nieprzestrzegania postanowień i uchwał władz Rady,
-    - braku przejawów aktywnej działalności na rzecz Rady przez okres przekraczający pół roku,
-    - nieusprawiedliwionego zalegania z opłatą składek członkowskich lub innych zobowiązań przez okres przekraczający pół roku,
+    - braku przejawów aktywnej działalności na rzecz Rady przez okres przekraczający trzy miesiące,
+    - nieusprawiedliwionego zalegania z opłatą składek członkowskich lub innych zobowiązań przez okres przekraczający trzy miesiące,
  - utraty praw obywatelskich na mocy prawomocnego wyroku sądu,
  - śmierci lub utraty osobowości prawnej.
 2. Od uchwały Zarządu w sprawie pozbawienia członkostwa Rady
@@ -125,7 +129,7 @@ Władzami Rady są:
 
 ### § 14 <small>– Wybór organów</small>
 
-1. Zarząd oraz Komisja Rewizyjna wybierane są na pięcioletnią przez Walne Zebranie
+1. Zarząd oraz Komisja Rewizyjna wybierane są na czteroletnią przez Walne Zebranie
    w głosowaniu jawnym zwykłą większością głosów.
 2. W razie, gdy skład władz Rady ulegnie zmniejszeniu w czasie trwania kadencji,
    uzupełnienie ich składu może nastąpić w drodze kooptacji,
@@ -144,7 +148,7 @@ a w drugim terminie bez względu na liczbę obecnych osób członkowskich.
 2.  Walne Zebrania jest zwoływane nie rzadziej niż raz w roku przez Zarząd bądź Komisję Rewizyjną.
     Zawiadomienie osób członkowskich o jego terminie, miejscu i proponowanym porządku obrad
     ma miejsce na co najmniej 14 dni przed terminem Walnego Zebrania.
-    Jeśli na zebraniu nie ma wymaganego kworum,
+    Jeśli na zebraniu nie ma wymaganego kworum (przynajmniej połowy osób członkowskich),
     zwołuje się zebranie w drugim terminie nie później niż w ciągu miesiąca od dnia zwołania Walnego Zebrania.
 3.  Do kompetencji Walnego Zebrania należy: 
     - określenie głównych kierunków działania i rozwoju Rady, 
@@ -161,9 +165,9 @@ a w drugim terminie bez względu na liczbę obecnych osób członkowskich.
 1.  Zarząd jest powołany na czteroletnią kadencję
     do kierowania całą działalnością Rady zgodnie z uchwałami Walnego Zebrania
     oraz reprezentowania Rady na zewnątrz. 
-2.  Zarząd składa się z od 3 osób.
+2.  Zarząd składa się z od 3 (trojga) osób.
 3.  Osoby członkowskie zarządu mogą otrzymywać wynagrodzenie za pełnione funkcje.
-4.  Posiedzenia Zarządu odbywają się w miarę potrzeb, jednak nie rzadziej niż raz na kwartał.
+4.  Posiedzenia Zarządu odbywają się w miarę potrzeb.
 5.  Do kompetencji Zarządu należy:
      - kierowanie bieżącą pracą Rady,
      - realizowanie uchwał Walnego Zebrania,
@@ -177,7 +181,7 @@ a w drugim terminie bez względu na liczbę obecnych osób członkowskich.
 ### § 17 <small>– Komisja Rewizyjna</small>
 
 1.  Komisja Rewizyjna jest powołana na czteroletnią kadencję do sprawowania kontroli nad działalnością Rady.
-2.  Komisja Rewizyjna składa się od 3 osób..
+2.  Komisja Rewizyjna składa się od 3 (trojga) osób.
 3.  Posiedzenia Komisji Rewizyjnej odbywają się w miarę potrzeb,
     nie rzadziej jednak niż raz w roku.
 4.  Do kompetencji Komisji Rewizyjnej należy:
@@ -219,11 +223,6 @@ Uchwałę o rozwiązaniu Rady podejmuje Walne Zebranie zwykłą większością g
 przy obecności co najmniej połowy osób członkowskich uprawnionych do głosowania,
 określając przy tym sposób jego likwidacji oraz przeznaczenia majątku Rady.
 
-Statut przyjęto uchwałą w dniu <mark>dd.mm.yyyy</mark>.
-
-Podpisano:
- - <mark>……………………</mark>
- - <mark>……………………</mark>
- - <mark>……………………</mark>
+Statut przyjęto uchwałą w dniu 30.05.2021.
 
 

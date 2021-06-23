@@ -2003,6 +2003,11 @@ autoprefixer@^9.6.1:
     postcss "^7.0.32"
     postcss-value-parser "^4.1.0"
 
+avris-columnist@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/avris-columnist/-/avris-columnist-0.2.2.tgz#9da20f4fbd475d48bfd269258ab085d40f5933e6"
+  integrity sha512-SAqMZz0nwoBcytp7mMCifQQ3vaG6FB3Aanqpj8sl2ZIKPW53GkHBLnxsC7mN0KRpzaxVYqtbBpMlm4sW8JYfIg==
+
 avris-daemonise@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/avris-daemonise/-/avris-daemonise-0.0.2.tgz#acc8eab86fb396cf3953d5fb96217d5eafe64b37"
@@ -2011,6 +2016,11 @@ avris-daemonise@^0.0.2:
     child_process "^1.0.2"
     fs "^0.0.1-security"
     yargs "^12.0.1"
+
+avris-sorter@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/avris-sorter/-/avris-sorter-0.0.3.tgz#8683de663ec521ae1b4da1c576dc84c9a7dd9f38"
+  integrity sha512-6WnoYWutNNRKEP5EL5nc+uSwu0keuiM3n6gQqCSEx2CK1KIrBL2r3CGle21pQxI4qtd3cogxvXPKsU/2/lliUw==
 
 aws-sdk@^2.799.0:
   version "2.854.0"
@@ -9387,6 +9397,11 @@ vue-client-only@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.0.0.tgz#ddad8d675ee02c761a14229f0e440e219de1da1c"
   integrity sha512-arhk1wtWAfLsJyxGMoEYhoBowM87/i6HLSG2LH/03Yog6i2d9JEN1peMP0Ceis+/n9DxdenGYZZTxbPPJyHciA==
+
+vue-client-only@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.1.0.tgz#1a67a47b8ecacfa86d75830173fffee3bf8a4ee3"
+  integrity sha512-vKl1skEKn8EK9f8P2ZzhRnuaRHLHrlt1sbRmazlvsx6EiC3A8oWF8YCBrMJzoN+W3OnElwIGbVjsx6/xelY1AA==
 
 vue-clipboard2@^0.3.1:
   version "0.3.1"

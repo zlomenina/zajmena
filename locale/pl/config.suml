@@ -777,7 +777,7 @@ contact:
         documents:
             statut: 'Statut'
         board: ['Archie', 'Sybil', 'andrea']
-        auditorBoard: ['ausir', 'Nikita', 'Lunica']
+        auditorBoard: ['ausir', 'Nikita', 'szymon']
 
 support:
     enabled: true

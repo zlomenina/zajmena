@@ -55,6 +55,14 @@
                     <strong>{{name}}:</strong> {{value}}
                 </li>
             </ul>
+
+            <ul>
+                <li v-for="(title, slug) in config.contact.legal.documents">
+                    <router-link :to="`/${config.contact.legal.route}/${slug}`">
+                        {{title}}
+                    </router-link>
+                </li>
+            </ul>
         </section>
 
         <Support/>
